@@ -1,7 +1,7 @@
 {
 	"name": "sentences-per-line",
 	"version": "0.2.1",
-	"description": "Contributed markdownlint rule for limiting sentence per line. 📐",
+	"description": "Contributed markdownlint rule for limiting sentences per line. 📐",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/JoshuaKGoldberg/sentences-per-line"
