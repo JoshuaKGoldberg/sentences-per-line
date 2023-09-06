@@ -23,7 +23,7 @@ jobs:
           script: |
             try {
               await github.request(
-                `DELETE /repos/JoshuaKGoldberg/template-typescript-node-package/branches/main/protection`,
+                `DELETE /repos/JoshuaKGoldberg/sentences-per-line/branches/main/protection`,
               );
             } catch (error) {
               if (!error.message?.includes?.("Branch not protected")) {
@@ -35,6 +35,7 @@ jobs:
         run: |
           if pnpm run should-semantic-release ; then
             pnpm release-it --verbose
+            gh workflow run post-release.yml
           fi
       - if: always()
         name: Recreate branch protection on main
@@ -43,7 +44,7 @@ jobs:
           github-token: ${{ secrets.ACCESS_TOKEN }}
           script: |
             github.request(
-              `PUT /repos/JoshuaKGoldberg/template-typescript-node-package/branches/main/protection`,
+              `PUT /repos/JoshuaKGoldberg/sentences-per-line/branches/main/protection`,
               {
                 allow_deletions: false,
                 allow_force_pushes: true,
@@ -53,24 +54,24 @@ jobs:
                 branch: "main",
                 enforce_admins: false,
                 owner: "JoshuaKGoldberg",
-                repo: "template-typescript-node-package",
+                repo: "sentences-per-line",
                 required_conversation_resolution: true,
                 required_linear_history: false,
                 required_pull_request_reviews: null,
                 required_status_checks: {
-                  checks: [
-                    { context: "build" },
-                    { context: "compliance" },
-                    { context: "lint" },
-                    { context: "lint_knip" },
-                    { context: "lint_markdown" },
-                    { context: "lint_package" },
-                    { context: "lint_packages" },
-                    { context: "lint_spelling" },
-                    { context: "prettier" },
-                    { context: "test" },
-                  ],
-                  strict: false,
+                checks: [
+                  { context: "build" },
+                  { context: "compliance" },
+                  { context: "lint" },
+                  { context: "lint_knip" },
+                  { context: "lint_markdown" },
+                  { context: "lint_package_json" },
+                  { context: "lint_packages" },
+                  { context: "lint_spelling" },
+                  { context: "prettier" },
+                  { context: "test" },
+                ],
+                strict: false,
                 },
                 restrictions: null,
               }

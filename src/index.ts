@@ -1,2 +1,3 @@
-export * from "./greet.js";
-export * from "./types.js";
+import { sentencesPerLine } from "./sentences-per-line.js";
+
+export = sentencesPerLine;

@@ -3,8 +3,8 @@
 After [forking the repo from GitHub](https://help.github.com/articles/fork-a-repo) and [installing pnpm](https://pnpm.io/installation):
 
 ```shell
-git clone https://github.com/<your-name-here>/template-typescript-node-package
-cd template-typescript-node-package
+git clone https://github.com/<your-name-here>/sentences-per-line
+cd sentences-per-line
 pnpm install
 ```
 
@@ -13,7 +13,7 @@ pnpm install
 
 ## Building
 
-Run [[**tsup**](https://tsup.egoist.dev) locally to build source files from `src/` into output files in `lib/`:
+Run [**tsup**](https://tsup.egoist.dev) locally to build source files from `src/` into output files in `lib/`:
 
 ```shell
 pnpm build
@@ -41,12 +41,20 @@ pnpm format:write
 This package includes several forms of linting to enforce consistent code quality and styling.
 Each should be shown in VS Code, and can be run manually on the command-line:
 
+- `pnpm lint` ([ESLint](https://eslint.org) with [typescript-eslint](https://typescript-eslint.io)): Lints JavaScript and TypeScript source files
 - `pnpm lint:knip` ([knip](https://github.com/webpro/knip)): Detects unused files, dependencies, and code exports
 - `pnpm lint:md` ([Markdownlint](https://github.com/DavidAnson/markdownlint)): Checks Markdown source files
-- `pnpm lint:package` ([npm-package-json-lint](https://npmpackagejsonlint.org/)): Lints the `package.json` file
+- `pnpm lint:package-json` ([npm-package-json-lint](https://npmpackagejsonlint.org/)): Lints the `package.json` file
 - `pnpm lint:packages` ([pnpm dedupe --check](https://pnpm.io/cli/dedupe)): Checks for unnecessarily duplicated packages in the `pnpm-lock.yml` file
 - `pnpm lint:spelling` ([cspell](https://cspell.org)): Spell checks across all source files
-- `pnpm lint` ([ESLint](https://eslint.org) with [typescript-eslint](https://typescript-eslint.io)): Lints JavaScript and TypeScript source files
+
+Read the individual documentation for each linter to understand how it can be configured and used best.
+
+For example, ESLint can be run with `--fix` to auto-fix some lint rule complaints:
+
+```shell
+pnpm run lint --fix
+```
 
 ## Testing
 
@@ -86,48 +94,3 @@ Add `--watch` to keep the type checker running in a watch mode that updates the 
 ```shell
 pnpm tsc --watch
 ```
-
-## The Hydration Script
-
-This template's "hydration" script is located in `src/hydrate/`.
-It needs to be [built](#building) before it can be run.
-
-Be warned that running the hydration script in a repository -including this one- will modify that repository.
-To test out the script, you may want to create a new test repository to run on:
-
-```shell
-cd ..
-mkdir temp
-cd temp
-echo node_modules > .gitignore
-git init
-npm init --yes
-```
-
-Then, in that directory, you can directly call the hydration script:
-
-```shell
-node ../template-typescript-node-package/lib/hydrate/index.js -- description "Hooray, trying things out locally."
-```
-
-Along with the hydration script itself, end-to-end tests are removed on package setup.
-
-## The Setup Script
-
-This template's "setup" script is located in `script/`.
-
-### Testing the Setup Script
-
-This template source includes an "end-to-end" test for `script/setup.js`.
-You can run it locally on the command-line:
-
-```shell
-pnpm run setup:test
-```
-
-That end-to-end test executes `script/setup-test-e2e.js`, which:
-
-1. Runs the setup script using `--skip-api`
-2. Checks that the local repository's files were changed correctly (e.g. removed setup-only files)
-
-Along with the setup script itself, end-to-end tests are removed on package setup.

@@ -1,13 +1,3 @@
-/*
-👋 Hi! This ESLint configuration contains a lot more stuff than many repos'!
-You can read from it to see all sorts of linting goodness, but don't worry -
-it's not something you need to exhaustively understand immediately. 💙
-
-If you're interested in learning more, see the 'getting started' docs on:
-- ESLint: https://eslint.org
-- typescript-eslint: https://typescript-eslint.io
-*/
-
 /** @type {import("@types/eslint").Linter.Config} */
 module.exports = {
 	env: {
@@ -65,16 +55,15 @@ module.exports = {
 				project: "./tsconfig.eslint.json",
 			},
 			rules: {
-				// These off-by-default rules work well for this repo and we like them on.
-				"deprecation/deprecation": "error",
-
-				// These more-strict-by-default rules don't work well for this repo and we like them less strict.
+				// These rules need configuring for this repo and we like them on.
 				"@typescript-eslint/no-unnecessary-condition": [
 					"error",
 					{
 						allowConstantLoopConditions: true,
 					},
 				],
+				// These off-by-default rules work well for this repo and we like them on.
+				"deprecation/deprecation": "error",
 			},
 		},
 		{
@@ -100,6 +89,7 @@ module.exports = {
 				"@typescript-eslint/no-unsafe-call": "off",
 			},
 		},
+
 		{
 			extends: ["plugin:yml/standard", "plugin:yml/prettier"],
 			files: ["**/*.{yml,yaml}"],
@@ -134,6 +124,7 @@ module.exports = {
 		"regexp",
 		"vitest",
 	],
+	reportUnusedDisableDirectives: true,
 	root: true,
 	rules: {
 		// These off/less-strict-by-default rules work well for this repo and we like them on.

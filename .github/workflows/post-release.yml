@@ -14,8 +14,8 @@ jobs:
 
             The release is available on:
 
-            * [GitHub releases](https://github.com/JoshuaKGoldberg/template-typescript-node-package/releases/tag/{release_tag})
-            * [npm package (@latest dist-tag)](https://www.npmjs.com/package/template-typescript-node-package/v/${{ env.npm_version }})
+            * [GitHub releases](https://github.com/JoshuaKGoldberg/sentences-per-line/releases/tag/{release_tag})
+            * [npm package (@latest dist-tag)](https://www.npmjs.com/package/sentences-per-line/v/${{ env.npm_version }})
 
             Cheers! 📦🚀
 
