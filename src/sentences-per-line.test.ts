@@ -10,7 +10,43 @@ describe("sentences-per-line", () => {
 		["abc.", undefined],
 		["Abc. Def.", "Abc. Def."],
 		["Abc def. Ghi jkl.", "Abc def. Ghi j"],
-	])("%s", (input, errorContext) => {
+		["`Abc. Def.`", undefined],
+		["`Abc.` Def.", undefined],
+		["`Abc.` `Def.`", undefined],
+		["``Abc.`` Def.", undefined],
+		["`Abc.` Def. Ghi", "c.` Def. Gh"],
+		["```js```.", undefined],
+		[
+			`
+\`\`\`plaintext
+Abc. Def.
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc. Def.
+\`\`\`
+
+Abc.
+Def.
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc. Def.
+\`\`\`
+
+Abc. Def.
+`,
+			"Abc. Def.",
+			6,
+		],
+	])("%s", (input, errorContext, lineNumber = 1) => {
 		const actual = markdownlint.sync({
 			config: {
 				default: false,
@@ -28,7 +64,7 @@ describe("sentences-per-line", () => {
 							errorDetail: null,
 							errorRange: null,
 							fixInfo: null,
-							lineNumber: 1,
+							lineNumber,
 							ruleDescription: "Each sentence should be on its own line",
 							ruleInformation: null,
 							ruleNames: ["sentences-per-line"],
