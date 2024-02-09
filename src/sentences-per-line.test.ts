@@ -46,6 +46,78 @@ Abc. Def.
 			"Abc. Def.",
 			6,
 		],
+		[
+			`
+\`\`\`plaintext
+Abc! Def!
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc? Def?
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc? Def!
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc! Def?
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc! Def.
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc? Def.
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc. Def!
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc. Def?
+\`\`\`
+`,
+			undefined,
+		],
+		[
+			`
+\`\`\`plaintext
+Abc. Def.
+\`\`\`
+`,
+			undefined,
+		],
 	])("%s", (input, errorContext, lineNumber = 1) => {
 		const actual = markdownlint.sync({
 			config: {

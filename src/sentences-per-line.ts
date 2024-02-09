@@ -86,10 +86,12 @@ const visitLine = (
 		}
 
 		if (
-			line[i] === "." &&
-			line[i + 1] === " " &&
-			isCapitalizedAlphabetCharacter(line[i + 2]) &&
-			!isAfterIgnoredWord(line, i)
+			line[i] === "." ||
+			line[i] === "!" ||
+			(line[i] === "?" &&
+				line[i + 1] === " " &&
+				isCapitalizedAlphabetCharacter(line[i + 2]) &&
+				!isAfterIgnoredWord(line, i))
 		) {
 			helpers.addError(
 				onError,
