@@ -79,8 +79,8 @@ importers:
         specifier: ^2.4.0
         version: 2.4.0
       knip:
-        specifier: 5.23.1
-        version: 5.23.1(@types/node@20.12.7)(typescript@5.5.2)
+        specifier: 5.23.3
+        version: 5.23.3(@types/node@20.12.7)(typescript@5.5.2)
       lint-staged:
         specifier: ^15.1.0
         version: 15.2.7
@@ -2579,8 +2579,8 @@ packages:
     resolution: {integrity: sha512-kWmLKn2tRtfYMF/BakihVVRzBKOxz4gJMiL2Rj91WnAB5TPZumSH99R/Yf1qE1u4uRimvCSJfm6hnxohXeEXjQ==}
     engines: {node: '>=14'}
 
-  jiti@1.21.0:
-    resolution: {integrity: sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==}
+  jiti@1.21.6:
+    resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
 
   joycon@3.1.1:
@@ -2658,8 +2658,8 @@ packages:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
 
-  knip@5.23.1:
-    resolution: {integrity: sha512-2IhQPeo4z/6DWZJMqkFEFryJSA6cO3CSRbNrAQC8VbiRdgteCsu0+8F3anlHXyiAHH+w3sfpal+uO+N1ZhCWow==}
+  knip@5.23.3:
+    resolution: {integrity: sha512-i0vFlpe3D9AZmp3Hlq3ZncjJQB2x21LeVrIV+9rnBavaKpTLhV/sLmE4iqTjEWedLtpfJsax68S68aqZzcXpsQ==}
     engines: {node: '>=18.6.0'}
     hasBin: true
     peerDependencies:
@@ -6709,7 +6709,7 @@ snapshots:
     optionalDependencies:
       '@pkgjs/parseargs': 0.11.0
 
-  jiti@1.21.0: {}
+  jiti@1.21.6: {}
 
   joycon@3.1.1: {}
 
@@ -6766,7 +6766,7 @@ snapshots:
 
   kind-of@6.0.3: {}
 
-  knip@5.23.1(@types/node@20.12.7)(typescript@5.5.2):
+  knip@5.23.3(@types/node@20.12.7)(typescript@5.5.2):
     dependencies:
       '@ericcornelissen/bash-parser': 0.5.3
       '@nodelib/fs.walk': 2.0.0
@@ -6774,7 +6774,7 @@ snapshots:
       '@types/node': 20.12.7
       easy-table: 1.2.0
       fast-glob: 3.3.2
-      jiti: 1.21.0
+      jiti: 1.21.6
       js-yaml: 4.1.0
       minimist: 1.2.8
       picocolors: 1.0.1
