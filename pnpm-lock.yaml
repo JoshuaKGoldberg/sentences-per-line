@@ -104,7 +104,7 @@ importers:
         version: 0.2.2(prettier@3.0.3)
       prettier-plugin-packagejson:
         specifier: ^2.4.6
-        version: 2.5.1(prettier@3.0.3)
+        version: 2.5.2(prettier@3.0.3)
       release-it:
         specifier: ^17.0.0
         version: 17.6.0(typescript@5.5.4)
@@ -2155,8 +2155,8 @@ packages:
   ieee754@1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
 
-  ignore@5.3.1:
-    resolution: {integrity: sha512-5Fytz/IraMjqpwfd34ke28PTVMjZjJG2MPn5t7OE4eUCUNf8BAa7b5WUS9/Qvr6mwOQS7Mk6vdsMno5he+T8Xw==}
+  ignore@5.3.2:
+    resolution: {integrity: sha512-hsBTNUqQTDwkWtcdYI2i06Y/nUBEsNEDJKjWdigLvegy8kDuJAS8uRlpkkcQpyEXL0Z/pjDy5HBmMjRCJ2gq+g==}
     engines: {node: '>= 4'}
 
   import-fresh@3.3.0:
@@ -3034,8 +3034,8 @@ packages:
     peerDependencies:
       prettier: ^2 || ^3
 
-  prettier-plugin-packagejson@2.5.1:
-    resolution: {integrity: sha512-6i4PW1KxEA+VrokYNGeI/q8qQX3u5DNBc7eLr9GX4OrvWr9DMls1lhbuNopkKG7Li9rTNxerWnYQyjxoUO4ROA==}
+  prettier-plugin-packagejson@2.5.2:
+    resolution: {integrity: sha512-w+TmoLv2pIa+siplW1cCj2ujEXQQS6z7wmWLOiLQK/2QVl7Wy6xh/ZUpqQw8tbKMXDodmSW4GONxlA33xpdNOg==}
     peerDependencies:
       prettier: '>= 1.16.0'
     peerDependenciesMeta:
@@ -3329,8 +3329,8 @@ packages:
   sort-object-keys@1.1.3:
     resolution: {integrity: sha512-855pvK+VkU7PaKYPc+Jjnmt4EzejQHyhhF33q31qG8x7maDzkeFhAAThdCYay11CISO+qAMwjOBP+fPZe0IPyg==}
 
-  sort-package-json@2.10.0:
-    resolution: {integrity: sha512-MYecfvObMwJjjJskhxYfuOADkXp1ZMMnCFC8yhp+9HDsk7HhR336hd7eiBs96lTXfiqmUNI+WQCeCMRBhl251g==}
+  sort-package-json@2.10.1:
+    resolution: {integrity: sha512-d76wfhgUuGypKqY72Unm5LFnMpACbdxXsLPcL27pOsSrmVqH3PztFp1uq+Z22suk15h7vXmTesuh2aEjdCqb5w==}
     hasBin: true
 
   source-map-js@1.2.0:
@@ -3530,8 +3530,8 @@ packages:
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
 
-  tslib@2.6.3:
-    resolution: {integrity: sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==}
+  tslib@2.7.0:
+    resolution: {integrity: sha512-gLXCKdN1/j47AiHiOkJN69hJmcbGTHI0ImLmbYLHykhgeN0jVGola9yVjFgzCUklsZQMW55o+dW7IXv3RCXDzA==}
 
   tsup@8.2.4:
     resolution: {integrity: sha512-akpCPePnBnC/CXgRrcy72ZSntgIEUa1jN0oJbbvpALWKNOz1B7aM+UVDWGRGIO/T/PZugAESWDJUAb5FD48o8Q==}
@@ -4260,7 +4260,7 @@ snapshots:
       debug: 4.3.6
       espree: 9.6.1
       globals: 13.24.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       minimatch: 3.1.2
@@ -4476,7 +4476,7 @@ snapshots:
   '@snyk/github-codeowners@1.1.0':
     dependencies:
       commander: 4.1.1
-      ignore: 5.3.1
+      ignore: 5.3.2
       p-map: 4.0.0
 
   '@szmarczak/http-timer@5.0.1':
@@ -4535,7 +4535,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 7.18.0
       eslint: 8.57.0
       graphemer: 1.4.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       natural-compare: 1.4.0
       ts-api-utils: 1.3.0(typescript@5.5.4)
     optionalDependencies:
@@ -4775,7 +4775,7 @@ snapshots:
 
   ast-types@0.13.4:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   async-retry@1.3.3:
     dependencies:
@@ -5397,7 +5397,7 @@ snapshots:
       '@typescript-eslint/utils': 7.18.0(eslint@8.57.0)(typescript@5.5.4)
       eslint: 8.57.0
       ts-api-utils: 1.3.0(typescript@5.5.4)
-      tslib: 2.6.3
+      tslib: 2.7.0
       typescript: 5.5.4
     transitivePeerDependencies:
       - supports-color
@@ -5413,7 +5413,7 @@ snapshots:
     dependencies:
       escape-string-regexp: 1.0.5
       eslint: 8.57.0
-      ignore: 5.3.1
+      ignore: 5.3.2
 
   eslint-plugin-jsdoc@50.2.2(eslint@8.57.0):
     dependencies:
@@ -5458,7 +5458,7 @@ snapshots:
       eslint-plugin-es-x: 7.8.0(eslint@8.57.0)
       get-tsconfig: 4.7.6
       globals: 15.9.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       minimatch: 9.0.5
       semver: 7.6.3
 
@@ -5543,7 +5543,7 @@ snapshots:
       glob-parent: 6.0.2
       globals: 13.24.0
       graphemer: 1.4.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       imurmurhash: 0.1.4
       is-glob: 4.0.3
       is-path-inside: 3.0.3
@@ -5802,7 +5802,7 @@ snapshots:
       array-union: 2.1.0
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.3.1
+      ignore: 5.3.2
       merge2: 1.4.1
       slash: 3.0.0
 
@@ -5810,7 +5810,7 @@ snapshots:
     dependencies:
       dir-glob: 3.0.1
       fast-glob: 3.3.2
-      ignore: 5.3.1
+      ignore: 5.3.2
       merge2: 1.4.1
       slash: 4.0.0
 
@@ -5818,7 +5818,7 @@ snapshots:
     dependencies:
       '@sindresorhus/merge-streams': 2.3.0
       fast-glob: 3.3.2
-      ignore: 5.3.1
+      ignore: 5.3.2
       path-type: 5.0.0
       slash: 5.1.0
       unicorn-magic: 0.1.0
@@ -5909,7 +5909,7 @@ snapshots:
 
   ieee754@1.2.1: {}
 
-  ignore@5.3.1: {}
+  ignore@5.3.2: {}
 
   import-fresh@3.3.0:
     dependencies:
@@ -6338,7 +6338,7 @@ snapshots:
       commander: 12.1.0
       get-stdin: 9.0.0
       glob: 10.4.5
-      ignore: 5.3.1
+      ignore: 5.3.2
       js-yaml: 4.1.0
       jsonc-parser: 3.2.1
       jsonpointer: 5.0.1
@@ -6532,7 +6532,7 @@ snapshots:
       cosmiconfig: 8.3.6(typescript@5.5.4)
       debug: 4.3.6
       globby: 11.1.0
-      ignore: 5.3.1
+      ignore: 5.3.2
       is-plain-obj: 3.0.0
       jsonc-parser: 3.2.1
       log-symbols: 4.1.0
@@ -6800,9 +6800,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  prettier-plugin-packagejson@2.5.1(prettier@3.0.3):
+  prettier-plugin-packagejson@2.5.2(prettier@3.0.3):
     dependencies:
-      sort-package-json: 2.10.0
+      sort-package-json: 2.10.1
       synckit: 0.9.1
     optionalDependencies:
       prettier: 3.0.3
@@ -7039,7 +7039,7 @@ snapshots:
 
   rxjs@7.8.1:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   safe-buffer@5.2.1: {}
 
@@ -7125,7 +7125,7 @@ snapshots:
 
   sort-object-keys@1.1.3: {}
 
-  sort-package-json@2.10.0:
+  sort-package-json@2.10.1:
     dependencies:
       detect-indent: 7.0.1
       detect-newline: 4.0.1
@@ -7249,12 +7249,12 @@ snapshots:
 
   synckit@0.6.2:
     dependencies:
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   synckit@0.9.1:
     dependencies:
       '@pkgr/core': 0.1.1
-      tslib: 2.6.3
+      tslib: 2.7.0
 
   tapable@2.2.1: {}
 
@@ -7308,7 +7308,7 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  tslib@2.6.3: {}
+  tslib@2.7.0: {}
 
   tsup@8.2.4(jiti@1.21.6)(postcss@8.4.38)(typescript@5.5.4)(yaml@2.5.0):
     dependencies:
