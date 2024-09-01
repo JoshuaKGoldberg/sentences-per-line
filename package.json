@@ -56,7 +56,7 @@
 		"*": "prettier --ignore-unknown --write"
 	},
 	"dependencies": {
-		"markdownlint-rule-helpers": "^0.25.0"
+		"markdownlint-rule-helpers": "^0.26.0"
 	},
 	"devDependencies": {
 		"@release-it/conventional-changelog": "^8.0.1",
