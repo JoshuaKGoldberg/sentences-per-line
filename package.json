@@ -59,7 +59,7 @@
 		"markdownlint-rule-helpers": "^0.26.0"
 	},
 	"devDependencies": {
-		"@release-it/conventional-changelog": "^8.0.1",
+		"@release-it/conventional-changelog": "^9.0.0",
 		"@types/eslint": "^8.44.7",
 		"@types/markdownlint-rule-helpers": "^0.21.0",
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
