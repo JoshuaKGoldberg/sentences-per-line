@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       markdownlint-rule-helpers:
-        specifier: ^0.26.0
-        version: 0.26.0
+        specifier: ^0.27.0
+        version: 0.27.0
     devDependencies:
       '@release-it/conventional-changelog':
         specifier: ^9.0.0
@@ -2564,8 +2564,8 @@ packages:
     resolution: {integrity: sha512-BbRPTC72fl5vlSKv37v/xIENSRDYL/7X/XoFzZ740FGEbs9vZerLrIkFRY0rv7slQKxDczToYuMmqQFN61fi4Q==}
     engines: {node: '>=16'}
 
-  markdownlint-rule-helpers@0.26.0:
-    resolution: {integrity: sha512-4ek4hbHoON6ZdEz/MG5lAk4Qdnlpot393A+EZErugbJHOc7r9Fd96VNVOvnYEXX+HeItXh5nfBOLQVDAiaZkeg==}
+  markdownlint-rule-helpers@0.27.0:
+    resolution: {integrity: sha512-DRHjYkHAkjDe0wc2Y2st81EYUvFS5LsiS9hRyUrRuCxIUgiLUGrYF4UMLbxmS8TVAg5Jc0vlqqbSJEnFfvD3oQ==}
     engines: {node: '>=18'}
 
   markdownlint@0.11.0:
@@ -6185,7 +6185,7 @@ snapshots:
 
   markdownlint-micromark@0.1.7: {}
 
-  markdownlint-rule-helpers@0.26.0:
+  markdownlint-rule-helpers@0.27.0:
     dependencies:
       markdownlint-micromark: 0.1.2
 
