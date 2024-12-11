@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       markdownlint-rule-helpers:
-        specifier: ^0.27.0
-        version: 0.27.0
+        specifier: ^0.28.0
+        version: 0.28.0
     devDependencies:
       '@release-it/conventional-changelog':
         specifier: ^9.0.0
@@ -2554,16 +2554,12 @@ packages:
     resolution: {integrity: sha512-RlB6EwMGgc0sxcIhOQ2+aq7Zw1V2fBnzbXKGgYK/mVWdT7cz34fteKSwfYeo4rL6+L/q2tyC9QtD/PgZbkdyJQ==}
     engines: {node: '>=18'}
 
-  markdownlint-micromark@0.1.2:
-    resolution: {integrity: sha512-jRxlQg8KpOfM2IbCL9RXM8ZiYWz2rv6DlZAnGv8ASJQpUh6byTBnEsbuMZ6T2/uIgntyf7SKg/mEaEBo1164fQ==}
-    engines: {node: '>=14.18.0'}
-
   markdownlint-micromark@0.1.7:
     resolution: {integrity: sha512-BbRPTC72fl5vlSKv37v/xIENSRDYL/7X/XoFzZ740FGEbs9vZerLrIkFRY0rv7slQKxDczToYuMmqQFN61fi4Q==}
     engines: {node: '>=16'}
 
-  markdownlint-rule-helpers@0.27.0:
-    resolution: {integrity: sha512-DRHjYkHAkjDe0wc2Y2st81EYUvFS5LsiS9hRyUrRuCxIUgiLUGrYF4UMLbxmS8TVAg5Jc0vlqqbSJEnFfvD3oQ==}
+  markdownlint-rule-helpers@0.28.0:
+    resolution: {integrity: sha512-qBOQWESmc/yTNe6nVu3D7AU7pFg2e7T5svbQI+S7rocw4g4xZ3GHerKPl0Rw0cx4fnAViEdzoAcbrxeuXUCEAA==}
     engines: {node: '>=18'}
 
   markdownlint@0.11.0:
@@ -6157,13 +6153,9 @@ snapshots:
 
   markdownlint-micromark@0.1.12: {}
 
-  markdownlint-micromark@0.1.2: {}
-
   markdownlint-micromark@0.1.7: {}
 
-  markdownlint-rule-helpers@0.27.0:
-    dependencies:
-      markdownlint-micromark: 0.1.2
+  markdownlint-rule-helpers@0.28.0: {}
 
   markdownlint@0.11.0:
     dependencies:
