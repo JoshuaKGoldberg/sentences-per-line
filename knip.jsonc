@@ -3,5 +3,5 @@
 	"entry": ["src/index.ts!"],
 	"ignoreDependencies": ["sentences-per-line"],
 	"ignoreExportsUsedInFile": { "interface": true, "type": true },
-	"project": ["src/**/*.ts!"]
+	"project": ["src/**/*.ts!"],
 }
