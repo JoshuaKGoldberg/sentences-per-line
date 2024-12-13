@@ -125,5 +125,6 @@ export const sentencesPerLine = {
 		}
 	},
 	names: ["sentences-per-line"],
+	parser: "none",
 	tags: ["sentences"],
-};
+} satisfies markdownlint.Rule;
