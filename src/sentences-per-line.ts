@@ -96,6 +96,13 @@ const visitLine = (
 				lineNumber,
 				undefined,
 				line.slice(Math.max(0, i - 7), 14),
+				undefined,
+				{
+					deleteCount: 1,
+					editColumn: i + 2,
+					insertText: "\n",
+					lineNumber,
+				},
 			);
 		}
 	}

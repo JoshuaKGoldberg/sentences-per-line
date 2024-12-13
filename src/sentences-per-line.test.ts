@@ -8,13 +8,49 @@ describe("sentences-per-line", () => {
 		["", undefined],
 		["abc", undefined],
 		["abc.", undefined],
-		["Abc. Def.", "Abc. Def."],
-		["Abc def. Ghi jkl.", "Abc def. Ghi j"],
+		[
+			"Abc. Def.",
+			"Abc. Def.",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 5,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"Abc def. Ghi jkl.",
+			"Abc def. Ghi j",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 9,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
 		["`Abc. Def.`", undefined],
 		["`Abc.` Def.", undefined],
 		["`Abc.` `Def.`", undefined],
 		["``Abc.`` Def.", undefined],
-		["`Abc.` Def. Ghi", "c.` Def. Gh"],
+		[
+			"`Abc.` Def. Ghi",
+			"c.` Def. Gh",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 12,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
 		["```js```.", undefined],
 		[
 			`
@@ -44,9 +80,17 @@ Abc. Def.
 Abc. Def.
 `,
 			"Abc. Def.",
-			6,
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 5,
+					insertText: "\n",
+					lineNumber: 6,
+				},
+				lineNumber: 6,
+			},
 		],
-	])("%s", (input, errorContext, lineNumber = 1) => {
+	] as const)("%s", (input, errorContext, report?) => {
 		const actual = markdownlint.sync({
 			config: {
 				default: false,
@@ -63,11 +107,10 @@ Abc. Def.
 							errorContext,
 							errorDetail: null,
 							errorRange: null,
-							fixInfo: null,
-							lineNumber,
 							ruleDescription: "Each sentence should be on its own line",
 							ruleInformation: null,
 							ruleNames: ["sentences-per-line"],
+							...report,
 						},
 				  ]
 				: [],
