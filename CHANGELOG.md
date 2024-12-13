@@ -1,3 +1,9 @@
+## 0.2.2 (2024-12-13)
+
+### Bug Fixes
+
+- explicitly indicate parser: none ([72d28b8](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/72d28b84af5277bf5249f43d1a7ebd6b663da673))
+
 # Changelog
 
 ### [1.27.12](https://github.com/JoshuaKGoldberg/template-typescript-node-package/compare/v1.27.11...v1.27.12) (2022-12-31)
