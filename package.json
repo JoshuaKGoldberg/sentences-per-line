@@ -59,7 +59,7 @@
 		"markdownlint-rule-helpers": "^0.28.0"
 	},
 	"devDependencies": {
-		"@eslint-community/eslint-plugin-eslint-comments": "^4.1.1",
+		"@eslint-community/eslint-plugin-eslint-comments": "^4.4.1",
 		"@eslint/js": "^9.17.0",
 		"@release-it/conventional-changelog": "^9.0.3",
 		"@types/markdownlint-rule-helpers": "^0.21.5",
