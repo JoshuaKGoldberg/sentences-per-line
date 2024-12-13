@@ -1,4 +1,4 @@
-import markdownlint from "markdownlint";
+import * as markdownlint from "markdownlint/sync";
 import { describe, expect, test } from "vitest";
 
 import { sentencesPerLine } from "./sentences-per-line.js";
@@ -47,7 +47,7 @@ Abc. Def.
 			6,
 		],
 	])("%s", (input, errorContext, lineNumber = 1) => {
-		const actual = markdownlint.sync({
+		const actual = markdownlint.lint({
 			config: {
 				default: false,
 				"sentences-per-line": true,
@@ -69,7 +69,7 @@ Abc. Def.
 							ruleInformation: null,
 							ruleNames: ["sentences-per-line"],
 						},
-				  ]
+					]
 				: [],
 		});
 	});
