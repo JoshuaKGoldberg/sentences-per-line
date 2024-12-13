@@ -62,7 +62,7 @@
 		"@release-it/conventional-changelog": "^9.0.0",
 		"@types/eslint": "^8.44.7",
 		"@types/markdownlint-rule-helpers": "^0.21.0",
-		"@typescript-eslint/eslint-plugin": "^7.0.0",
+		"@typescript-eslint/eslint-plugin": "^8.0.0",
 		"@typescript-eslint/parser": "^8.0.0",
 		"@vitest/coverage-v8": "^2.0.0",
 		"console-fail-test": "^0.5.0",
