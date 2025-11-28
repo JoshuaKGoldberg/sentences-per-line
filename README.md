@@ -31,7 +31,6 @@ This monorepo provides:
 
 - [`eslint-plugin-sentences-per-line`](./packages/eslint-plugin-sentences-per-line): [ESLint](https://eslint.org/) plugin to enforce sentences per line in Markdown files.
 - [`markdownlint-sentences-per-line`](./packages/markdownlint-sentences-per-line): [Markdownlint](https://github.com/DavidAnson/markdownlint) plugin to enforce sentences per line in Markdown files.
-- [`prettier-plugin-sentences-per-line`](./packages/prettier-plugin-sentences-per-line): [Prettier](https://prettier.io) plugin to enforce sentences per line in Markdown files.
 - [`sentences-per-line`](./packages/sentences-per-line): Utility functions to detect the number of sentences per line in Markdown files.
 
 ## Development

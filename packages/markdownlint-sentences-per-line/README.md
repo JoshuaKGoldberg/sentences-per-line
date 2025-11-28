@@ -47,4 +47,3 @@ This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldb
 You might also consider:
 
 - [`eslint-plugin-sentences-per-line`](../eslint-plugin-sentences-per-line): [ESLint](https://eslint.org/) plugin to enforce sentences per line in Markdown files.
-- [`prettier-plugin-sentences-per-line`](../prettier-plugin-sentences-per-line): [Prettier](https://prettier.io) plugin to enforce sentences per line in Markdown files.

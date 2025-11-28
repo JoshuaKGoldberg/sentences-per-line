@@ -122,8 +122,6 @@ importers:
         specifier: ^0.39.0
         version: 0.39.0
 
-  packages/prettier-plugin-sentences-per-line: {}
-
   packages/sentences-per-line: {}
 
 packages:

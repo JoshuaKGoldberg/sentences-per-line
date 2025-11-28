@@ -8,7 +8,6 @@
 	"references": [
 		{ "path": "./packages/eslint-plugin-sentences-per-line" },
 		{ "path": "./packages/markdownlint-sentences-per-line" },
-		{ "path": "./packages/prettier-plugin-sentences-per-line" },
 		{ "path": "./packages/sentences-per-line" }
 	]
 }

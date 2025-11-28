@@ -1,7 +1,0 @@
-{
-	"name": "prettier-plugin-sentences-per-line",
-	"version": "0.0.0",
-	"description": "Prettier plugin to... well, TODO (this and the others).",
-	"license": "MIT",
-	"type": "module"
-}
