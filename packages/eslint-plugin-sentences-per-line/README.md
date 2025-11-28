@@ -71,4 +71,4 @@ export default [
 This package is part of the [sentences-one](https://github.com/JoshuaKGoldberg/sentences-one) of packages.
 You might also consider:
 
-- [`markdownlint-sentences-per-line`](../markdownlint-sentences-per-line): [Markdownlint](https://github.com/DavidAnson/markdownlint) plugin to enforce sentences per line in Markdown files.
+- [`markdownlint-sentences-per-line`](../markdownlint-sentences-per-line): [Markdownlint](https://github.com/DavidAnson/markdownlint) rule to enforce sentences per line in Markdown files.
