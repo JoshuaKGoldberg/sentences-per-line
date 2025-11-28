@@ -14,11 +14,11 @@ const plugin = {
 		get recommended() {
 			return {
 				plugins: {
-					paragraphs: plugin,
+					"sentences-per-line": plugin,
 				},
 				rules: Object.fromEntries(
 					Object.entries(rules).map(([name]) => [
-						"paragraphs/" + name,
+						"sentences-per-line/" + name,
 						"error" as const,
 					]),
 				),

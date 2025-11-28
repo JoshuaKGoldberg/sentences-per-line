@@ -59,8 +59,8 @@ export default [
 ✅ Set in the `recommended` configuration.\
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).
 
-| Name                               | Description                                | 💼 | 🔧 |
-| :--------------------------------- | :----------------------------------------- | :- | :- |
+| Name                     | Description                                | 💼 | 🔧 |
+| :----------------------- | :----------------------------------------- | :- | :- |
 | [one](docs/rules/one.md) | Limits Markdown sentences to one per line. | ✅  | 🔧 |
 
 <!-- end auto-generated rules list -->

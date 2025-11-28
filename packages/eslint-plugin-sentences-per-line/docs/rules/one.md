@@ -1,4 +1,4 @@
-# sentences/per-line
+# sentences-per-line/one
 
 💼 This rule is enabled in the ✅ `recommended` config.
 
@@ -23,7 +23,3 @@ Example of **correct** code for this rule:
 First sentence.
 Second sentence
 ```
-
-## Options
-
-This rule is not configurable.
