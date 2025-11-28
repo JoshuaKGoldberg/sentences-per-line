@@ -8,8 +8,5 @@ RuleTester.describe = vitest.describe;
 
 export const ruleTester = new RuleTester({
 	language: "markdown/commonmark",
-	plugins: {
-		// @ts-expect-error -- ESLint core types and plugins don't yet align.
-		markdown,
-	},
+	plugins: { markdown },
 });

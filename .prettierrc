@@ -4,8 +4,7 @@
 	"plugins": [
 		"prettier-plugin-curly",
 		"prettier-plugin-sh",
-		"prettier-plugin-packagejson",
-		"./packages/prettier-plugin-sentences-per-line/lib/index.js"
+		"prettier-plugin-packagejson"
 	],
 	"useTabs": true
 }
