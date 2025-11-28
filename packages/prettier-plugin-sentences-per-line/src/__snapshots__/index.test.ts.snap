@@ -1,0 +1,32 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Tests > "" 1`] = `
+"
+------------------------------------ Input -------------------------------------
+
+
+------------------------------------ Output ------------------------------------
+
+"
+`;
+
+exports[`Tests > "First sentence. Second sentence." 1`] = `
+"
+------------------------------------ Input -------------------------------------
+First sentence. Second sentence.
+
+------------------------------------ Output ------------------------------------
+First sentence.
+Second sentence.
+"
+`;
+
+exports[`Tests > "This is a sentence." 1`] = `
+"
+------------------------------------ Input -------------------------------------
+This is a sentence.
+
+------------------------------------ Output ------------------------------------
+This is a sentence.
+"
+`;

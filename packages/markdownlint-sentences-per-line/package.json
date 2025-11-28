@@ -1,0 +1,18 @@
+{
+	"name": "markdownlint-sentences-per-line",
+	"version": "0.0.0",
+	"description": "Markdownlint rule for limiting sentences per line. 📐",
+	"license": "MIT",
+	"type": "module",
+	"dependencies": {
+		"markdownlint-rule-helpers": "^0.30.0",
+		"sentences-per-line": "workspace:^"
+	},
+	"devDependencies": {
+		"@types/markdownlint-rule-helpers": "^0.21.6",
+		"markdownlint": "^0.39.0"
+	},
+	"peerDependencies": {
+		"markdownlint": "^0.37.0"
+	}
+}

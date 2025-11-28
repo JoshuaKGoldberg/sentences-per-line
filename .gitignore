@@ -1,3 +1,7 @@
+*.tsbuildinfo
 coverage/
 lib/
 node_modules/
+packages/*/src/**/*.d.ts
+packages/*/src/**/*.js
+packages/*/src/**/*.map
