@@ -13,9 +13,23 @@ function format(code: string, options: prettier.Options) {
 
 describe("Tests", () => {
 	test.each([
-		[""],
-		["This is a sentence."],
-		["First sentence. Second sentence.", "First sentence.\nSecond sentence."],
+		["", ""],
+		[" ", ""],
+		["This is a sentence.", "This is a sentence.\n"],
+		["This is a sentence.\n"],
+		["First sentence. Second sentence.", "First sentence.\nSecond sentence.\n"],
+		[
+			"First sentence.\tSecond sentence.",
+			"First sentence.\nSecond sentence.\n",
+		],
+		[
+			"First sentence.  \t\t  Second sentence.",
+			"First sentence.\nSecond sentence.\n",
+		],
+		[
+			"First sentence. Second sentence. Third sentence.",
+			"First sentence.\nSecond sentence.\nThird sentence.\n",
+		],
 	])("%j", async (input, expected = input) => {
 		const actual = await format(input, { filepath: "test.md" });
 		expect(actual).toBe(expected);

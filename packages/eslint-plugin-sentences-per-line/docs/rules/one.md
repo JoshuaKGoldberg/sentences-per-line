@@ -14,7 +14,8 @@ If two or more sentences appear on the same line, they will be split onto separa
 Example of **incorrect** code for this rule:
 
 ```md
-First sentence. Second sentence
+First sentence.
+Second sentence
 ```
 
 Example of **correct** code for this rule:
