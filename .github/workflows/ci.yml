@@ -15,7 +15,7 @@ jobs:
       - run: pnpm build
       - run: pnpm lint
   lint_docs:
-    name: Lint Markdown
+    name: Lint Docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
