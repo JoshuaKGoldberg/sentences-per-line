@@ -47,7 +47,6 @@ All community leaders are obligated to respect the privacy and security of the r
 Community leaders will follow these Community Impact Guidelines in determining the consequences for any action they deem in violation of this Code of Conduct:
 
 ### 1.
-
 Correction
 
 **Community Impact**: Use of inappropriate language or other behavior deemed unprofessional or unwelcome in the community.
@@ -56,7 +55,6 @@ Correction
 A public apology may be requested.
 
 ### 2.
-
 Warning
 
 **Community Impact**: A violation through a single incident or series of actions.
@@ -67,7 +65,6 @@ This includes avoiding interactions in community spaces as well as external chan
 Violating these terms may lead to a temporary or permanent ban.
 
 ### 3.
-
 Temporary Ban
 
 **Community Impact**: A serious violation of community standards, including
@@ -81,7 +78,6 @@ with those enforcing the Code of Conduct, is allowed during this period.
 Violating these terms may lead to a permanent ban.
 
 ### 4.
-
 Permanent Ban
 
 **Community Impact**: Demonstrating a pattern of violation of community

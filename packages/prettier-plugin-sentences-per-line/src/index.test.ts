@@ -17,6 +17,8 @@ describe("Tests", () => {
 		[" ", ""],
 		["This is a sentence.", "This is a sentence.\n"],
 		["This is a sentence.\n"],
+		["1. List.\n", "1. List.\n"],
+		["## 1. List.\n", "## 1. List.\n"],
 		["First sentence. Second sentence.", "First sentence.\nSecond sentence.\n"],
 		[
 			"First sentence.\tSecond sentence.",

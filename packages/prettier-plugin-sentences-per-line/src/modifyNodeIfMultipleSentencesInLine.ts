@@ -14,7 +14,11 @@ export function modifyNodeIfMultipleSentencesInLine(path: AstPath<AnyNode>) {
 
 	for (let i = 0; i < path.node.children.length - 1; i++) {
 		const child = path.node.children[i];
-		if (isWordNode(child) && child.value.endsWith(".")) {
+		if (
+			isWordNode(child) &&
+			child.value.endsWith(".") &&
+			!/^\s*\d+\./.test(child.value)
+		) {
 			insertNewlineAt(path.node.children, i);
 		}
 	}
