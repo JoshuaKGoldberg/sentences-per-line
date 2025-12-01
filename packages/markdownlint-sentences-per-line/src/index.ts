@@ -1,55 +1,15 @@
-import type * as markdownlint from "markdownlint";
+import { markdownlintSentencesPerLine } from "./markdownlintSentencesPerLine.js";
 
-import helpers from "markdownlint-rule-helpers";
-import { getIndexBeforeSecondSentence } from "sentences-per-line";
+// Ideally, Markdownlint CLIs should support default exports...
+export default markdownlintSentencesPerLine;
 
-const visitLine = (
-	line: string,
-	lineNumber: number,
-	onError: markdownlint.RuleOnError,
-) => {
-	const start = getIndexBeforeSecondSentence(line);
-	if (start) {
-		helpers.addError(
-			onError,
-			lineNumber,
-			undefined,
-			line.slice(Math.max(0, start - 8), 14),
-			undefined,
-			{
-				deleteCount: 1,
-				editColumn: start + 1,
-				insertText: "\n",
-				lineNumber,
-			},
-		);
-	}
-};
+// ...but practically, at least markdownlint-cli doesn't at time of writing.
+// It assumes the CJS-style module.exports = { ... } object shape.
+export const description = markdownlintSentencesPerLine.description;
+export const names = markdownlintSentencesPerLine.names;
+export const parser = markdownlintSentencesPerLine.parser;
+export const tags = markdownlintSentencesPerLine.tags;
 
-export const markdownlintSentencesPerLine = {
-	description: "Each sentence should be on its own line",
-	function: (
-		params: markdownlint.RuleParams,
-		onError: markdownlint.RuleOnError,
-	) => {
-		let inFenceLine = false;
-
-		for (let i = 0; i < params.lines.length; i += 1) {
-			const line = params.lines[i];
-
-			if (line.startsWith("```")) {
-				inFenceLine = !inFenceLine;
-				continue;
-			}
-
-			if (inFenceLine) {
-				continue;
-			}
-
-			visitLine(line, i + 1, onError);
-		}
-	},
-	names: ["markdownlint-sentences-per-line"],
-	parser: "none",
-	tags: ["sentences"],
-} satisfies markdownlint.Rule;
+// Additionally, 'function' is an expected property name - and a reserved word.
+const ruleFunction = markdownlintSentencesPerLine.function;
+export { ruleFunction as function };
