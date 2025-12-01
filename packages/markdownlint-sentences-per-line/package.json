@@ -1,6 +1,6 @@
 {
 	"name": "markdownlint-sentences-per-line",
-	"version": "0.0.0",
+	"version": "0.1.0",
 	"description": "Markdownlint rule for limiting sentences per line. 📐",
 	"license": "MIT",
 	"type": "module",
