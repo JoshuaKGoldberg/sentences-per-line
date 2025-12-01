@@ -1,6 +1,11 @@
 import type { AstPath } from "prettier";
 
-import { isBlockquoteNode, isParagraphNode, isWordNode } from "./predicates.js";
+import {
+	isBlockquoteNode,
+	isParagraphNode,
+	isSentenceNode,
+	isWordNode,
+} from "./predicates.js";
 import {
 	AnyNode,
 	BlockquoteNode,
@@ -45,6 +50,10 @@ function modifyBlockquoteNode(node: BlockquoteNode) {
 
 function modifyParagraphNode(node: ParagraphNode, insertion: string) {
 	for (const sentence of node.children) {
+		if (!isSentenceNode(sentence)) {
+			continue;
+		}
+
 		for (let i = 0; i < sentence.children.length - 1; i++) {
 			const child = sentence.children[i];
 			if (

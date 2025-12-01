@@ -18,7 +18,7 @@ export interface OtherNode extends WithPosition {
 }
 
 export interface ParagraphNode extends WithPosition {
-	children: SentenceNode[];
+	children: AnyNode[];
 	type: "paragraph";
 }
 

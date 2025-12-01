@@ -16,6 +16,10 @@ describe("Tests", () => {
 		["", ""],
 		[" ", ""],
 		["This is a sentence.", "This is a sentence.\n"],
+		[
+			"This is a sentence `with. inline. code.`.",
+			"This is a sentence `with. inline. code.`.\n",
+		],
 		["This is a sentence.\n"],
 		["1. List.\n", "1. List.\n"],
 		["## 1. List.\n", "## 1. List.\n"],
