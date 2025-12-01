@@ -9,12 +9,6 @@
 
 <p align="center">Prettier plugin for limiting sentences per line. 📐</p>
 
-```diff
-- First sentence. Second sentence.
-+ First sentence.
-+ Second sentence.
-```
-
 prettier-plugin-sentences-per-line allows you to enforce that no line in your Markdown files contains more than one sentence.
 This is useful because:
 
