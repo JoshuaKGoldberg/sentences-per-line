@@ -3,7 +3,7 @@
 After [forking the repo from GitHub](https://help.github.com/articles/fork-a-repo) and [installing pnpm](https://pnpm.io/installation):
 
 ```shell
-git clone https://github.com/<your-name-here>/sentences-per-line
+git clone https://github.com/ < your-name-here > /sentences-per-line
 cd sentences-per-line
 pnpm install
 ```
@@ -43,7 +43,6 @@ Each should be shown in VS Code, and can be run manually on the command-line:
 
 - `pnpm lint` ([ESLint](https://eslint.org) with [typescript-eslint](https://typescript-eslint.io)): Lints JavaScript and TypeScript source files
 - `pnpm lint:knip` ([knip](https://github.com/webpro/knip)): Detects unused files, dependencies, and code exports
-- `pnpm lint:md` ([Markdownlint](https://github.com/DavidAnson/markdownlint)): Checks Markdown source files
 - `pnpm lint:packages` ([pnpm dedupe --check](https://pnpm.io/cli/dedupe)): Checks for unnecessarily duplicated packages in the `pnpm-lock.yml` file
 - `pnpm lint:spelling` ([cspell](https://cspell.org)): Spell checks across all source files
 

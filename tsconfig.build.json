@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"noEmit": false
+	},
+	"extends": "./tsconfig.base.json",
+	"files": [],
+	"references": [
+		{ "path": "./packages/eslint-plugin-sentences-per-line" },
+		{ "path": "./packages/markdownlint-sentences-per-line" },
+		{ "path": "./packages/sentences-per-line" }
+	]
+}

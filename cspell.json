@@ -1,19 +1,14 @@
 {
 	"dictionaries": ["typescript"],
 	"ignorePaths": [
+		".github",
+		"*.tsbuildinfo",
+		"*.snap",
 		"CHANGELOG.md",
 		"coverage",
-		"lib",
 		"node_modules",
+		"packages/*/lib",
 		"pnpm-lock.yaml"
 	],
-	"words": [
-		"allcontributors",
-		"apexskier",
-		"automerge",
-		"knip",
-		"mtfoley",
-		"tada",
-		"tseslint"
-	]
+	"words": ["commonmark", "eslint-doc-generatorrc"]
 }

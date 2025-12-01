@@ -1,51 +1,50 @@
-const comments = require("@eslint-community/eslint-plugin-eslint-comments/configs");
-const eslint = require("@eslint/js");
-const vitest = require("@vitest/eslint-plugin");
-const jsdoc = require("eslint-plugin-jsdoc");
-const jsonc = require("eslint-plugin-jsonc");
-const markdown = require("eslint-plugin-markdown");
-const n = require("eslint-plugin-n");
-const {
-	default: packageJson,
-} = require("eslint-plugin-package-json/configs/recommended");
-const perfectionist = require("eslint-plugin-perfectionist");
-const regexp = require("eslint-plugin-regexp");
-const yml = require("eslint-plugin-yml");
-const tseslint = require("typescript-eslint");
+import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
+import js from "@eslint/js";
+import markdown from "@eslint/markdown";
+import vitest from "@vitest/eslint-plugin";
+import jsdoc from "eslint-plugin-jsdoc";
+import jsonc from "eslint-plugin-jsonc";
+import packageJson from "eslint-plugin-package-json";
+import perfectionist from "eslint-plugin-perfectionist";
+import * as regexp from "eslint-plugin-regexp";
+import yml from "eslint-plugin-yml";
+import { defineConfig } from "eslint/config";
+import tseslint from "typescript-eslint";
 
-module.exports = tseslint.config(
+export default defineConfig(
 	{
-		ignores: ["**/*.snap", "coverage", "lib", "node_modules", "pnpm-lock.yaml"],
+		ignores: [
+			"**/*.snap",
+			"coverage",
+			"lib",
+			"node_modules",
+			"packages/*/lib",
+			"packages/*/tsconfig.tsbuildinfo",
+			"packages/*/src/**/*.d.ts",
+			"packages/*/src/**/*.js",
+			"pnpm-lock.yaml",
+			"pnpm-workspace.yaml",
+		],
 	},
 	{ linterOptions: { reportUnusedDisableDirectives: "error" } },
-	eslint.configs.recommended,
-	comments.recommended,
-	jsdoc.configs["flat/contents-typescript-error"],
-	jsdoc.configs["flat/logical-typescript-error"],
-	jsdoc.configs["flat/stylistic-typescript-error"],
-	jsonc.configs["flat/recommended-with-json"],
-	markdown.configs.recommended,
-	n.configs["flat/recommended"],
-	packageJson,
-	perfectionist.configs["recommended-natural"],
-	regexp.configs["flat/recommended"],
 	{
 		extends: [
-			tseslint.configs.strictTypeChecked,
-			tseslint.configs.stylisticTypeChecked,
+			js.configs.recommended,
+			// https://github.com/eslint-community/eslint-plugin-eslint-comments/issues/214
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+			comments.recommended,
+			jsdoc.configs["flat/contents-typescript-error"],
+			jsdoc.configs["flat/logical-typescript-error"],
+			jsdoc.configs["flat/stylistic-typescript-error"],
+			...tseslint.configs.strict,
+			...tseslint.configs.stylistic,
+			perfectionist.configs["recommended-natural"],
+			regexp.configs["flat/recommended"],
 		],
 		files: ["**/*.js", "**/*.ts"],
-		languageOptions: {
-			parserOptions: {
-				projectService: { allowDefaultProject: ["*.config.*s"] },
-				tsconfigRootDir: __dirname,
-			},
-		},
 		rules: {
-			"@typescript-eslint/no-unnecessary-condition": [
-				"error",
-				{ allowConstantLoopConditions: true },
-			],
+			// These off-by-default rules work well for this repo and we like them on.
+			"jsdoc/informative-docs": "error",
 
 			// Stylistic concerns that don't interfere with Prettier
 			"logical-assignment-operators": [
@@ -60,28 +59,44 @@ module.exports = tseslint.config(
 		settings: { perfectionist: { partitionByComment: true, type: "natural" } },
 	},
 	{
-		extends: [tseslint.configs.disableTypeChecked],
-		files: ["**/*.js"],
-		rules: {
-			"@typescript-eslint/no-require-imports": "off",
+		extends: [
+			...tseslint.configs.strictTypeChecked,
+			...tseslint.configs.stylisticTypeChecked,
+		],
+		files: ["**/*.js", "**/*.ts"],
+		ignores: ["**/*.md/*", "packages/*/bin/*.js", "packages/*/*.config.*"],
+		languageOptions: {
+			parserOptions: {
+				projectService: true,
+			},
 		},
-	},
-	{
-		extends: [tseslint.configs.disableTypeChecked],
-		files: ["**/*.md/*.ts"],
 		rules: {
-			"n/no-missing-import": [
+			// These on-by-default rules work well for this repo if configured
+			"@typescript-eslint/no-unnecessary-condition": [
 				"error",
-				{ allowModules: ["cspell-populate-words"] },
+				{
+					allowConstantLoopConditions: "only-allowed-literals",
+				},
 			],
 		},
 	},
 	{
+		extends: jsonc.configs["flat/recommended-with-json"],
+		files: ["**/*.json"],
+	},
+	{
+		extends: [packageJson.configs.recommended],
+		files: ["**/package.json"],
+	},
+	{
+		extends: [markdown.configs.recommended],
+		files: ["**/*.md"],
+		language: "markdown/gfm",
+	},
+	{
 		extends: [vitest.configs.recommended],
 		files: ["**/*.test.*"],
-		rules: {
-			"@typescript-eslint/no-unsafe-assignment": "off",
-		},
+		settings: { vitest: { typecheck: true } },
 	},
 	{
 		extends: [yml.configs["flat/recommended"], yml.configs["flat/prettier"]],
@@ -90,11 +105,17 @@ module.exports = tseslint.config(
 			"yml/file-extension": ["error", { extension: "yml" }],
 			"yml/sort-keys": [
 				"error",
-				{ order: { type: "asc" }, pathPattern: "^.*$" },
+				{
+					order: { type: "asc" },
+					pathPattern: "^.*$",
+				},
 			],
 			"yml/sort-sequence-values": [
 				"error",
-				{ order: { type: "asc" }, pathPattern: "^.*$" },
+				{
+					order: { type: "asc" },
+					pathPattern: "^.*$",
+				},
 			],
 		},
 	},

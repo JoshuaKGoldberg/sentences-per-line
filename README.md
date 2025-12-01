@@ -1,32 +1,23 @@
 <h1 align="center">sentences-per-line</h1>
 
-<p align="center">Contributed markdownlint rule for limiting sentences per line. 📐</p>
+<p align="center">Packages to enforce the number of sentences per line in Markdown files. 📐</p>
 
 <p align="center">
-	<a href="#contributors" target="_blank">
-<!-- prettier-ignore-start -->
-<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<img alt="All Contributors: 2 👪" src="https://img.shields.io/badge/all_contributors-2_👪-21bb42.svg" />
+	<!-- prettier-ignore-start -->
+	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+	<a href="#contributors" target="_blank"><img alt="👪 All Contributors: 8" src="https://img.shields.io/badge/%F0%9F%91%AA_all_contributors-8-21bb42.svg" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
-<!-- prettier-ignore-end -->
-</a>
-	<a href="https://codecov.io/gh/JoshuaKGoldberg/sentences-per-line" target="_blank">
-		<img alt="Codecov Test Coverage" src="https://codecov.io/gh/JoshuaKGoldberg/sentences-per-line/branch/main/graph/badge.svg"/>
-	</a>
-	<a href="https://github.com/JoshuaKGoldberg/sentences-per-line/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank">
-		<img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" />
-	</a>
-	<a href="https://github.com/JoshuaKGoldberg/sentences-per-line/blob/main/LICENSE.md" target="_blank">
-		<img alt="License: MIT" src="https://img.shields.io/github/license/JoshuaKGoldberg/sentences-per-line?color=21bb42">
-	</a>
-	<a href="https://github.com/sponsors/JoshuaKGoldberg" target="_blank">
-		<img alt="Sponsor: On GitHub" src="https://img.shields.io/badge/sponsor-on_github-21bb42.svg" />
-	</a>
-	<img alt="Style: Prettier" src="https://img.shields.io/badge/style-prettier-21bb42.svg" />
-	<img alt="TypeScript: Strict" src="https://img.shields.io/badge/typescript-strict-21bb42.svg" />
-	<img alt="npm package version" src="https://img.shields.io/npm/v/sentences-per-line?color=21bb42" />
-	<img alt="Contributor Covenant" src="https://img.shields.io/badge/code_of_conduct-enforced-21bb42" />
+	<!-- prettier-ignore-end -->
+	<a href="https://github.com/JoshuaKGoldberg/sentences-per-line/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank"><img alt="🤝 Code of Conduct: Kept" src="https://img.shields.io/badge/%F0%9F%A4%9D_code_of_conduct-kept-21bb42" /></a>
+	<a href="https://github.com/JoshuaKGoldberg/sentences-per-line/blob/main/LICENSE.md" target="_blank"><img alt="📝 License: MIT" src="https://img.shields.io/badge/%F0%9F%93%9D_license-MIT-21bb42.svg" /></a>
+	<img alt="💪 TypeScript: Strict" src="https://img.shields.io/badge/%F0%9F%92%AA_typescript-strict-21bb42.svg" />
 </p>
+
+sentences-per-line's packages allow you to enforce that no line in your Markdown files contains more than one sentence.
+This is useful because:
+
+- Shorter lines result in simpler, easier-to-understand Git diffs
+- Longer lines are harder to read in source code
 
 ```diff
 - First sentence. Second sentence.
@@ -34,25 +25,13 @@
 + Second sentence.
 ```
 
-In other words, sentences-per-line makes sure no line contains more than one sentence.
-This is useful because:
+## Packages
 
-- Shorter lines result in simpler, easier-to-understand Git diffs
-- Longer lines are harder to read in source code
+This monorepo provides:
 
-## Usage
-
-First install this package as a devDependency:
-
-```shell
-npm i -D sentences-per-line
-```
-
-Then provide it to [markdownlint-cli's `--rules`](https://github.com/igorshubovych/markdownlint-cli):
-
-```shell
-markdownlint --rules sentences-per-line
-```
+- [`eslint-plugin-sentences-per-line`](./packages/eslint-plugin-sentences-per-line): [ESLint](https://eslint.org/) plugin to enforce sentences per line in Markdown files.
+- [`markdownlint-sentences-per-line`](./packages/markdownlint-sentences-per-line): [Markdownlint](https://github.com/DavidAnson/markdownlint) rule to enforce sentences per line in Markdown files.
+- [`sentences-per-line`](./packages/sentences-per-line): Utility functions to detect the number of sentences per line in Markdown files.
 
 ## Development
 

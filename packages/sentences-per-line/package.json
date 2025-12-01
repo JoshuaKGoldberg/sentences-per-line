@@ -1,0 +1,23 @@
+{
+	"name": "sentences-per-line",
+	"version": "0.4.0",
+	"description": "Utility functions to detect the number of sentences per line in Markdown files. 📐",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JoshuaKGoldberg/sentences-per-line",
+		"directory": "packages/sentences-per-line"
+	},
+	"license": "MIT",
+	"author": {
+		"name": "Josh Goldberg ✨",
+		"email": "npm@joshuakgoldberg.com"
+	},
+	"type": "module",
+	"main": "./lib/index.js",
+	"files": [
+		"lib/"
+	],
+	"engines": {
+		"node": ">=22.14.0"
+	}
+}

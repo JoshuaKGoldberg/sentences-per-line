@@ -1,9 +1,9 @@
 import * as markdownlint from "markdownlint/sync";
 import { describe, expect, test } from "vitest";
 
-import { sentencesPerLine } from "./sentences-per-line.js";
+import { markdownlintSentencesPerLine } from "./index.js";
 
-describe("sentences-per-line", () => {
+describe("markdownlint-sentences-per-line", () => {
 	test.each([
 		["", undefined],
 		["abc", undefined],
@@ -94,9 +94,9 @@ Abc. Def.
 		const actual = markdownlint.lint({
 			config: {
 				default: false,
-				"sentences-per-line": true,
+				"markdownlint-sentences-per-line": true,
 			},
-			customRules: [sentencesPerLine],
+			customRules: [markdownlintSentencesPerLine],
 			strings: { input },
 		});
 
@@ -109,7 +109,8 @@ Abc. Def.
 							errorRange: null,
 							ruleDescription: "Each sentence should be on its own line",
 							ruleInformation: null,
-							ruleNames: ["sentences-per-line"],
+							ruleNames: ["markdownlint-sentences-per-line"],
+							severity: "error",
 							...report,
 						},
 					]
