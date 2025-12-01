@@ -1,22 +1,17 @@
 import type { AstPath } from "prettier";
 
 import {
-	isBlockquoteNode,
-	isParagraphNode,
-	isSentenceNode,
-	isWordNode,
-} from "./predicates.js";
-import {
 	AnyNode,
 	BlockquoteNode,
 	ParagraphNode,
+	SentenceNode,
 	SentenceNodeChild,
 } from "./types/nodes.js";
 
 export function modifyNodeIfMultipleSentencesInLine(path: AstPath<AnyNode>) {
-	if (isBlockquoteNode(path.node)) {
+	if (path.node.type === "blockquote") {
 		modifyBlockquoteNode(path.node);
-	} else if (isParagraphNode(path.node)) {
+	} else if (path.node.type === "paragraph") {
 		modifyParagraphNode(path.node, "\n");
 	}
 }
@@ -49,15 +44,19 @@ function modifyBlockquoteNode(node: BlockquoteNode) {
 }
 
 function modifyParagraphNode(node: ParagraphNode, insertion: string) {
-	for (const sentence of node.children) {
-		if (!isSentenceNode(sentence)) {
-			continue;
+	for (const child of node.children) {
+		if (child.type === "sentence") {
+			modifySentenceNode(child, insertion);
 		}
+	}
+}
 
+function modifySentenceNode(sentence: SentenceNode, insertion: string) {
+	if (sentence.children.length > 1) {
 		for (let i = 0; i < sentence.children.length - 1; i++) {
 			const child = sentence.children[i];
 			if (
-				isWordNode(child) &&
+				child.type === "word" &&
 				child.value.endsWith(".") &&
 				!/^\s*\d+\./.test(child.value)
 			) {

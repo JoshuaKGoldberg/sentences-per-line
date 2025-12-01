@@ -1,8 +1,10 @@
 import { WithPosition } from "./positions.js";
 
+/**
+ * Non-exhaustive list of AST nodes equivalent to @types/mdast.
+ */
 export type AnyNode =
 	| BlockquoteNode
-	| OtherNode
 	| ParagraphNode
 	| SentenceNode
 	| WhitespaceNode
@@ -11,10 +13,6 @@ export type AnyNode =
 export interface BlockquoteNode extends WithPosition {
 	children: ParagraphNode[];
 	type: "blockquote";
-}
-
-export interface OtherNode extends WithPosition {
-	type: string;
 }
 
 export interface ParagraphNode extends WithPosition {
