@@ -13,6 +13,7 @@ export const printers = {
 		...mdastPrinter,
 		print(path: AstPath<CollectibleNode>, options, print, args) {
 			// TODO: Add node modification for sentences-per-line here.
+			console.log("How do we get this console.log to hit?");
 			return mdastPrinter.print(path, options, print, args);
 		},
 	},
