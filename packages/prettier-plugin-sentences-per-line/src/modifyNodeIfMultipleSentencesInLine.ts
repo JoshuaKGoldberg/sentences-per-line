@@ -1,37 +1,33 @@
 import type { AstPath } from "prettier";
 
+import { isBlockquoteNode, isParagraphNode, isWordNode } from "./predicates.js";
 import {
 	AnyNode,
-	SentenceNode,
+	BlockquoteNode,
+	ParagraphNode,
 	SentenceNodeChild,
-	WordNode,
 } from "./types/nodes.js";
 
 export function modifyNodeIfMultipleSentencesInLine(path: AstPath<AnyNode>) {
-	if (!isSentenceNode(path.node)) {
-		return;
-	}
-
-	for (let i = 0; i < path.node.children.length - 1; i++) {
-		const child = path.node.children[i];
-		if (
-			isWordNode(child) &&
-			child.value.endsWith(".") &&
-			!/^\s*\d+\./.test(child.value)
-		) {
-			insertNewlineAt(path.node.children, i);
-		}
+	if (isBlockquoteNode(path.node)) {
+		modifyBlockquoteNode(path.node);
+	} else if (isParagraphNode(path.node)) {
+		modifyParagraphNode(path.node, "\n");
 	}
 }
 
-function insertNewlineAt(children: SentenceNodeChild[], index: number) {
+function insertNewlineAt(
+	children: SentenceNodeChild[],
+	index: number,
+	insertion: string,
+) {
 	const newWhitespace: SentenceNodeChild = {
 		hasLeadingPunctuation: false,
 		hasTrailingPunctuation: false,
 		isCJ: false,
 		kind: "whitespace",
 		type: "word",
-		value: "\n",
+		value: insertion,
 	};
 
 	if (children[index + 1].type === "whitespace") {
@@ -41,10 +37,23 @@ function insertNewlineAt(children: SentenceNodeChild[], index: number) {
 	}
 }
 
-function isSentenceNode(node: AnyNode): node is SentenceNode {
-	return node.type === "sentence";
+function modifyBlockquoteNode(node: BlockquoteNode) {
+	for (const paragraph of node.children) {
+		modifyParagraphNode(paragraph, "> ");
+	}
 }
 
-function isWordNode(node: AnyNode): node is WordNode {
-	return node.type === "word";
+function modifyParagraphNode(node: ParagraphNode, insertion: string) {
+	for (const sentence of node.children) {
+		for (let i = 0; i < sentence.children.length - 1; i++) {
+			const child = sentence.children[i];
+			if (
+				isWordNode(child) &&
+				child.value.endsWith(".") &&
+				!/^\s*\d+\./.test(child.value)
+			) {
+				insertNewlineAt(sentence.children, i, insertion);
+			}
+		}
+	}
 }

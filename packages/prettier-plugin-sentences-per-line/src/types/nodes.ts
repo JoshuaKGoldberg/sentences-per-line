@@ -1,11 +1,17 @@
 import { WithPosition } from "./positions.js";
 
 export type AnyNode =
+	| BlockquoteNode
 	| OtherNode
 	| ParagraphNode
 	| SentenceNode
 	| WhitespaceNode
 	| WordNode;
+
+export interface BlockquoteNode extends WithPosition {
+	children: ParagraphNode[];
+	type: "blockquote";
+}
 
 export interface OtherNode extends WithPosition {
 	type: string;

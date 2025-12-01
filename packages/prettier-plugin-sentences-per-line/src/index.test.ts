@@ -32,6 +32,8 @@ describe("Tests", () => {
 			"First sentence. Second sentence. Third sentence.",
 			"First sentence.\nSecond sentence.\nThird sentence.\n",
 		],
+		["> First sentence.\n"],
+		["> First sentence.\n> Second sentence.\n"],
 	])("%j", async (input, expected = input) => {
 		const actual = await format(input, { filepath: "test.md" });
 		expect(actual).toBe(expected);
