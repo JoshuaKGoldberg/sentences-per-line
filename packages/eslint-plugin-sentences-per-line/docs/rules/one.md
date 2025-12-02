@@ -13,9 +13,13 @@ If two or more sentences appear on the same line, they will be split onto separa
 
 Example of **incorrect** code for this rule:
 
+<!-- prettier-ignore-start -->
+
 ```md
 First sentence. Second sentence
 ```
+
+<!-- prettier-ignore-end -->
 
 Example of **correct** code for this rule:
 

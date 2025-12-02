@@ -1,0 +1,22 @@
+{
+	"name": "prettier-plugin-sentences-per-line",
+	"version": "0.0.0",
+	"description": "Prettier plugin for limiting sentences per line. 📐",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/JoshuaKGoldberg/sentences-per-line",
+		"directory": "packages/prettier-plugin-sentences-per-line"
+	},
+	"license": "MIT",
+	"type": "module",
+	"main": "lib/index.js",
+	"files": [
+		"lib/"
+	],
+	"devDependencies": {
+		"prettier": "^3.7.1"
+	},
+	"peerDependencies": {
+		"prettier": "^3"
+	}
+}

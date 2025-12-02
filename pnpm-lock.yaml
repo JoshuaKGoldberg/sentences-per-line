@@ -122,6 +122,12 @@ importers:
         specifier: ^0.39.0
         version: 0.39.0
 
+  packages/prettier-plugin-sentences-per-line:
+    devDependencies:
+      prettier:
+        specifier: ^3.7.1
+        version: 3.7.3
+
   packages/sentences-per-line: {}
 
 packages:

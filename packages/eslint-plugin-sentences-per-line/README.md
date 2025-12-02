@@ -68,7 +68,8 @@ export default [
 
 ## Alternatives
 
-This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line) of packages.
+This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line) family of packages.
 You might also consider:
 
 - [`markdownlint-sentences-per-line`](../markdownlint-sentences-per-line): [Markdownlint](https://github.com/DavidAnson/markdownlint) rule to enforce sentences per line in Markdown files.
+- [`prettier-plugin-sentences-per-line`](../prettier-plugin-sentences-per-line): [Prettier](https://prettier.io) plugin to enforce sentences per line in Markdown files.
