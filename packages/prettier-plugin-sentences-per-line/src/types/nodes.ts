@@ -1,7 +1,7 @@
 import { WithPosition } from "./positions.js";
 
 /**
- * Non-exhaustive list of AST nodes equivalent to @types/mdast.
+ * Non-exhaustive list of AST nodes equivalent to \@types/mdast.
  */
 export type AnyNode =
 	| BlockquoteNode
