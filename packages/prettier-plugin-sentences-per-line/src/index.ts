@@ -2,7 +2,7 @@ import type { AstPath, Printer } from "prettier";
 
 import * as markdown from "prettier/plugins/markdown";
 
-import { modifyNodeIfMultipleSentencesInLine } from "./modifyNodeIfMultipleSentencesInLine.js";
+import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.js";
 import { AnyNode } from "./types/nodes.js";
 
 export const parsers = {
