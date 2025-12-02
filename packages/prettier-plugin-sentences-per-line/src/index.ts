@@ -5,10 +5,6 @@ import * as markdown from "prettier/plugins/markdown";
 import { modifyNodeIfMultipleSentencesInLine } from "./modifyNodeIfMultipleSentencesInLine.js";
 import { AnyNode } from "./types/nodes.js";
 
-/**
- * @deprecated These are only exposed for Prettier 3.7 and earlier.
- * @see https://github.com/prettier/prettier/pull/18072
- */
 export const parsers = {
 	...markdown.parsers,
 };
