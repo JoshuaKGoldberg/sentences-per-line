@@ -126,7 +126,7 @@ importers:
     devDependencies:
       prettier:
         specifier: ^3.7.1
-        version: 3.7.1
+        version: 3.7.3
 
   packages/sentences-per-line: {}
 
