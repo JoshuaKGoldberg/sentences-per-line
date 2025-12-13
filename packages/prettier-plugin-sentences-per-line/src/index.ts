@@ -10,7 +10,7 @@ import * as markdown from "prettier/plugins/markdown";
 
 import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.js";
 
-const defaultKnownAbbreviations = [
+const standardAbbreviations = [
 	"eg.",
 	"e.g.",
 	"etc.",
@@ -21,28 +21,19 @@ const defaultKnownAbbreviations = [
 ];
 
 function createKnownAbbreviations(options: Options): string[] {
-	const optionValue = options.knownAbbreviations;
+	const optionValue = options.additionalAbbreviations;
 	if (Array.isArray(optionValue)) {
-		let customKnownAbbreviations = optionValue as string[];
-		if (optionValue.includes("DEFAULT")) {
-			customKnownAbbreviations = customKnownAbbreviations.filter(
-				(v) => v !== "DEFAULT",
-			);
-			customKnownAbbreviations = [
-				...customKnownAbbreviations,
-				...defaultKnownAbbreviations,
-			];
-		}
-		return customKnownAbbreviations;
+		const additionalAbbreviations = optionValue as string[];
+		return [...standardAbbreviations, ...additionalAbbreviations];
 	}
-	return defaultKnownAbbreviations;
+	return standardAbbreviations;
 }
 
 export const options = {
-	knownAbbreviations: {
+	additionalAbbreviations: {
 		array: true,
 		category: "Global",
-		default: [{ value: defaultKnownAbbreviations }],
+		default: [{ value: [] }],
 		description:
 			"An array of custom abbreviations to ignore when determining sentence boundaries.",
 		type: "string",
@@ -60,11 +51,11 @@ const mdastPrinter: Printer = markdown.printers.mdast;
 export const printers = {
 	mdast: {
 		...mdastPrinter,
-		print(path: AstPath<RootContent>, options, print, args) {
+		print(path: AstPath<RootContent>, printOptions, print, args) {
 			modifyNodeIfMultipleSentencesInLine(path, {
-				knownAbbreviations: createKnownAbbreviations(options),
+				knownAbbreviations: createKnownAbbreviations(printOptions),
 			});
-			return mdastPrinter.print(path, options, print, args);
+			return mdastPrinter.print(path, printOptions, print, args);
 		},
 	},
 } satisfies Record<string, Printer<RootContent>>;

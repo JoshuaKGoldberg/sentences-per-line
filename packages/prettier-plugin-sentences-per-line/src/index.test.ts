@@ -50,24 +50,13 @@ describe("Tests", () => {
 		expect(actual).toBe(expected);
 	});
 
-	test("with knownAbbreviations option", async () => {
-		const input = "I.M. Pei.";
-		const expected = "I.M. Pei.\n";
-
-		const actual = await format(input, {
-			filepath: "test.md",
-			knownAbbreviations: ["I.M."],
-		});
-		expect(actual).toBe(expected);
-	});
-
-	test("with extended knownAbbreviations option", async () => {
+	test("with additionalAbbreviations", async () => {
 		const input = "i.e. I.M. Pei.";
 		const expected = "i.e. I.M. Pei.\n";
 
 		const actual = await format(input, {
+			additionalAbbreviations: ["I.M."],
 			filepath: "test.md",
-			knownAbbreviations: ["DEFAULT", "I.M."],
 		});
 		expect(actual).toBe(expected);
 	});

@@ -40,25 +40,18 @@ Then add it to your [Prettier config's `plugins`](https://prettier.io/docs/plugi
 
 ### Options
 
-#### `knownAbbreviations`
+#### `additionalAbbreviations`
 
 An array of custom abbreviations to ignore when determining sentence boundaries.
 
-**Default:** `["eg.", "e.g.", "etc.", "ex.", "ie.", "i.e.", "vs."]`
+These will be added to the standard list of abbreviations below.
+
+`["eg.", "e.g.", "etc.", "ex.", "ie.", "i.e.", "vs."]`
 
 ```json
 {
 	"plugins": ["prettier-plugin-sentences-per-line"],
-	"knownAbbreviations": ["I.M."]
-}
-```
-
-If you want to simply extend the default values, rather than override them, you can include the `"DEFAULT"` token in the array.
-
-```json
-{
-	"plugins": ["prettier-plugin-sentences-per-line"],
-	"knownAbbreviations": ["DEFAULT", "I.M."]
+	"additionalAbbreviations": ["I.M."]
 }
 ```
 
