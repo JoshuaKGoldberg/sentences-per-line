@@ -1,4 +1,8 @@
-export * from "./getIndexBeforeSecondSentence.ts";
+export {
+	doesEndWithIgnoredWord,
+	ignoredWords,
+} from "./doesEndWithIgnoredWord.ts";
+export { getIndexBeforeSecondSentence } from "./getIndexBeforeSecondSentence.ts";
 
 export default (): never => {
 	throw new Error(

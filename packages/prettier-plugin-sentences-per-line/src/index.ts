@@ -1,33 +1,9 @@
 import type { RootContent } from "mdast";
-import type {
-	AstPath,
-	Options,
-	Printer,
-	StringArraySupportOption,
-} from "prettier";
+import type { AstPath, Printer, StringArraySupportOption } from "prettier";
 
 import * as markdown from "prettier/plugins/markdown";
 
 import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.js";
-
-const standardAbbreviations = [
-	"eg.",
-	"e.g.",
-	"etc.",
-	"ex.",
-	"ie.",
-	"i.e.",
-	"vs.",
-];
-
-function createKnownAbbreviations(options: Options): string[] {
-	const optionValue = options.additionalAbbreviations;
-	if (Array.isArray(optionValue)) {
-		const additionalAbbreviations = optionValue as string[];
-		return [...standardAbbreviations, ...additionalAbbreviations];
-	}
-	return standardAbbreviations;
-}
 
 export const options = {
 	additionalAbbreviations: {
@@ -53,7 +29,7 @@ export const printers = {
 		...mdastPrinter,
 		print(path: AstPath<RootContent>, printOptions, print, args) {
 			modifyNodeIfMultipleSentencesInLine(path, {
-				knownAbbreviations: createKnownAbbreviations(printOptions),
+				customAbbreviations: printOptions.additionalAbbreviations as string[],
 			});
 			return mdastPrinter.print(path, printOptions, print, args);
 		},

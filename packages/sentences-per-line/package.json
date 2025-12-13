@@ -13,11 +13,25 @@
 		"email": "npm@joshuakgoldberg.com"
 	},
 	"type": "module",
-	"main": "./lib/index.js",
+	"exports": {
+		".": "./src/index.ts",
+		"./package.json": "./package.json"
+	},
+	"main": "./src/index.ts",
 	"files": [
 		"lib/"
 	],
 	"engines": {
 		"node": ">=22.14.0"
+	},
+	"publishConfig": {
+		"exports": {
+			".": {
+				"types": "./lib/index.d.ts",
+				"default": "./lib/index.js"
+			},
+			"./package.json": "./package.json"
+		},
+		"main": "./lib/index.js"
 	}
 }

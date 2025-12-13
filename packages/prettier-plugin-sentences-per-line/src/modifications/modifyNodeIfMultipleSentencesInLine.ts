@@ -1,10 +1,12 @@
 import type { Blockquote, Paragraph, RootContent, SentenceNode } from "mdast";
 import type { AstPath } from "prettier";
 
-import { insertNewlineAt } from "./insertNewlineAt.ts";
+import { doesEndWithIgnoredWord } from "sentences-per-line";
+
+import { insertNewlineAt } from "./insertNewlineAt.js";
 
 export interface ModifyNodeOptions {
-	knownAbbreviations?: string[];
+	customAbbreviations?: string[];
 }
 
 export function modifyNodeIfMultipleSentencesInLine(
@@ -42,7 +44,7 @@ function modifyParagraphNode(
 function modifySentenceNode(
 	sentence: SentenceNode,
 	insertion: string,
-	{ knownAbbreviations = [] }: ModifyNodeOptions,
+	{ customAbbreviations = [] }: ModifyNodeOptions,
 ) {
 	for (let i = 0; i < sentence.children.length - 1; i++) {
 		const child = sentence.children[i];
@@ -51,9 +53,7 @@ function modifySentenceNode(
 			child.value.endsWith(".") &&
 			// Skip any starting list number, e.g. "1. " or " 1. "
 			!/^\s*\d+\./.test(child.value) &&
-			!knownAbbreviations.some((word) =>
-				child.value.toLowerCase().endsWith(word.toLowerCase()),
-			)
+			!doesEndWithIgnoredWord(child.value, customAbbreviations)
 		) {
 			insertNewlineAt(sentence.children, i, insertion);
 		}

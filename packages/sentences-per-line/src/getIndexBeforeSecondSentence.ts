@@ -1,4 +1,4 @@
-const ignoredWords = ["ie", "i.e", "eg", "e.g", "etc", "ex"];
+import { doesEndWithIgnoredWord } from "./doesEndWithIgnoredWord.js";
 
 /**
  * @returns The first index after the period of the line's first sentence,
@@ -27,7 +27,7 @@ export function getIndexBeforeSecondSentence(line: string) {
 			line[i] === "." &&
 			line[i + 1] === " " &&
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
-			!isAfterIgnoredWord(line, i)
+			!doesEndWithIgnoredWord(line.substring(0, i + 1))
 		) {
 			return i + 1;
 		}
@@ -72,18 +72,6 @@ function getNextIndexNotInCode(line: string, i: number) {
 	}
 
 	return i;
-}
-
-function isAfterIgnoredWord(line: string, i: number) {
-	for (const ignoredWord of ignoredWords) {
-		if (
-			ignoredWord === line.substring(i - ignoredWord.length, i).toLowerCase()
-		) {
-			return true;
-		}
-	}
-
-	return false;
 }
 
 function isCapitalizedAlphabetCharacter(char: string) {

@@ -123,6 +123,10 @@ importers:
         version: 0.40.0
 
   packages/prettier-plugin-sentences-per-line:
+    dependencies:
+      sentences-per-line:
+        specifier: workspace:~
+        version: link:../sentences-per-line
     devDependencies:
       '@types/mdast':
         specifier: ^4.0.4
