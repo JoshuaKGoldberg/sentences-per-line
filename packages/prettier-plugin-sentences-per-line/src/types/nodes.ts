@@ -1,4 +1,4 @@
-import { WithPosition } from "./positions.js";
+import { WithPosition } from "./positions.ts";
 
 /**
  * Non-exhaustive list of AST nodes equivalent to \@types/mdast.

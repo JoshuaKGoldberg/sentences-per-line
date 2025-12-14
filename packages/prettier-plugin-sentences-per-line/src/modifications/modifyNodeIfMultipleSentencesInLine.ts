@@ -5,8 +5,8 @@ import {
 	BlockquoteNode,
 	ParagraphNode,
 	SentenceNode,
-} from "../types/nodes.js";
-import { insertNewlineAt } from "./insertNewlineAt.js";
+} from "../types/nodes.ts";
+import { insertNewlineAt } from "./insertNewlineAt.ts";
 
 export function modifyNodeIfMultipleSentencesInLine(path: AstPath<AnyNode>) {
 	if (path.node.type === "blockquote") {

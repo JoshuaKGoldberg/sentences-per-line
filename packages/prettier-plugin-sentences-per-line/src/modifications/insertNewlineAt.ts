@@ -1,4 +1,4 @@
-import { SentenceNodeChild } from "../types/nodes.js";
+import { SentenceNodeChild } from "../types/nodes.ts";
 
 export function insertNewlineAt(
 	children: SentenceNodeChild[],

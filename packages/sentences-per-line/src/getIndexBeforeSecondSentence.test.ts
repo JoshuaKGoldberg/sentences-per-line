@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-import { getIndexBeforeSecondSentence } from "./index.js";
+import { getIndexBeforeSecondSentence } from "./index.ts";
 
 describe(getIndexBeforeSecondSentence, () => {
 	test.each([
