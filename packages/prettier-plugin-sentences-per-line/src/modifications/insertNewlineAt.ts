@@ -1,4 +1,4 @@
-import { SentenceNodeChild } from "../types/nodes.js";
+import type { SentenceNodeChild } from "mdast";
 
 export function insertNewlineAt(
 	children: SentenceNodeChild[],

@@ -1,28 +1,28 @@
+import type { Blockquote, Paragraph, RootContent, SentenceNode } from "mdast";
 import type { AstPath } from "prettier";
 
-import {
-	AnyNode,
-	BlockquoteNode,
-	ParagraphNode,
-	SentenceNode,
-} from "../types/nodes.js";
 import { insertNewlineAt } from "./insertNewlineAt.js";
 
-export function modifyNodeIfMultipleSentencesInLine(path: AstPath<AnyNode>) {
-	if (path.node.type === "blockquote") {
-		modifyBlockquoteNode(path.node);
-	} else if (path.node.type === "paragraph") {
-		modifyParagraphNode(path.node, "\n");
+export function modifyNodeIfMultipleSentencesInLine(
+	path: AstPath<RootContent>,
+) {
+	const node = path.node;
+	if (node.type === "blockquote") {
+		modifyBlockquoteNode(node);
+	} else if (node.type === "paragraph") {
+		modifyParagraphNode(node, "\n");
 	}
 }
 
-function modifyBlockquoteNode(node: BlockquoteNode) {
+function modifyBlockquoteNode(node: Blockquote) {
 	for (const paragraph of node.children) {
-		modifyParagraphNode(paragraph, "> ");
+		if (paragraph.type === "paragraph") {
+			modifyParagraphNode(paragraph, "> ");
+		}
 	}
 }
 
-function modifyParagraphNode(node: ParagraphNode, insertion: string) {
+function modifyParagraphNode(node: Paragraph, insertion: string) {
 	for (const child of node.children) {
 		if (child.type === "sentence") {
 			modifySentenceNode(child, insertion);

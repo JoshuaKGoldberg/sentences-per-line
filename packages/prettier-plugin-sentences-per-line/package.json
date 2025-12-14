@@ -14,6 +14,7 @@
 		"lib/"
 	],
 	"devDependencies": {
+		"@types/mdast": "^4.0.4",
 		"prettier": "^3.7.1"
 	},
 	"peerDependencies": {
