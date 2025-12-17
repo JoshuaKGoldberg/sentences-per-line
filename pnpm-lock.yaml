@@ -124,6 +124,9 @@ importers:
 
   packages/prettier-plugin-sentences-per-line:
     devDependencies:
+      '@types/mdast':
+        specifier: ^4.0.4
+        version: 4.0.4
       prettier:
         specifier: ^3.7.1
         version: 3.7.4
