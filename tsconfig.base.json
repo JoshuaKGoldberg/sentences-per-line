@@ -7,10 +7,10 @@
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"resolveJsonModule": true,
+		"rewriteRelativeImportExtensions": true,
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"target": "ES2022",
-		"rewriteRelativeImportExtensions": true
+		"target": "ES2022"
 	}
 }
