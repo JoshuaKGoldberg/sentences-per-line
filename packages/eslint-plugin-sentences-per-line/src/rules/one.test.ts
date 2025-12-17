@@ -1,5 +1,5 @@
-import { one } from "./one.js";
-import { ruleTester } from "./ruleTester.js";
+import { one } from "./one.ts";
+import { ruleTester } from "./ruleTester.ts";
 
 ruleTester.run("one", one, {
 	invalid: [

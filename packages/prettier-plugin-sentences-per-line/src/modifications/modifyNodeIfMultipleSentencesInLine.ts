@@ -1,7 +1,7 @@
 import type { Blockquote, Paragraph, RootContent, SentenceNode } from "mdast";
 import type { AstPath } from "prettier";
 
-import { insertNewlineAt } from "./insertNewlineAt.js";
+import { insertNewlineAt } from "./insertNewlineAt.ts";
 
 export function modifyNodeIfMultipleSentencesInLine(
 	path: AstPath<RootContent>,

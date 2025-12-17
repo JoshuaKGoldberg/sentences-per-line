@@ -1,4 +1,4 @@
-export * from "./getIndexBeforeSecondSentence.js";
+export * from "./getIndexBeforeSecondSentence.ts";
 
 export default (): never => {
 	throw new Error(

@@ -1,7 +1,7 @@
 import * as markdownlint from "markdownlint/sync";
 import { describe, expect, test } from "vitest";
 
-import { markdownlintSentencesPerLine } from "./markdownlintSentencesPerLine.js";
+import { markdownlintSentencesPerLine } from "./markdownlintSentencesPerLine.ts";
 
 describe("markdownlint-sentences-per-line", () => {
 	test.each([

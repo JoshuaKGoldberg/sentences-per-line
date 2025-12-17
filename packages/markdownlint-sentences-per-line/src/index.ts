@@ -1,4 +1,4 @@
-import { markdownlintSentencesPerLine } from "./markdownlintSentencesPerLine.js";
+import { markdownlintSentencesPerLine } from "./markdownlintSentencesPerLine.ts";
 
 // Ideally, Markdownlint CLIs should support default exports...
 export default markdownlintSentencesPerLine;
