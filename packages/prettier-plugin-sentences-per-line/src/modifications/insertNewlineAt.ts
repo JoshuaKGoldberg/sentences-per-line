@@ -1,4 +1,4 @@
-import { SentenceNodeChild } from "../types/nodes.ts";
+import type { SentenceNodeChild } from "mdast";
 
 export function insertNewlineAt(
 	children: SentenceNodeChild[],

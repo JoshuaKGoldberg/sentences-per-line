@@ -1,9 +1,9 @@
+import type { RootContent } from "mdast";
 import type { AstPath, Printer } from "prettier";
 
 import * as markdown from "prettier/plugins/markdown";
 
 import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.ts";
-import { AnyNode } from "./types/nodes.ts";
 
 export const parsers = {
 	...markdown.parsers,
@@ -16,7 +16,7 @@ const mdastPrinter: Printer = markdown.printers.mdast;
 export const printers = {
 	mdast: {
 		...mdastPrinter,
-		print(path: AstPath<AnyNode>, options, print, args) {
+		print(path: AstPath<RootContent>, options, print, args) {
 			modifyNodeIfMultipleSentencesInLine(path);
 			return mdastPrinter.print(path, options, print, args);
 		},
