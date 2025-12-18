@@ -40,7 +40,7 @@ Then add it to your [Prettier config's `plugins`](https://prettier.io/docs/plugi
 
 ### Options
 
-#### `additionalAbbreviations`
+#### `sentencesPerLineAdditionalAbbreviations`
 
 An array of custom abbreviations to ignore when determining sentence boundaries.
 
@@ -51,7 +51,7 @@ These will be added to the standard list of abbreviations below.
 ```json
 {
 	"plugins": ["prettier-plugin-sentences-per-line"],
-	"additionalAbbreviations": ["I.M."]
+	"sentencesPerLineAdditionalAbbreviations": ["I.M."]
 }
 ```
 

@@ -6,7 +6,7 @@ import * as markdown from "prettier/plugins/markdown";
 import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.js";
 
 export const options = {
-	additionalAbbreviations: {
+	sentencesPerLineAdditionalAbbreviations: {
 		array: true,
 		category: "Global",
 		default: [{ value: [] }],
@@ -29,7 +29,8 @@ export const printers = {
 		...mdastPrinter,
 		print(path: AstPath<RootContent>, printOptions, print, args) {
 			modifyNodeIfMultipleSentencesInLine(path, {
-				customAbbreviations: printOptions.additionalAbbreviations as string[],
+				customAbbreviations:
+					printOptions.sentencesPerLineAdditionalAbbreviations as string[],
 			});
 			return mdastPrinter.print(path, printOptions, print, args);
 		},

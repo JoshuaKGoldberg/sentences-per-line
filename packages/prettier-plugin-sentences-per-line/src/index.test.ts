@@ -11,7 +11,7 @@ function format(code: string, options: prettier.Options) {
 	});
 }
 
-describe("Tests", () => {
+describe("index", () => {
 	test.each([
 		[""],
 		[" ", ""],
@@ -50,13 +50,13 @@ describe("Tests", () => {
 		expect(actual).toBe(expected);
 	});
 
-	test("with additionalAbbreviations", async () => {
+	test("with sentencesPerLineAdditionalAbbreviations", async () => {
 		const input = "i.e. I.M. Pei.";
 		const expected = "i.e. I.M. Pei.\n";
 
 		const actual = await format(input, {
-			additionalAbbreviations: ["I.M."],
 			filepath: "test.md",
+			sentencesPerLineAdditionalAbbreviations: ["I.M."],
 		});
 		expect(actual).toBe(expected);
 	});
