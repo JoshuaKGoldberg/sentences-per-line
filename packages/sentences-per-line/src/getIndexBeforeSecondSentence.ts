@@ -1,4 +1,4 @@
-import { doesEndWithIgnoredWord } from "./doesEndWithIgnoredWord.js";
+import { doesEndWithIgnoredWord } from "./doesEndWithIgnoredWord.ts";
 
 /**
  * @returns The first index after the period of the line's first sentence,

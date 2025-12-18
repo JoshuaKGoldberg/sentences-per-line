@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import {
 	doesEndWithIgnoredWord,
 	ignoredWords,
-} from "./doesEndWithIgnoredWord.js";
+} from "./doesEndWithIgnoredWord.ts";
 
 describe(doesEndWithIgnoredWord, () => {
 	it.each(ignoredWords)(
