@@ -1,6 +1,6 @@
 {
 	"name": "sentences-per-line",
-	"version": "0.4.0",
+	"version": "0.5.0",
 	"description": "Utility functions to detect the number of sentences per line in Markdown files. 📐",
 	"repository": {
 		"type": "git",
