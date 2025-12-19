@@ -3,7 +3,7 @@ import type { AstPath, Printer, StringArraySupportOption } from "prettier";
 
 import * as markdown from "prettier/plugins/markdown";
 
-import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.js";
+import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.ts";
 
 export const options = {
 	sentencesPerLineAdditionalAbbreviations: {

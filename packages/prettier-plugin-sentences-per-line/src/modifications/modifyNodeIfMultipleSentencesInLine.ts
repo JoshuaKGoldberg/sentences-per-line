@@ -3,7 +3,7 @@ import type { AstPath } from "prettier";
 
 import { doesEndWithIgnoredWord } from "sentences-per-line";
 
-import { insertNewlineAt } from "./insertNewlineAt.js";
+import { insertNewlineAt } from "./insertNewlineAt.ts";
 
 export interface ModifyNodeOptions {
 	customAbbreviations?: string[];
