@@ -10,6 +10,7 @@
 <p align="center">Prettier plugin for limiting sentences per line. 📐</p>
 
 prettier-plugin-sentences-per-line allows you to enforce that no line in your Markdown files contains more than one sentence.
+
 This is useful because:
 
 - Shorter lines result in simpler, easier-to-understand Git diffs
@@ -33,14 +34,31 @@ Then add it to your [Prettier config's `plugins`](https://prettier.io/docs/plugi
 
 ```json
 {
+	"plugins": ["prettier-plugin-sentences-per-line"]
+}
+```
+
+### Options
+
+#### `sentencesPerLineAdditionalAbbreviations`
+
+An array of custom abbreviations to ignore when determining sentence boundaries.
+
+These will be added to the standard list of abbreviations below.
+
+`["eg.", "e.g.", "etc.", "ex.", "ie.", "i.e.", "vs."]`
+
+```json
+{
 	"plugins": ["prettier-plugin-sentences-per-line"],
-	"useTabs": true
+	"sentencesPerLineAdditionalAbbreviations": ["I.M."]
 }
 ```
 
 ## Alternatives
 
 This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line) family of packages.
+
 You might also consider:
 
 - [`eslint-plugin-sentences-per-line`](../eslint-plugin-sentences-per-line): [ESLint](https://eslint.org/) plugin to enforce sentences per line in Markdown files.

@@ -13,6 +13,9 @@
 	"files": [
 		"lib/"
 	],
+	"dependencies": {
+		"sentences-per-line": "workspace:~"
+	},
 	"devDependencies": {
 		"@types/mdast": "^4.0.4",
 		"prettier": "^3.7.1"

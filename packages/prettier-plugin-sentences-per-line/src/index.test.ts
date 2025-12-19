@@ -11,9 +11,9 @@ function format(code: string, options: prettier.Options) {
 	});
 }
 
-describe("Tests", () => {
+describe("index", () => {
 	test.each([
-		["", ""],
+		[""],
 		[" ", ""],
 		["This is a sentence.", "This is a sentence.\n"],
 		[
@@ -21,8 +21,8 @@ describe("Tests", () => {
 			"This is a sentence `with. inline. code.`.\n",
 		],
 		["This is a sentence.\n"],
-		["1. List.\n", "1. List.\n"],
-		["## 1. List.\n", "## 1. List.\n"],
+		["1. List.\n"],
+		["## 1. List.\n"],
 		["First sentence. Second sentence.", "First sentence.\nSecond sentence.\n"],
 		[
 			"First sentence.\tSecond sentence.",
@@ -38,8 +38,26 @@ describe("Tests", () => {
 		],
 		["> First sentence.\n"],
 		["> First sentence.\n> Second sentence.\n"],
+		["This vs. that.\n"],
+		["e.g. first example.\n"],
+		["E.g. first example.\n"],
+		["ex. one.\n"],
+		["Ex. one.\n"],
+		["i.e. first example.\n"],
+		["I.E. first example.\n"],
 	])("%j", async (input, expected = input) => {
 		const actual = await format(input, { filepath: "test.md" });
+		expect(actual).toBe(expected);
+	});
+
+	test("with sentencesPerLineAdditionalAbbreviations", async () => {
+		const input = "i.e. I.M. Pei.";
+		const expected = "i.e. I.M. Pei.\n";
+
+		const actual = await format(input, {
+			filepath: "test.md",
+			sentencesPerLineAdditionalAbbreviations: ["I.M."],
+		});
 		expect(actual).toBe(expected);
 	});
 });

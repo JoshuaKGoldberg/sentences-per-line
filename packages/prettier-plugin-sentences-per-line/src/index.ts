@@ -1,9 +1,20 @@
 import type { RootContent } from "mdast";
-import type { AstPath, Printer } from "prettier";
+import type { AstPath, Printer, StringArraySupportOption } from "prettier";
 
 import * as markdown from "prettier/plugins/markdown";
 
 import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.ts";
+
+export const options = {
+	sentencesPerLineAdditionalAbbreviations: {
+		array: true,
+		category: "Global",
+		default: [{ value: [] }],
+		description:
+			"An array of custom abbreviations to ignore when determining sentence boundaries.",
+		type: "string",
+	},
+} satisfies Record<string, StringArraySupportOption>;
 
 export const parsers = {
 	...markdown.parsers,
@@ -16,9 +27,12 @@ const mdastPrinter: Printer = markdown.printers.mdast;
 export const printers = {
 	mdast: {
 		...mdastPrinter,
-		print(path: AstPath<RootContent>, options, print, args) {
-			modifyNodeIfMultipleSentencesInLine(path);
-			return mdastPrinter.print(path, options, print, args);
+		print(path: AstPath<RootContent>, printOptions, print, args) {
+			modifyNodeIfMultipleSentencesInLine(path, {
+				customAbbreviations:
+					printOptions.sentencesPerLineAdditionalAbbreviations as string[],
+			});
+			return mdastPrinter.print(path, printOptions, print, args);
 		},
 	},
-} satisfies Record<string, Printer>;
+} satisfies Record<string, Printer<RootContent>>;
