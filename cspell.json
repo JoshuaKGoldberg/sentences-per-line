@@ -1,5 +1,5 @@
 {
-	"dictionaries": ["typescript"],
+	"dictionaries": ["npm", "node", "typescript"],
 	"ignorePaths": [
 		".github",
 		"*.tsbuildinfo",
