@@ -1,6 +1,7 @@
-import type { RootContent } from "mdast";
+import type { Nodes, RootContent } from "mdast";
 import type { AstPath, Printer, StringArraySupportOption } from "prettier";
 
+import { builders } from "prettier/doc";
 import * as markdown from "prettier/plugins/markdown";
 
 import { modifyNodeIfMultipleSentencesInLine } from "./modifications/modifyNodeIfMultipleSentencesInLine.ts";
@@ -24,15 +25,37 @@ export const parsers = {
 // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
 const mdastPrinter: Printer = markdown.printers.mdast;
 
+const { breakParent, group, line } = builders;
+
+const print: Printer<Nodes>["print"] = (path, options, print, args) => {
+	const node = path.node;
+
+	// Run structural modification ONCE at the root
+	if (node.type === "root") {
+		const customAbbreviations =
+			options.sentencesPerLineAdditionalAbbreviations as string[];
+		modifyNodeIfMultipleSentencesInLine(path as AstPath<RootContent>, {
+			customAbbreviations,
+		});
+	}
+
+	/** print sentence (MUST be grouped to be used in conjunction with {@link breakParent}) */
+	if (node.type === "sentence") {
+		return group(
+			// @ts-expect-error -- Prettier's AstPath.call typings cannot express that
+			// `children` here is `Nodes[]`; TypeScript infers `string`
+			node.children.map((_, i: number) => path.call(print, "children", i)),
+		);
+	}
+
+	if (node.type === "sentenceBreak") {
+		return [breakParent, line];
+	}
+
+	// Fallback to Prettier's original mdast printer
+	return mdastPrinter.print(path, options, print, args);
+};
+
 export const printers = {
-	mdast: {
-		...mdastPrinter,
-		print(path: AstPath<RootContent>, printOptions, print, args) {
-			modifyNodeIfMultipleSentencesInLine(path, {
-				customAbbreviations:
-					printOptions.sentencesPerLineAdditionalAbbreviations as string[],
-			});
-			return mdastPrinter.print(path, printOptions, print, args);
-		},
-	},
-} satisfies Record<string, Printer<RootContent>>;
+	mdast: { ...mdastPrinter, print },
+} satisfies Record<string, Printer<Nodes>>;
