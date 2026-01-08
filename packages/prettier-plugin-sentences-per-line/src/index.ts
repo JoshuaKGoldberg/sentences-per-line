@@ -44,7 +44,7 @@ const print: Printer<Nodes>["print"] = (path, options, print, args) => {
 		return group(
 			// @ts-expect-error -- Prettier's AstPath.call typings cannot express that
 			// `children` here is `Nodes[]`; TypeScript infers `string`
-			node.children.map((_, i: number) => path.call(print, "children", i)),
+			path.map(print, "children"),
 		);
 	}
 
