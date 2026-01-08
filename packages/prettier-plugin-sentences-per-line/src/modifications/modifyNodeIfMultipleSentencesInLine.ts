@@ -1,30 +1,31 @@
-import type { RootContent, SentenceNode } from "mdast";
-import type { AstPath } from "prettier";
+import type { Root, RootContent, SentenceNode } from "mdast";
 
 import { doesEndWithIgnoredWord } from "sentences-per-line";
 
-export interface ModifyNodeOptions {
+interface ModifyNodeOptions {
 	customAbbreviations?: string[];
 }
 
 /**
- * This function mutates the AST structure (inserts SentenceBreak nodes),
- * but only once per printed document.
- * It receives an AstPath for the root.
- * Caller should ensure it's only invoked for the root node).
+ * Mutates the mdast by performing a root-level structural transformation.
+ *
+ * This function walks the provided mdast root node and inserts custom
+ * `SentenceBreak` nodes to explicitly represent sentence boundaries in the
+ * tree. The mutation is performed in place and is intended to run exactly
+ * once per formatting pass, prior to printing.
  */
 export function modifyNodeIfMultipleSentencesInLine(
-	path: AstPath<RootContent>,
+	rootNode: Root,
 	options: ModifyNodeOptions = {},
 ) {
 	const customAbbreviations = options.customAbbreviations ?? [];
 
-	walk(path.node, { customAbbreviations });
+	walk(rootNode, { customAbbreviations });
 }
 
 function modifySentenceNode(
 	sentence: SentenceNode,
-	{ customAbbreviations = [] }: ModifyNodeOptions,
+	{ customAbbreviations }: Required<ModifyNodeOptions>,
 ) {
 	const children = sentence.children;
 
@@ -50,8 +51,8 @@ function modifySentenceNode(
 }
 
 function walk(
-	node: RootContent,
-	{ customAbbreviations = [] }: ModifyNodeOptions,
+	node: Root | RootContent,
+	{ customAbbreviations }: Required<ModifyNodeOptions>,
 ) {
 	// If the node has children, traverse them.
 	if ("children" in node && Array.isArray(node.children)) {
