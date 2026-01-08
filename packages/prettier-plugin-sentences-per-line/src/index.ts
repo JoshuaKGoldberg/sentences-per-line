@@ -22,11 +22,14 @@ export const parsers = {
 };
 
 // @ts-expect-error -- markdown does not provide public exports
-// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
-const mdastPrinter: Printer = markdown.printers.mdast;
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+const mdastPrinter = markdown.printers.mdast as Printer;
 
 const { breakParent, group, line } = builders;
 
+/**
+ * @see https://prettier.io/docs/plugins#print
+ */
 const print: Printer<Nodes>["print"] = (path, options, print, args) => {
 	const node = path.node;
 
@@ -56,6 +59,31 @@ const print: Printer<Nodes>["print"] = (path, options, print, args) => {
 	return mdastPrinter.print(path, options, print, args);
 };
 
+/**
+ * @summary Function to provide keys that should be traversed when walking trough the AST.
+ * @see https://prettier.io/docs/plugins#optional-getvisitorkeys
+ */
+const getVisitorKeys: Printer<Nodes>["getVisitorKeys"] = (
+	node,
+	nonTraversableKeys,
+) => {
+	switch (node.type) {
+		case "sentence":
+			return ["children"];
+
+		case "sentenceBreak":
+			return [];
+
+		default:
+			return mdastPrinter.getVisitorKeys?.(node, nonTraversableKeys) ?? [];
+	}
+};
+
 export const printers = {
-	mdast: { ...mdastPrinter, print },
+	mdast: {
+		...mdastPrinter,
+
+		getVisitorKeys,
+		print,
+	},
 } satisfies Record<string, Printer<Nodes>>;
