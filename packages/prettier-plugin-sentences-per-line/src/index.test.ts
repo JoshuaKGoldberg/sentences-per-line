@@ -50,7 +50,51 @@ describe("index", () => {
 		expect(actual).toBe(expected);
 	});
 
-	test("with sentencesPerLineAdditionalAbbreviations", async () => {
+	describe("List", () => {
+		test.each<[string, string, string]>([
+			[
+				"Single item",
+				"- item with another line after.\nNew Line\n",
+				"- item with another line after.\n  New Line\n",
+			],
+			[
+				"Single item with nested item, both with multiple lines",
+				[
+					"- List item. New Line",
+					"  - List item nested. New Line nested\n",
+				].join("\n"),
+				[
+					"- List item.",
+					"  New Line",
+					"  - List item nested.",
+					"    New Line nested\n",
+				].join("\n"),
+			],
+			[
+				"Single item with nested item, both with multiple lines",
+				[
+					"- List item A. New Line nested.",
+					"- List item B",
+					"- List item C. New Line",
+					"  - List item nested D. New Line nested\n",
+				].join("\n"),
+				[
+					"- List item A.",
+					"  New Line nested.",
+					"- List item B",
+					"- List item C.",
+					"  New Line",
+					"  - List item nested D.",
+					"    New Line nested\n",
+				].join("\n"),
+			],
+		])("%s", async (_, input, expected = input) => {
+			const actual = await format(input, { filepath: "test.md" });
+			expect(actual).toBe(expected);
+		});
+	});
+
+	test("Should not break sentence when the final word matches an entry in sentencesPerLineAdditionalAbbreviations", async () => {
 		const input = "i.e. I.M. Pei.";
 		const expected = "i.e. I.M. Pei.\n";
 

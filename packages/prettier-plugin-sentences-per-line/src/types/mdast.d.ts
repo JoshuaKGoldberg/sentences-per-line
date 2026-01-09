@@ -30,11 +30,20 @@ declare module "mdast" {
 		value: string;
 	}
 
-	type SentenceNodeChild = WhitespaceNode | WordNode;
+	interface SentenceBreakNode {
+		type: "sentenceBreak";
+	}
+
+	type SentenceNodeChild = WhitespaceNode | WordNode | SentenceBreakNode;
 
 	interface SentenceNode {
 		children: SentenceNodeChild[];
 		type: "sentence";
+	}
+
+	interface RootContentMap {
+		sentence: SentenceNode;
+		sentenceBreak: SentenceBreakNode;
 	}
 
 	interface PhrasingContentMap {
