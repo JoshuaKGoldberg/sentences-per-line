@@ -1,13 +1,15 @@
 {
-	"compilerOptions": {
-		"noEmit": false
-	},
-	"extends": "./tsconfig.base.json",
 	"files": [],
 	"references": [
-		{ "path": "./packages/eslint-plugin-sentences-per-line" },
-		{ "path": "./packages/markdownlint-sentences-per-line" },
-		{ "path": "./packages/prettier-plugin-sentences-per-line" },
-		{ "path": "./packages/sentences-per-line" }
+		{
+			"path": "./packages/eslint-plugin-sentences-per-line/tsconfig.build.json"
+		},
+		{
+			"path": "./packages/markdownlint-sentences-per-line/tsconfig.build.json"
+		},
+		{
+			"path": "./packages/prettier-plugin-sentences-per-line/tsconfig.build.json"
+		},
+		{ "path": "./packages/sentences-per-line/tsconfig.build.json" }
 	]
 }

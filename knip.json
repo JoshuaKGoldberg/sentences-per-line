@@ -3,7 +3,8 @@
 	"ignoreExportsUsedInFile": { "interface": true, "type": true },
 	"workspaces": {
 		"packages/eslint-plugin-sentences-per-line": {
-			"entry": [".eslint-doc-generatorrc.js"]
+			"entry": ["src/index.ts"],
+			"ignoreFiles": [".eslint-doc-generatorrc.js"]
 		},
 		"packages/markdownlint-sentences-per-line": {
 			"project": ["src/**/*.ts!"]
