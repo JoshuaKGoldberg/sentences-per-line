@@ -15,6 +15,7 @@ describe(getIndexBeforeSecondSentence, () => {
 		["``Abc.`` Def.", undefined],
 		["`Abc.` Def. Ghi", 11],
 		["```js```.", undefined],
+		["`C:\\`", undefined],
 		[
 			`
 \`\`\`plaintext
