@@ -19,7 +19,7 @@ jobs:
       # will publish all workspace packages with versions not yet present on the registry
       # (so it only publishes packages whose versions were bumped and merged)
       - name: Publish to npm
-        run: pnpm --filter "./packages/*" publish --dry-run --no-git-checks
+        run: pnpm --filter "./packages/*" publish --no-git-checks
   release-please:
     name: Create Release PR
     outputs:
