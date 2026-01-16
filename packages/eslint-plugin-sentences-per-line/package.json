@@ -11,7 +11,8 @@
 	"type": "module",
 	"main": "./lib/index.js",
 	"files": [
-		"lib/"
+		"lib/",
+		"!lib/tsconfig.build.tsbuildinfo"
 	],
 	"scripts": {
 		"build:docs": "eslint-doc-generator",

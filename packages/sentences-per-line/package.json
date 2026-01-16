@@ -19,7 +19,8 @@
 	},
 	"main": "./src/index.ts",
 	"files": [
-		"lib/"
+		"lib/",
+		"!lib/tsconfig.build.tsbuildinfo"
 	],
 	"engines": {
 		"node": ">=22.14.0"
