@@ -6,11 +6,9 @@
 			"entry": [".eslint-doc-generatorrc.js"]
 		},
 		"packages/markdownlint-sentences-per-line": {
-			"entry": ["src/index.ts!"],
 			"project": ["src/**/*.ts!"]
 		},
 		"packages/sentences-per-line": {
-			"entry": ["src/index.ts!"],
 			"project": ["src/**/*.ts!"]
 		}
 	}

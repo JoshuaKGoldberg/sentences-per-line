@@ -36,6 +36,16 @@
         "code",
         "infra"
       ]
+    },
+    {
+      "login": "marcalexiei",
+      "name": "Marco Pasqualetti",
+      "avatar_url": "https://avatars.githubusercontent.com/u/24919330?v=4",
+      "profile": "https://github.com/marcalexiei",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
