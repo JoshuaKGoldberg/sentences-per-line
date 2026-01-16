@@ -1,4 +1,4 @@
-import type { Root, RootContent, SentenceNode } from "mdast";
+import type { Root, RootContent, SentenceNode, SentenceNodeChild } from "mdast";
 
 import { doesEndWithIgnoredWord } from "sentences-per-line";
 
@@ -39,7 +39,7 @@ function modifySentenceNode(
 			!/^\s*\d+\./.test(child.value) &&
 			!doesEndWithIgnoredWord(child.value, customAbbreviations)
 		) {
-			// REMOVE following whitespace to avoid double breaks / extra indent
+			// Remove following whitespace to avoid double breaks / extra indent
 			if (children[i + 1].type === "whitespace") {
 				children.splice(i + 1, 1);
 			}
@@ -51,20 +51,16 @@ function modifySentenceNode(
 }
 
 function walk(
-	node: Root | RootContent,
+	node: Root | RootContent | SentenceNodeChild,
 	{ customAbbreviations }: Required<ModifyNodeOptions>,
 ) {
-	// If the node has children, traverse them.
 	if ("children" in node && Array.isArray(node.children)) {
 		for (const child of node.children) {
-			// If child is a sentence, process it structurally
 			if (child.type === "sentence") {
 				modifySentenceNode(child, { customAbbreviations });
-				continue;
+			} else {
+				walk(child, { customAbbreviations });
 			}
-
-			// otherwise recurse
-			walk(child as RootContent, { customAbbreviations });
 		}
 	}
 }

@@ -49,6 +49,7 @@ const preprocess: PluginPrinter["preprocess"] = async (ast, options) => {
 	const mdAst = (await mdastPrinter.preprocess?.(ast, options)) as Root;
 
 	modifyNodeIfMultipleSentencesInLine(mdAst, { customAbbreviations });
+
 	return mdAst;
 };
 
@@ -85,7 +86,6 @@ const print: PluginPrinter["print"] = (path, options, print, args) => {
 		return [breakParent, line];
 	}
 
-	// Fallback to Prettier's original mdast printer
 	return mdastPrinter.print(path, options, print, args);
 };
 
@@ -113,7 +113,6 @@ const getVisitorKeys: PluginPrinter["getVisitorKeys"] = (
 export const printers = {
 	mdast: {
 		...mdastPrinter,
-
 		getVisitorKeys,
 		preprocess,
 		print,
