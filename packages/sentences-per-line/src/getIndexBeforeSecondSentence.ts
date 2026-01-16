@@ -60,6 +60,8 @@ function getNextIndexNotInCode(line: string, i: number) {
 
 		if (line[i - 1] !== "\\") {
 			break;
+		} else {
+			i += 1;
 		}
 	}
 
