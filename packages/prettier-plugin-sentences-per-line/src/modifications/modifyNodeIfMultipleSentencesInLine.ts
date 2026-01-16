@@ -1,53 +1,37 @@
-import type { Blockquote, Paragraph, RootContent, SentenceNode } from "mdast";
-import type { AstPath } from "prettier";
+import type { Root, RootContent, SentenceNode, SentenceNodeChild } from "mdast";
 
 import { doesEndWithIgnoredWord } from "sentences-per-line";
 
-import { insertNewlineAt } from "./insertNewlineAt.ts";
-
-export interface ModifyNodeOptions {
+interface ModifyNodeOptions {
 	customAbbreviations?: string[];
 }
 
+/**
+ * Mutates the mdast by performing a root-level structural transformation.
+ *
+ * This function walks the provided mdast root node and inserts custom
+ * `SentenceBreak` nodes to explicitly represent sentence boundaries in the
+ * tree. The mutation is performed in place and is intended to run exactly
+ * once per formatting pass, prior to printing.
+ */
 export function modifyNodeIfMultipleSentencesInLine(
-	path: AstPath<RootContent>,
+	rootNode: Root,
 	options: ModifyNodeOptions = {},
 ) {
-	const node = path.node;
-	if (node.type === "blockquote") {
-		modifyBlockquoteNode(node, options);
-	} else if (node.type === "paragraph") {
-		modifyParagraphNode(node, "\n", options);
-	}
-}
+	const customAbbreviations = options.customAbbreviations ?? [];
 
-function modifyBlockquoteNode(node: Blockquote, options: ModifyNodeOptions) {
-	for (const paragraph of node.children) {
-		if (paragraph.type === "paragraph") {
-			modifyParagraphNode(paragraph, "> ", options);
-		}
-	}
-}
-
-function modifyParagraphNode(
-	node: Paragraph,
-	insertion: string,
-	options: ModifyNodeOptions,
-) {
-	for (const child of node.children) {
-		if (child.type === "sentence") {
-			modifySentenceNode(child, insertion, options);
-		}
-	}
+	walk(rootNode, { customAbbreviations });
 }
 
 function modifySentenceNode(
 	sentence: SentenceNode,
-	insertion: string,
-	{ customAbbreviations = [] }: ModifyNodeOptions,
+	{ customAbbreviations }: Required<ModifyNodeOptions>,
 ) {
-	for (let i = 0; i < sentence.children.length - 1; i++) {
-		const child = sentence.children[i];
+	const children = sentence.children;
+
+	for (let i = children.length - 2; i >= 0; i--) {
+		const child = children[i];
+
 		if (
 			child.type === "word" &&
 			child.value.endsWith(".") &&
@@ -55,7 +39,28 @@ function modifySentenceNode(
 			!/^\s*\d+\./.test(child.value) &&
 			!doesEndWithIgnoredWord(child.value, customAbbreviations)
 		) {
-			insertNewlineAt(sentence.children, i, insertion);
+			// Remove following whitespace to avoid double breaks / extra indent
+			if (children[i + 1].type === "whitespace") {
+				children.splice(i + 1, 1);
+			}
+
+			// Insert structural break
+			children.splice(i + 1, 0, { type: "sentenceBreak" });
+		}
+	}
+}
+
+function walk(
+	node: Root | RootContent | SentenceNodeChild,
+	{ customAbbreviations }: Required<ModifyNodeOptions>,
+) {
+	if ("children" in node && Array.isArray(node.children)) {
+		for (const child of node.children) {
+			if (child.type === "sentence") {
+				modifySentenceNode(child, { customAbbreviations });
+			} else {
+				walk(child, { customAbbreviations });
+			}
 		}
 	}
 }
