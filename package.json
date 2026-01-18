@@ -29,7 +29,7 @@
 		"@eslint-community/eslint-plugin-eslint-comments": "4.5.0",
 		"@eslint/js": "9.39.2",
 		"@eslint/markdown": "^7.5.1",
-		"@types/node": "25.0.8",
+		"@types/node": "25.0.9",
 		"@vitest/coverage-v8": "4.0.17",
 		"@vitest/eslint-plugin": "1.6.6",
 		"console-fail-test": "0.6.1",
