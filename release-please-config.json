@@ -3,6 +3,7 @@
 	"release-type": "node",
 	"bump-minor-pre-major": true,
 	"bump-patch-for-minor-pre-major": true,
+	"tag-separator": "@",
 	"changelog-sections": [
 		{ "type": "feat", "section": "Features", "hidden": false },
 		{ "type": "fix", "section": "Bug Fixes", "hidden": false },
