@@ -46,6 +46,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "fredikats",
+      "name": "Fredi Kats",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22368203?v=4",
+      "profile": "http://fredikats.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
