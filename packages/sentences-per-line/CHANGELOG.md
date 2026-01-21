@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.5.1](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/sentences-per-line@v0.5.0...sentences-per-line@v0.5.1) (2026-01-21)
+
+
+### Bug Fixes
+
+* remove test files from build output ([#882](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/882)) ([8078f84](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/8078f848edaf8261f80aafd45d1cad2bf26585e8))
+* **sentences-per-line:** handle backslash with backtick ([#889](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/889)) ([2e460af](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/2e460af64ce0c8d51b0bd92ad50608bbc6517c4a))
+
 ## [0.3.0](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/0.2.2...0.3.0) (2024-12-13)
 
 ### Features
