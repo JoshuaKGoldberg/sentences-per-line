@@ -1,6 +1,7 @@
 {
-	"name": "sentences-per-line",
+	"name": "sentences-per-line-root",
 	"version": "0.0.0",
+	"private": true,
 	"description": "Packages to enforce the number of sentences per line in Markdown files. 📐",
 	"repository": {
 		"type": "git",

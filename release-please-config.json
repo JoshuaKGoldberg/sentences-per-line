@@ -1,0 +1,36 @@
+{
+	"$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+	"release-type": "node",
+	"bump-minor-pre-major": true,
+	"bump-patch-for-minor-pre-major": true,
+	"tag-separator": "@",
+	"changelog-sections": [
+		{ "type": "feat", "section": "Features", "hidden": false },
+		{ "type": "fix", "section": "Bug Fixes", "hidden": false },
+		{
+			"type": "perf",
+			"section": "Performance Improvements",
+			"hidden": false
+		},
+		{ "type": "build", "hidden": true },
+		{ "type": "chore", "hidden": true },
+		{ "type": "ci", "hidden": true },
+		{ "type": "docs", "hidden": true },
+		{ "type": "refactor", "hidden": true },
+		{ "type": "test", "hidden": true }
+	],
+	"packages": {
+		"packages/eslint-plugin-sentences-per-line": {
+			"package-name": "eslint-plugin-sentences-per-line"
+		},
+		"packages/markdownlint-sentences-per-line": {
+			"package-name": "markdownlint-sentences-per-line"
+		},
+		"packages/prettier-plugin-sentences-per-line": {
+			"package-name": "prettier-plugin-sentences-per-line"
+		},
+		"packages/sentences-per-line": {
+			"package-name": "sentences-per-line"
+		}
+	}
+}

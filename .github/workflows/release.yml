@@ -1,0 +1,46 @@
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  publish:
+    # Why 'true' as string? https://github.com/googleapis/release-please-action/issues/912
+    if: needs.release-please.outputs.releases_created == 'true'
+    name: Publish to npm
+    needs: release-please
+    permissions:
+      contents: read
+      id-token: write # Required for OIDC
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      - uses: ./.github/actions/prepare
+      - run: pnpm build
+
+      # will publish all workspace packages with versions not yet present on the registry
+      # (so it only publishes packages whose versions were bumped and merged)
+      - name: Publish to npm
+        run: pnpm --filter "./packages/*" publish --no-git-checks
+  release-please:
+    name: Create Release PR
+    outputs:
+      paths_released: ${{ steps.release.outputs.paths_released }}
+      releases_created: ${{ steps.release.outputs.releases_created }}
+    permissions:
+      contents: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+      - id: release
+        uses: googleapis/release-please-action@16a9c90856f42705d54a6fda1823352bdc62cf38 # v4.4.0
+        with:
+          config-file: release-please-config.json
+          manifest-file: release-please-manifest.json
+
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions: {}
