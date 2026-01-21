@@ -1,6 +1,6 @@
 {
 	"name": "markdownlint-sentences-per-line",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Markdownlint rule for limiting sentences per line. 📐",
 	"repository": {
 		"type": "git",
