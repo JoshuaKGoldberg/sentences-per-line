@@ -25,6 +25,6 @@
 	},
 	"devDependencies": {
 		"@types/mdast": "^4.0.4",
-		"eslint-doc-generator": "^2.3.0"
+		"eslint-doc-generator": "^3.0.0"
 	}
 }
