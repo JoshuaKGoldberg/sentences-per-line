@@ -23,8 +23,6 @@ export const parsers = {
 
 type PluginPrinter = Printer<Nodes>;
 
-// @ts-expect-error -- markdown does not provide public exports
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 const mdastPrinter = markdown.printers.mdast as PluginPrinter;
 
 const { breakParent, group, line } = builders;
