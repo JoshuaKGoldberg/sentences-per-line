@@ -23,12 +23,14 @@ jobs:
           manifest-file: release-please-manifest.json
 
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        if: ${{ steps.release.outputs.releases_created }}
+        # Why 'true' as string? https://github.com/googleapis/release-please-action/issues/912
+        if: ${{ steps.release.outputs.releases_created == 'true' }}
 
       - uses: ./.github/actions/prepare
-        if: ${{ steps.release.outputs.releases_created }}
+        if: ${{ steps.release.outputs.releases_created == 'true' }}
 
-      - run: |
+      - name: Build and Publish
+        if: ${{ steps.release.outputs.releases_created == 'true' }}
+        run: |
           pnpm build
           pnpm --filter "./packages/*" publish --no-git-checks
-        if: ${{ steps.release.outputs.releases_created }}
