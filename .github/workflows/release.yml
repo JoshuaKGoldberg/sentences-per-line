@@ -1,3 +1,10 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
 
@@ -25,12 +32,3 @@ jobs:
           pnpm build
           pnpm --filter "./packages/*" publish --no-git-checks
         if: ${{ steps.release.outputs.releases_created }}
-
-name: Release
-
-on:
-  push:
-    branches:
-      - main
-
-permissions: {}
