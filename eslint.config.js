@@ -30,8 +30,6 @@ export default defineConfig(
 	{
 		extends: [
 			js.configs.recommended,
-			// https://github.com/eslint-community/eslint-plugin-eslint-comments/issues/214
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 			comments.recommended,
 			jsdoc.configs["flat/contents-typescript-error"],
 			jsdoc.configs["flat/logical-typescript-error"],
