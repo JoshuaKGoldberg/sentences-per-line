@@ -9,7 +9,7 @@
 
 <p align="center">ESLint plugin for limiting sentences per line. 📐</p>
 
-eslint-plugin-sentences-per-line allows you to enforce that no line in your Markdown files contains more than one sentence.
+`eslint-plugin-sentences-per-line` allows you to enforce that no line in your Markdown files contains more than one sentence.
 This is useful because:
 
 - Shorter lines result in simpler, easier-to-understand Git diffs
