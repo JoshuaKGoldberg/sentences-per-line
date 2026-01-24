@@ -57,8 +57,5 @@
 	"packageManager": "pnpm@10.28.1",
 	"engines": {
 		"node": ">=18.3.0"
-	},
-	"publishConfig": {
-		"provenance": true
 	}
 }
