@@ -15,7 +15,7 @@
 + Second sentence.
 ```
 
-markdownlint-sentences-per-line allows you to enforce that no line in your Markdown files contains more than one sentence.
+`markdownlint-sentences-per-line` allows you to enforce that no line in your Markdown files contains more than one sentence.
 This is useful because:
 
 - Shorter lines result in simpler, easier-to-understand Git diffs

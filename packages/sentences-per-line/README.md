@@ -11,7 +11,7 @@
 
 ## Usage
 
-> Looking for the ESLint, Markdownlint, or Prettier plugins to enforce sentences-per-line?
+> Looking for the ESLint, Markdownlint, or Prettier plugins to enforce `sentences-per-line`?
 > See [../../README.md > ## Packages](../../README.md#packages).
 
 ```shell
@@ -21,7 +21,7 @@ npm i sentences-per-line
 ### `getIndexBeforeSecondSentence`
 
 Retrieves the first index after the period of the line's first sentence, if a second sentence follows it.
-This is the driving function behind enforcing one sentence per line in the sentences-per-line monorepo's packages.
+This is the driving function behind enforcing one sentence per line in the `sentences-per-line` monorepo's packages.
 
 ```ts
 import { getIndexBeforeSecondSentence } from "sentences-per-line";
