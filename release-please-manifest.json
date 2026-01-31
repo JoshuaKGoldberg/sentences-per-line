@@ -1,6 +1,6 @@
 {
-	"packages/eslint-plugin-sentences-per-line": "0.1.1",
-	"packages/markdownlint-sentences-per-line": "0.1.2",
-	"packages/prettier-plugin-sentences-per-line": "0.2.1",
-	"packages/sentences-per-line": "0.5.1"
+	"packages/eslint-plugin-sentences-per-line": "0.1.2",
+	"packages/markdownlint-sentences-per-line": "0.1.3",
+	"packages/prettier-plugin-sentences-per-line": "0.2.2",
+	"packages/sentences-per-line": "0.5.2"
 }
