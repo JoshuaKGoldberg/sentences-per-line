@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/prettier-plugin-sentences-per-line@v0.2.1...prettier-plugin-sentences-per-line@v0.2.2) (2026-01-31)
+
+
+### Bug Fixes
+
+* bump new release for all packages ([#923](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/923)) ([71f35fa](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/71f35faa0522597fd3e0b5276eb2905b11588fa6))
+
 ## [0.2.1](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/prettier-plugin-sentences-per-line@v0.2.0...prettier-plugin-sentences-per-line@v0.2.1) (2026-01-21)
 
 
