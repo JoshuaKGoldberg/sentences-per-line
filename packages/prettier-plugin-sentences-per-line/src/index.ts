@@ -25,7 +25,7 @@ type PluginPrinter = Printer<Nodes>;
 
 const mdastPrinter = markdown.printers.mdast as PluginPrinter;
 
-const { breakParent, group, line } = builders;
+const { hardlineWithoutBreakParent } = builders;
 
 /**
  * Runs after the Markdown parser has produced the mdast AST and before any
@@ -63,25 +63,8 @@ const preprocess: PluginPrinter["preprocess"] = async (ast, options) => {
 const print: PluginPrinter["print"] = (path, options, print, args) => {
 	const node = path.node;
 
-	/**
-	 * `sentence` nodes are printed as a grouped Doc so that they participate
-	 * correctly in line-breaking decisions and can be combined with
-	 * {@link breakParent} semantics.
-	 */
-	if (node.type === "sentence") {
-		return group(
-			// @ts-expect-error -- Prettier's AstPath.call typings cannot express that
-			// `children` here is `Nodes[]`; TypeScript infers `string`
-			path.map(print, "children"),
-		);
-	}
-
-	/**
-	 * `sentenceBreak` nodes force a hard line break at the parent level by
-	 *  emitting a {@link breakParent} followed by a {@link line}.
-	 */
 	if (node.type === "sentenceBreak") {
-		return [breakParent, line];
+		return [hardlineWithoutBreakParent];
 	}
 
 	return mdastPrinter.print(path, options, print, args);

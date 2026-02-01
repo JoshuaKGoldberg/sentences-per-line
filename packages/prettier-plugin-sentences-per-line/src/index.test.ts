@@ -1,9 +1,11 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import * as prettier from "prettier";
 import { describe, expect, test } from "vitest";
 
 import * as plugin from "./index.ts";
 
-function format(code: string, options: prettier.Options) {
+function format(code: string, options: prettier.Options): Promise<string> {
 	return prettier.format(code, {
 		...options,
 		parser: "markdown",
@@ -45,9 +47,35 @@ describe("index", () => {
 		["Ex. one.\n"],
 		["i.e. first example.\n"],
 		["I.E. first example.\n"],
+
+		// https://github.com/JoshuaKGoldberg/sentences-per-line/issues/938
+		[
+			[
+				"> [!NOTE]",
+				"> These values are the list of possible `process.platform`\n",
+			].join("\n"),
+			[
+				"> [!NOTE]",
+				"> These values are the list of possible `process.platform`\n",
+			].join("\n"),
+		],
 	])("%j", async (input, expected = input) => {
 		const actual = await format(input, { filepath: "test.md" });
 		expect(actual).toBe(expected);
+	});
+
+	describe("snapshots", () => {
+		const testDir = path.join(import.meta.dirname, "..", "tests");
+
+		test.each(["nested-list", "block-quote-multi"])("%s", async (name) => {
+			const inputPath = path.join(testDir, `${name}.md`);
+			const snapPath = path.join(testDir, `${name}.expected.md`);
+
+			const input = await readFile(inputPath, "utf-8");
+
+			const output = await format(input, { filepath: inputPath });
+			await expect(output).toMatchFileSnapshot(snapPath);
+		});
 	});
 
 	describe("List", () => {
