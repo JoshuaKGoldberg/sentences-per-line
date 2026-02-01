@@ -5,4 +5,4 @@ lib/
 pnpm-lock.yaml
 CHANGELOG.md
 packages/*/lib
-packages/prettier-plugin-sentences-per-line/tests
+packages/prettier-plugin-sentences-per-line/testFixtures
