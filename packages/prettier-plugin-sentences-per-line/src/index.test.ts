@@ -65,11 +65,11 @@ describe("index", () => {
 	});
 
 	describe("snapshots", () => {
-		const testDir = path.join(import.meta.dirname, "..", "tests");
+		const testDir = path.join(import.meta.dirname, "..", "testFixtures");
 
 		test.each(["nested-list", "block-quote-multi"])("%s", async (name) => {
-			const inputPath = path.join(testDir, `${name}.md`);
-			const snapPath = path.join(testDir, `${name}.expected.md`);
+			const inputPath = path.join(testDir, `${name}.input.md`);
+			const snapPath = path.join(testDir, `${name}.output.md`);
 
 			const input = await readFile(inputPath, "utf-8");
 

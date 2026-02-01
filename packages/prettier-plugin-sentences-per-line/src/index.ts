@@ -53,8 +53,7 @@ const preprocess: PluginPrinter["preprocess"] = async (ast, options) => {
 
 /**
  * This function delegates printing to Prettier’s built-in Markdown printer
- * for all node types except the custom `sentence` and `sentenceBreak` nodes
- * introduced by this plugin.
+ * for all node types except `sentenceBreak` node introduced by this plugin.
  *
  * All other nodes are forwarded unchanged to the original mdast printer,
  * preserving Prettier’s default Markdown formatting behavior.
