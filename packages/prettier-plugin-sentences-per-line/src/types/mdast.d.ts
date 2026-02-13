@@ -42,6 +42,7 @@ declare module "mdast" {
 	}
 
 	interface RootContentMap {
+		word: WordNode;
 		sentence: SentenceNode;
 		sentenceBreak: SentenceBreakNode;
 	}
