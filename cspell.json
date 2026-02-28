@@ -10,5 +10,5 @@
 		"packages/*/lib",
 		"pnpm-lock.yaml"
 	],
-	"words": ["commonmark", "eslint-doc-generatorrc"]
+	"words": ["commonmark", "eslint-doc-generatorrc", "hardline"]
 }
