@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/prettier-plugin-sentences-per-line@v0.2.2...prettier-plugin-sentences-per-line@v0.2.3) (2026-03-01)
+
+
+### Bug Fixes
+
+* **prettier-plugin-sentences-per-line:** fix position error when dealing with github flavoured markdown ([#939](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/939)) ([26be2c6](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/26be2c65c005d87ec0e15e89264a00b6ce075ee2))
+
 ## [0.2.2](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/prettier-plugin-sentences-per-line@v0.2.1...prettier-plugin-sentences-per-line@v0.2.2) (2026-01-31)
 
 
