@@ -39,7 +39,7 @@ jobs:
     if: ${{ !endsWith(github.actor, '[bot]') && !contains(github.event.pull_request.labels.*.name, 'autorelease') }}
     runs-on: ubuntu-latest
     steps:
-      - uses: JoshuaKGoldberg/octoguide@88dff3e0dc0e241123b357f783cf4528eea50529 # 0.21.9
+      - uses: JoshuaKGoldberg/octoguide@e2c774d098e6b38c428bcd90dcca254389544aef # 0.21.10
         with:
           config: strict
           github-token: ${{ secrets.GITHUB_TOKEN }}
