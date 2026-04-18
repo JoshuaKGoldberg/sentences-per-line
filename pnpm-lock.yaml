@@ -67,16 +67,16 @@ importers:
         version: 16.4.0
       prettier:
         specifier: ^3.8.1
-        version: 3.8.2
+        version: 3.8.3
       prettier-plugin-curly:
         specifier: 0.4.1
-        version: 0.4.1(prettier@3.8.2)
+        version: 0.4.1(prettier@3.8.3)
       prettier-plugin-packagejson:
         specifier: 3.0.2
-        version: 3.0.2(prettier@3.8.2)
+        version: 3.0.2(prettier@3.8.3)
       prettier-plugin-sh:
         specifier: 0.18.1
-        version: 0.18.1(prettier@3.8.2)
+        version: 0.18.1(prettier@3.8.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -104,7 +104,7 @@ importers:
         version: 4.0.4
       eslint-doc-generator:
         specifier: ^2.3.0
-        version: 2.4.0(eslint@10.2.0(jiti@2.6.1))(prettier@3.8.2)(typescript@5.9.3)
+        version: 2.4.0(eslint@10.2.0(jiti@2.6.1))(prettier@3.8.3)(typescript@5.9.3)
 
   packages/markdownlint-sentences-per-line:
     dependencies:
@@ -133,7 +133,7 @@ importers:
         version: 4.0.4
       prettier:
         specifier: ^3.7.1
-        version: 3.8.2
+        version: 3.8.3
 
   packages/sentences-per-line: {}
 
@@ -2229,8 +2229,8 @@ packages:
     resolution: {integrity: sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A==}
     engines: {node: '>=12'}
 
-  postcss@8.5.9:
-    resolution: {integrity: sha512-7a70Nsot+EMX9fFU3064K/kdHWZqGVY+BADLyXc8Dfv+mTLLVl6JzJpPaCZ2kQL9gIJvKXSLMHhqdRRjwQeFtw==}
+  postcss@8.5.10:
+    resolution: {integrity: sha512-pMMHxBOZKFU6HgAZ4eyGnwXF/EvPGGqUr0MnZ5+99485wwW41kW91A4LOGxSHhgugZmSChL5AlElNdwlNgcnLQ==}
     engines: {node: ^10 || ^12 || >=14}
 
   prelude-ls@1.2.1:
@@ -2257,8 +2257,8 @@ packages:
     peerDependencies:
       prettier: ^3.6.0
 
-  prettier@3.8.2:
-    resolution: {integrity: sha512-8c3mgTe0ASwWAJK+78dpviD+A8EqhndQPUBpNUIPt6+xWlIigCwfN01lWr9MAede4uqXGTEKeQWTvzb3vjia0Q==}
+  prettier@3.8.3:
+    resolution: {integrity: sha512-7igPTM53cGHMW8xWuVTydi2KO233VFiTNyF5hLJqpilHfmn8C8gPf+PS7dUT64YcXFbiMGZxS9pCSxL/Dxm/Jw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -3855,7 +3855,7 @@ snapshots:
 
   escape-string-regexp@5.0.0: {}
 
-  eslint-doc-generator@2.4.0(eslint@10.2.0(jiti@2.6.1))(prettier@3.8.2)(typescript@5.9.3):
+  eslint-doc-generator@2.4.0(eslint@10.2.0(jiti@2.6.1))(prettier@3.8.3)(typescript@5.9.3):
     dependencies:
       '@typescript-eslint/utils': 8.58.2(eslint@10.2.0(jiti@2.6.1))(typescript@5.9.3)
       ajv: 8.17.1
@@ -3872,7 +3872,7 @@ snapshots:
       markdown-table: 3.0.4
       type-fest: 4.41.0
     optionalDependencies:
-      prettier: 3.8.2
+      prettier: 3.8.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -4855,7 +4855,7 @@ snapshots:
 
   picomatch@4.0.4: {}
 
-  postcss@8.5.9:
+  postcss@8.5.10:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
@@ -4863,23 +4863,23 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-curly@0.4.1(prettier@3.8.2):
+  prettier-plugin-curly@0.4.1(prettier@3.8.3):
     dependencies:
-      prettier: 3.8.2
+      prettier: 3.8.3
 
-  prettier-plugin-packagejson@3.0.2(prettier@3.8.2):
+  prettier-plugin-packagejson@3.0.2(prettier@3.8.3):
     dependencies:
       sort-package-json: 3.6.0
     optionalDependencies:
-      prettier: 3.8.2
+      prettier: 3.8.3
 
-  prettier-plugin-sh@0.18.1(prettier@3.8.2):
+  prettier-plugin-sh@0.18.1(prettier@3.8.3):
     dependencies:
       '@reteps/dockerfmt': 0.5.2
-      prettier: 3.8.2
+      prettier: 3.8.3
       sh-syntax: 0.5.8
 
-  prettier@3.8.2: {}
+  prettier@3.8.3: {}
 
   pretty-format@29.7.0:
     dependencies:
@@ -5140,7 +5140,7 @@ snapshots:
       esbuild: 0.27.7
       fdir: 6.5.0(picomatch@4.0.4)
       picomatch: 4.0.4
-      postcss: 8.5.9
+      postcss: 8.5.10
       rollup: 4.60.1
       tinyglobby: 0.2.16
     optionalDependencies:
