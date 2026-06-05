@@ -22,7 +22,7 @@ jobs:
           config-file: release-please-config.json
           manifest-file: release-please-manifest.json
 
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
         # Why 'true' as string? https://github.com/googleapis/release-please-action/issues/912
         if: ${{ steps.release.outputs.releases_created == 'true' }}
 
