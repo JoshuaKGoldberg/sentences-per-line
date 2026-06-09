@@ -36,8 +36,8 @@ importers:
         specifier: 10.4.1
         version: 10.4.1(jiti@2.6.1)
       eslint-plugin-jsdoc:
-        specifier: 63.0.1
-        version: 63.0.1(eslint@10.4.1(jiti@2.6.1))
+        specifier: 63.0.2
+        version: 63.0.2(eslint@10.4.1(jiti@2.6.1))
       eslint-plugin-jsonc:
         specifier: 3.2.0
         version: 3.2.0(eslint@10.4.1(jiti@2.6.1))
@@ -1549,8 +1549,8 @@ packages:
       '@eslint/json':
         optional: true
 
-  eslint-plugin-jsdoc@63.0.1:
-    resolution: {integrity: sha512-2uQ2ShksMXRUI4K96/CyNs5sYmXQHaSoRjn1cxL2RcRHF+9d+njIkT03cZS7/g/eI/fPJTRfjm/MgIlOezD+KQ==}
+  eslint-plugin-jsdoc@63.0.2:
+    resolution: {integrity: sha512-0TchoK1uS4VxHSo3P4CyWQ31Lm+6zsT+xkHMC5KbFKwgOf8YrXPf1Bl8EP7kpgw1wfe/Ui5jz5mSX7ou8WAVuw==}
     engines: {node: ^22.13.0 || >=24}
     peerDependencies:
       eslint: ^7.0.0 || ^8.0.0 || ^9.0.0 || ^10.0.0
@@ -2268,8 +2268,8 @@ packages:
     resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
     engines: {node: ^14.0.0 || >=16.0.0}
 
-  semver@7.8.1:
-    resolution: {integrity: sha512-rkVq3IXh+4FDGch+KwzX3aV9W3kO54GyEgpvBzSyctDA6Xtd7RJQV1xmXbeQp5v7+VzLOfVqiutSE6GICgPFvg==}
+  semver@7.8.3:
+    resolution: {integrity: sha512-wnilbGyMxzbY7dNOl7jpKbLSjcfeweJWU5j4+u5qW+6/wuGD9KzIGOyZnQVSBM9E7DtWaaH3CyHkppYrKYoxwg==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -3385,7 +3385,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.60.1
       debug: 4.4.3
       minimatch: 10.2.4
-      semver: 7.8.1
+      semver: 7.8.3
       tinyglobby: 0.2.16
       ts-api-utils: 2.5.0(typescript@5.9.3)
       typescript: 5.9.3
@@ -3698,7 +3698,7 @@ snapshots:
       cspell-lib: 10.0.1
       fast-json-stable-stringify: 2.1.0
       flatted: 3.4.2
-      semver: 7.8.1
+      semver: 7.8.3
       tinyglobby: 0.2.16
 
   debug@4.4.3:
@@ -3734,7 +3734,7 @@ snapshots:
       '@one-ini/wasm': 0.2.0
       commander: 14.0.3
       minimatch: 10.0.1
-      semver: 7.8.1
+      semver: 7.8.3
 
   emoji-regex@10.6.0: {}
 
@@ -3823,7 +3823,7 @@ snapshots:
       esquery: 1.7.0
       jsonc-eslint-parser: 3.1.0
 
-  eslint-plugin-jsdoc@63.0.1(eslint@10.4.1(jiti@2.6.1)):
+  eslint-plugin-jsdoc@63.0.2(eslint@10.4.1(jiti@2.6.1)):
     dependencies:
       '@es-joy/jsdoccomment': 0.87.0
       '@es-joy/resolve.exports': 1.2.0
@@ -3837,7 +3837,7 @@ snapshots:
       html-entities: 2.6.0
       object-deep-merge: 2.0.1
       parse-imports-exports: 0.2.4
-      semver: 7.8.1
+      semver: 7.8.3
       spdx-expression-parse: 4.0.0
       to-valid-identifier: 1.0.0
     transitivePeerDependencies:
@@ -3868,7 +3868,7 @@ snapshots:
       eslint-fix-utils: 0.4.0(@types/estree@1.0.9)(eslint@10.4.1(jiti@2.6.1))
       jsonc-eslint-parser: 3.1.0
       package-json-validator: 0.60.0
-      semver: 7.8.1
+      semver: 7.8.3
       sort-object-keys: 2.1.0
       sort-package-json: 3.6.0
       validate-npm-package-name: 7.0.2
@@ -4155,7 +4155,7 @@ snapshots:
     dependencies:
       acorn: 8.16.0
       eslint-visitor-keys: 5.0.1
-      semver: 7.8.1
+      semver: 7.8.3
 
   katex@0.16.47:
     dependencies:
@@ -4239,7 +4239,7 @@ snapshots:
 
   make-dir@4.0.0:
     dependencies:
-      semver: 7.8.1
+      semver: 7.8.3
 
   markdown-it@13.0.1:
     dependencies:
@@ -4717,7 +4717,7 @@ snapshots:
 
   package-json-validator@0.60.0:
     dependencies:
-      semver: 7.8.1
+      semver: 7.8.3
       validate-npm-package-license: 3.0.4
       validate-npm-package-name: 7.0.2
       yargs: 18.0.0
@@ -4858,7 +4858,7 @@ snapshots:
       refa: 0.12.1
       regexp-ast-analysis: 0.7.1
 
-  semver@7.8.1: {}
+  semver@7.8.3: {}
 
   sh-syntax@0.5.8:
     dependencies:
@@ -4894,7 +4894,7 @@ snapshots:
       detect-newline: 4.0.1
       git-hooks-list: 4.2.1
       is-plain-obj: 4.1.0
-      semver: 7.8.1
+      semver: 7.8.3
       sort-object-keys: 2.1.0
       tinyglobby: 0.2.16
 
