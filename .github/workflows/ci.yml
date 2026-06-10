@@ -71,7 +71,7 @@ jobs:
       - env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         if: always()
-        uses: codecov/codecov-action@v6
+        uses: codecov/codecov-action@v7
   type_check:
     name: Type Check
     runs-on: ubuntu-latest
