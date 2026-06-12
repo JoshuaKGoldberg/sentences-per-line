@@ -24,6 +24,14 @@ export function getIndexBeforeSecondSentence(line: string) {
 		}
 
 		if (
+			(line[i] === "!" || line[i] === "?") &&
+			line[i + 1] === " " &&
+			isCapitalizedAlphabetCharacter(line[i + 2])
+		) {
+			return i + 1;
+		}
+
+		if (
 			line[i] === "." &&
 			line[i + 1] === " " &&
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
