@@ -32,9 +32,18 @@ function modifySentenceNode(
 	for (let i = children.length - 2; i >= 0; i--) {
 		const child = children[i];
 
+		const nextChild =
+			children[i + 1]?.type === "whitespace"
+				? children[i + 2]
+				: children[i + 1];
+		const nextStartsWithCapital =
+			nextChild?.type === "word" && /^[A-Z]/.test(nextChild.value);
+
 		if (
 			child.type === "word" &&
-			child.value.endsWith(".") &&
+			(child.value.endsWith(".") ||
+				((child.value.endsWith("!") || child.value.endsWith("?")) &&
+					nextStartsWithCapital)) &&
 			// Skip any starting list number, e.g. "1. " or " 1. "
 			!/^\s*\d+\./.test(child.value) &&
 			!doesEndWithIgnoredWord(child.value, customAbbreviations)

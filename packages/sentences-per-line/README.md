@@ -20,7 +20,7 @@ npm i sentences-per-line
 
 ### `getIndexBeforeSecondSentence`
 
-Retrieves the first index after the period of the line's first sentence, if a second sentence follows it.
+Retrieves the first index after the period, question mark, or exclamation mark of the line's first sentence, if a second sentence follows it.
 This is the driving function behind enforcing one sentence per line in the `sentences-per-line` monorepo's packages.
 
 ```ts

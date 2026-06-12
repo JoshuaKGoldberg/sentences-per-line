@@ -1,7 +1,7 @@
 import { doesEndWithIgnoredWord } from "./doesEndWithIgnoredWord.ts";
 
 /**
- * @returns The first index after the period of the line's first sentence,
+ * @returns The first index after the period, question mark, or exclamation mark of the line's first sentence,
  * if a second sentence follows it.
  */
 export function getIndexBeforeSecondSentence(line: string) {
