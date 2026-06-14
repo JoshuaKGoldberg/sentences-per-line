@@ -20,9 +20,9 @@
 	},
 	"devDependencies": {
 		"@types/markdownlint-rule-helpers": "^0.21.6",
-		"markdownlint": "^0.40.0"
+		"markdownlint": "^0.41.0"
 	},
 	"peerDependencies": {
-		"markdownlint": "^0.37.0 || ^0.39.0 || ^0.40.0"
+		"markdownlint": "^0.37.0 || ^0.39.0 || ^0.40.0 || ^0.41.0"
 	}
 }
