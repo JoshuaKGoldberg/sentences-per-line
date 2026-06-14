@@ -15,7 +15,7 @@
 		"!lib/tsconfig.build.tsbuildinfo"
 	],
 	"dependencies": {
-		"markdownlint-rule-helpers": "^0.30.0",
+		"markdownlint-rule-helpers": "^0.31.0",
 		"sentences-per-line": "workspace:^"
 	},
 	"devDependencies": {

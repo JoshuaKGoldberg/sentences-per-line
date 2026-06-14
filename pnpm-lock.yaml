@@ -109,8 +109,8 @@ importers:
   packages/markdownlint-sentences-per-line:
     dependencies:
       markdownlint-rule-helpers:
-        specifier: ^0.30.0
-        version: 0.30.0
+        specifier: ^0.31.0
+        version: 0.31.0
       sentences-per-line:
         specifier: workspace:^
         version: link:../sentences-per-line
@@ -1932,9 +1932,9 @@ packages:
     resolution: {integrity: sha512-BbRPTC72fl5vlSKv37v/xIENSRDYL/7X/XoFzZ740FGEbs9vZerLrIkFRY0rv7slQKxDczToYuMmqQFN61fi4Q==}
     engines: {node: '>=16'}
 
-  markdownlint-rule-helpers@0.30.0:
-    resolution: {integrity: sha512-bQr0l6MGl5ia6PmkZpIP7qETSw3c/+ZXsHpACVO0SR/PaC5+VT3DFImR45G/EGGOzLwqZGussgx91Mh3cttyJw==}
-    engines: {node: '>=18'}
+  markdownlint-rule-helpers@0.31.0:
+    resolution: {integrity: sha512-UgVL6v1CB+5ds7W2IBTU6yVDRDH1gSGoWWTRrwZmniU/4AKO8nz0d42gySOIVllfRxzaIMn7Gei4u65y6Rcs2A==}
+    engines: {node: '>=22'}
 
   markdownlint@0.30.0:
     resolution: {integrity: sha512-nInuFvI/rEzanAOArW5490Ez4EYpB5ODqVM0mcDYCPx9DKJWCQqCgejjiCvbSeE7sjbDscVtZmwr665qpF5xGA==}
@@ -4244,7 +4244,7 @@ snapshots:
 
   markdownlint-micromark@0.1.7: {}
 
-  markdownlint-rule-helpers@0.30.0: {}
+  markdownlint-rule-helpers@0.31.0: {}
 
   markdownlint@0.30.0:
     dependencies:
