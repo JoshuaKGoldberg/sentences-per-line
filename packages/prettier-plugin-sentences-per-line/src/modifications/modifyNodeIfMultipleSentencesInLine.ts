@@ -33,8 +33,8 @@ function modifySentenceNode(
 		const child = children[i];
 
 		const nextChild =
-			children[i + 1]?.type === "whitespace"
-				? children[i + 2]
+			children[i + 1].type === "whitespace"
+				? children.at(i + 2)
 				: children[i + 1];
 		const nextStartsWithCapital =
 			nextChild?.type === "word" && /^[A-Z]/.test(nextChild.value);
