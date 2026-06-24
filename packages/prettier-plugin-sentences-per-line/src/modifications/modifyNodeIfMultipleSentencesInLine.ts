@@ -42,8 +42,9 @@ function modifySentenceNode(
 		if (
 			child.type === "word" &&
 			(child.value.endsWith(".") ||
-				((child.value.endsWith("!") || child.value.endsWith("?")) &&
-					nextStartsWithCapital)) &&
+				child.value.endsWith("!") ||
+				child.value.endsWith("?")) &&
+			nextStartsWithCapital &&
 			// Skip any starting list number, e.g. "1. " or " 1. "
 			!/^\s*\d+\./.test(child.value) &&
 			!doesEndWithIgnoredWord(child.value, customAbbreviations)
