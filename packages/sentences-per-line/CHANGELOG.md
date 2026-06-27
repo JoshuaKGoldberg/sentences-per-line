@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/sentences-per-line@v0.5.2...sentences-per-line@v0.5.3) (2026-06-27)
+
+
+### Bug Fixes
+
+* detect sentences ending with ! and ? ([#1175](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1175)) ([6c78cf5](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/6c78cf57c98cb4dbe950cee1dd59834dc73fe27d))
+
 ## [0.5.2](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/sentences-per-line@v0.5.1...sentences-per-line@v0.5.2) (2026-01-31)
 
 
