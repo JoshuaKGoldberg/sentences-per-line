@@ -44,7 +44,7 @@
 		"eslint-plugin-yml": "3.5.0",
 		"husky": "9.1.7",
 		"jsonc-eslint-parser": "3.1.0",
-		"knip": "6.9.0",
+		"knip": "6.23.0",
 		"lint-staged": "17.0.8",
 		"prettier": "^3.8.1",
 		"prettier-plugin-curly": "0.4.1",
