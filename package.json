@@ -32,7 +32,7 @@
 		"@eslint/markdown": "^8.0.0",
 		"@types/node": "26.1.0",
 		"@vitest/coverage-v8": "4.1.9",
-		"@vitest/eslint-plugin": "1.6.20",
+		"@vitest/eslint-plugin": "1.6.21",
 		"console-fail-test": "0.6.1",
 		"cspell": "10.0.1",
 		"eslint": "10.6.0",
