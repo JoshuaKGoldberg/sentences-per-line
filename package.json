@@ -39,7 +39,7 @@
 		"eslint-plugin-jsdoc": "63.0.12",
 		"eslint-plugin-jsonc": "3.3.0",
 		"eslint-plugin-package-json": "0.88.3",
-		"eslint-plugin-perfectionist": "5.9.1",
+		"eslint-plugin-perfectionist": "5.10.0",
 		"eslint-plugin-regexp": "3.1.1",
 		"eslint-plugin-yml": "3.6.0",
 		"husky": "9.1.7",
