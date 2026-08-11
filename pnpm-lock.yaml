@@ -43,7 +43,7 @@ importers:
         version: 3.4.1(eslint@10.8.1(jiti@2.6.1))
       eslint-plugin-package-json:
         specifier: 0.88.3
-        version: 0.88.3(@types/estree@1.0.9)(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.2.0)
+        version: 0.88.3(@types/estree@1.0.9)(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.3.0)
       eslint-plugin-perfectionist:
         specifier: 5.10.1
         version: 5.10.1(eslint@10.8.1(jiti@2.6.1))(typescript@5.9.3)
@@ -57,8 +57,8 @@ importers:
         specifier: 9.1.7
         version: 9.1.7
       jsonc-eslint-parser:
-        specifier: 3.2.0
-        version: 3.2.0
+        specifier: 3.3.0
+        version: 3.3.0
       knip:
         specifier: 6.9.0
         version: 6.9.0(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)
@@ -1867,8 +1867,8 @@ packages:
   json-stable-stringify-without-jsonify@1.0.1:
     resolution: {integrity: sha512-Bdboy+l7tA3OGW6FjyFHWkP5LuByj1Tk33Ljyq0axyzdk9//JSi2u3fP1QSmd1KNwq6VOKYGlAu87CisVir6Pw==}
 
-  jsonc-eslint-parser@3.2.0:
-    resolution: {integrity: sha512-fjACeZ2chy9tiBakt5nU5SZhzk385pkSSfmhVvS13o4gqGiHVCNJXTNve8kqMeKv7A0L50mdaNUb7T8s+Egrnw==}
+  jsonc-eslint-parser@3.3.0:
+    resolution: {integrity: sha512-hYTGkHGNRZnXOFZ1urhINADoqDrGfpy53cjw+dxk84QE0pUDujQzeUeamNs6Mz44/TKD49z2x6/GVSu4ZrtA+Q==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
   katex@0.16.47:
@@ -3777,11 +3777,11 @@ snapshots:
     optionalDependencies:
       '@types/estree': 1.0.9
 
-  eslint-json-compat-utils@0.2.3(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.2.0):
+  eslint-json-compat-utils@0.2.3(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.3.0):
     dependencies:
       eslint: 10.8.1(jiti@2.6.1)
       esquery: 1.7.0
-      jsonc-eslint-parser: 3.2.0
+      jsonc-eslint-parser: 3.3.0
 
   eslint-plugin-jsdoc@64.0.1(eslint@10.8.1(jiti@2.6.1)):
     dependencies:
@@ -3811,14 +3811,14 @@ snapshots:
       '@ota-meshi/ast-token-store': 0.3.0
       diff-sequences: 29.6.3
       eslint: 10.8.1(jiti@2.6.1)
-      eslint-json-compat-utils: 0.2.3(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.2.0)
-      jsonc-eslint-parser: 3.2.0
+      eslint-json-compat-utils: 0.2.3(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.3.0)
+      jsonc-eslint-parser: 3.3.0
       natural-compare: 1.4.0
       synckit: 0.11.12
     transitivePeerDependencies:
       - '@eslint/json'
 
-  eslint-plugin-package-json@0.88.3(@types/estree@1.0.9)(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.2.0):
+  eslint-plugin-package-json@0.88.3(@types/estree@1.0.9)(eslint@10.8.1(jiti@2.6.1))(jsonc-eslint-parser@3.3.0):
     dependencies:
       '@altano/repository-tools': 2.0.1
       change-case: 5.4.4
@@ -3826,7 +3826,7 @@ snapshots:
       detect-newline: 4.0.1
       eslint: 10.8.1(jiti@2.6.1)
       eslint-fix-utils: 0.4.0(@types/estree@1.0.9)(eslint@10.8.1(jiti@2.6.1))
-      jsonc-eslint-parser: 3.2.0
+      jsonc-eslint-parser: 3.3.0
       package-json-validator: 0.60.0
       semver: 7.8.5
       sort-object-keys: 2.1.0
@@ -4109,7 +4109,7 @@ snapshots:
 
   json-stable-stringify-without-jsonify@1.0.1: {}
 
-  jsonc-eslint-parser@3.2.0:
+  jsonc-eslint-parser@3.3.0:
     dependencies:
       acorn: 8.16.0
       eslint-visitor-keys: 5.0.1
