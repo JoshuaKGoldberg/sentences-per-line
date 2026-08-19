@@ -67,6 +67,41 @@ describe("index", () => {
 				"> These values are the list of possible `process.platform`\n",
 			].join("\n"),
 		],
+
+		// https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1135
+		[
+			["| A | B |", "| - | - |", "| Abc. Def. | Ghi |\n"].join("\n"),
+			[
+				"| A         | B   |",
+				"| --------- | --- |",
+				"| Abc. Def. | Ghi |\n",
+			].join("\n"),
+		],
+		[
+			["| A | B |", "| - | - |", "| Abc. Def. | Ghi. Jkl. |\n"].join("\n"),
+			[
+				"| A         | B         |",
+				"| --------- | --------- |",
+				"| Abc. Def. | Ghi. Jkl. |\n",
+			].join("\n"),
+		],
+		[
+			[
+				"| A | B |",
+				"| - | - |",
+				"| Abc. Def. | Ghi. Jkl. |",
+				"",
+				"Abc. Def.\n",
+			].join("\n"),
+			[
+				"| A         | B         |",
+				"| --------- | --------- |",
+				"| Abc. Def. | Ghi. Jkl. |",
+				"",
+				"Abc.",
+				"Def.\n",
+			].join("\n"),
+		],
 	])("%j", async (input, expected = input) => {
 		const actual = await format(input, { filepath: "test.md" });
 		expect(actual).toBe(expected);
