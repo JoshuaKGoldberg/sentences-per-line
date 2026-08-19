@@ -57,7 +57,6 @@ export const one: MarkdownRuleDefinition<{
 		};
 	},
 	meta: {
-		defaultOptions: [{ additionalAbbreviations: [] }],
 		docs: {
 			description: "Limits Markdown sentences to one per line.",
 		},
