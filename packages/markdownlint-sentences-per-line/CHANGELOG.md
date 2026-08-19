@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.4...markdownlint-sentences-per-line@v0.1.5) (2026-08-19)
+
+
+### Features
+
+* add options for additional abbreviations ([#1278](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1278)) ([28f5a56](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/28f5a567b92d951ad398102bf0f17db31fe069fa))
+
 ## [0.1.4](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.3...markdownlint-sentences-per-line@v0.1.4) (2026-06-27)
 
 
