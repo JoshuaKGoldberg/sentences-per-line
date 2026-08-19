@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.4](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/sentences-per-line@v0.5.3...sentences-per-line@v0.5.4) (2026-08-19)
+
+
+### Features
+
+* add options for additional abbreviations ([#1278](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1278)) ([28f5a56](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/28f5a567b92d951ad398102bf0f17db31fe069fa))
+
 ## [0.5.3](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/sentences-per-line@v0.5.2...sentences-per-line@v0.5.3) (2026-06-27)
 
 
