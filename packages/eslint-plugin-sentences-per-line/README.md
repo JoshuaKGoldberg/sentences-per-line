@@ -50,6 +50,29 @@ export default [
 ];
 ```
 
+### Options
+
+#### `additionalAbbreviations`
+
+An array of custom abbreviations to ignore when determining sentence boundaries.
+
+These will be added to the standard list of abbreviations below.
+
+`["eg.", "e.g.", "etc.", "ex.", "ie.", "i.e.", "vs."]`
+
+```ts
+export default [
+	{
+		rules: {
+			"sentences-per-line/one": [
+				"error",
+				{ additionalAbbreviations: ["Mme."] },
+			],
+		},
+	},
+];
+```
+
 ## Rules
 
 <!-- prettier-ignore-start -->

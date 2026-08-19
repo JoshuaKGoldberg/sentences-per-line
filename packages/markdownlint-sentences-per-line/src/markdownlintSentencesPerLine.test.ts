@@ -179,12 +179,12 @@ Abc. Def.
 		});
 	});
 
-	test("reports no errors when given a French abbreviation in additionalAbbreviations", () => {
+	test("reports no errors when given a French abbreviation in additional_abbreviations", () => {
 		const actual = markdownlint.lint({
 			config: {
 				default: false,
 				"markdownlint-sentences-per-line": {
-					additionalAbbreviations: ["Mme."],
+					additional_abbreviations: ["Mme."],
 				},
 			},
 			customRules: [markdownlintSentencesPerLine],

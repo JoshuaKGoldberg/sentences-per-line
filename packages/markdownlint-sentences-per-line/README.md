@@ -43,7 +43,7 @@ markdownlint --rules markdownlint-sentences-per-line
 
 ### Options
 
-#### `additionalAbbreviations`
+#### `additional_abbreviations`
 
 An array of custom abbreviations to ignore when determining sentence boundaries.
 
@@ -56,7 +56,7 @@ Provide them under the rule's name in your [markdownlint configuration](https://
 ```json
 {
 	"markdownlint-sentences-per-line": {
-		"additionalAbbreviations": ["Mme."]
+		"additional_abbreviations": ["Mme."]
 	}
 }
 ```

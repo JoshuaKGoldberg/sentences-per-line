@@ -7,12 +7,12 @@ const getAdditionalAbbreviations = (config: unknown): string[] => {
 	if (
 		typeof config !== "object" ||
 		config === null ||
-		!("additionalAbbreviations" in config)
+		!("additional_abbreviations" in config)
 	) {
 		return [];
 	}
 
-	const { additionalAbbreviations } = config;
+	const { additional_abbreviations: additionalAbbreviations } = config;
 
 	return Array.isArray(additionalAbbreviations)
 		? additionalAbbreviations.filter(
