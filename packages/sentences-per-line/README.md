@@ -32,3 +32,10 @@ getIndexBeforeSecondSentence("The only sentence.");
 // 15
 getIndexBeforeSecondSentence("First sentence. Second sentence.");
 ```
+
+It optionally takes in an array of additional words to treat as abbreviations instead of sentence endings.
+
+```ts
+// undefined
+getIndexBeforeSecondSentence("Bonjour Mme. Dupont.", ["Mme."]);
+```

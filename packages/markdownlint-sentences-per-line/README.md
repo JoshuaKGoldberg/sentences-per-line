@@ -41,6 +41,26 @@ Then provide it to [markdownlint-cli's `--rules`](https://github.com/igorshubovy
 markdownlint --rules markdownlint-sentences-per-line
 ```
 
+### Options
+
+#### `additional_abbreviations`
+
+An array of custom abbreviations to ignore when determining sentence boundaries.
+
+These will be added to the standard list of abbreviations below.
+
+`["eg.", "e.g.", "etc.", "ex.", "ie.", "i.e.", "vs."]`
+
+Provide them under the rule's name in your [markdownlint configuration](https://github.com/DavidAnson/markdownlint/blob/main/README.md#optionsconfig):
+
+```json
+{
+	"markdownlint-sentences-per-line": {
+		"additional_abbreviations": ["Mme."]
+	}
+}
+```
+
 ## Alternatives
 
 This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line) family of packages.
