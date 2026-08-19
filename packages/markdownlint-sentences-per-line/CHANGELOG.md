@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.3...markdownlint-sentences-per-line@v0.1.4) (2026-06-27)
+
+
+### Bug Fixes
+
+* detect sentences ending with ! and ? ([#1175](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1175)) ([6c78cf5](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/6c78cf57c98cb4dbe950cee1dd59834dc73fe27d))
+
 ## [0.1.3](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.2...markdownlint-sentences-per-line@v0.1.3) (2026-01-31)
 
 

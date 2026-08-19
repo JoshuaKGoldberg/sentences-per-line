@@ -1,7 +1,7 @@
 import { doesEndWithIgnoredWord } from "./doesEndWithIgnoredWord.ts";
 
 /**
- * @returns The first index after the period of the line's first sentence,
+ * @returns The first index after the period, question mark, or exclamation mark of the line's first sentence,
  * if a second sentence follows it.
  */
 export function getIndexBeforeSecondSentence(line: string) {
@@ -24,7 +24,7 @@ export function getIndexBeforeSecondSentence(line: string) {
 		}
 
 		if (
-			line[i] === "." &&
+			(line[i] === "." || line[i] === "!" || line[i] === "?") &&
 			line[i + 1] === " " &&
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
 			!doesEndWithIgnoredWord(line.substring(0, i + 1))

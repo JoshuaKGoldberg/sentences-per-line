@@ -53,6 +53,35 @@ describe("markdownlint-sentences-per-line", () => {
 		],
 		["```js```.", undefined],
 		[
+			"Hello! World",
+			"Hello! World",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 7,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		[
+			"Hello? World",
+			"Hello? World",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 7,
+					insertText: "\n",
+					lineNumber: 1,
+				},
+				lineNumber: 1,
+			},
+		],
+		["Hello! world", undefined],
+		["Hello? world", undefined],
+		["`Hello!` World.", undefined],
+		[
 			`
 \`\`\`plaintext
 Abc. Def.
