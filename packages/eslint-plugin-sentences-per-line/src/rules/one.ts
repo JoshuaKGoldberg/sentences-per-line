@@ -1,5 +1,6 @@
+import type { Paragraph, Text } from "mdast";
+
 import { MarkdownRuleDefinition } from "@eslint/markdown";
-import { Paragraph, Text } from "mdast";
 import { getIndexBeforeSecondSentence } from "sentences-per-line";
 
 export const one: MarkdownRuleDefinition = {
