@@ -4,7 +4,10 @@ import { doesEndWithIgnoredWord } from "./doesEndWithIgnoredWord.ts";
  * @returns The first index after the period, question mark, or exclamation mark of the line's first sentence,
  * if a second sentence follows it.
  */
-export function getIndexBeforeSecondSentence(line: string) {
+export function getIndexBeforeSecondSentence(
+	line: string,
+	customIgnoredWords: string[] = [],
+) {
 	let i: number | undefined = 0;
 
 	// Ignore headings
@@ -27,7 +30,7 @@ export function getIndexBeforeSecondSentence(line: string) {
 			(line[i] === "." || line[i] === "!" || line[i] === "?") &&
 			line[i + 1] === " " &&
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
-			!doesEndWithIgnoredWord(line.substring(0, i + 1))
+			!doesEndWithIgnoredWord(line.substring(0, i + 1), customIgnoredWords)
 		) {
 			return i + 1;
 		}

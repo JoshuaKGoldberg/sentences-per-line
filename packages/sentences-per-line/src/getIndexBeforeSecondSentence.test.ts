@@ -78,4 +78,18 @@ Abc. Def.
 
 		expect(actual).toBe(expected);
 	});
+
+	test("returns an index when given a French abbreviation that is not ignored", () => {
+		const actual = getIndexBeforeSecondSentence("Bonjour Mme. Dupont.");
+
+		expect(actual).toBe(12);
+	});
+
+	test("returns undefined when given a French abbreviation in customIgnoredWords", () => {
+		const actual = getIndexBeforeSecondSentence("Bonjour Mme. Dupont.", [
+			"Mme.",
+		]);
+
+		expect(actual).toBe(undefined);
+	});
 });
