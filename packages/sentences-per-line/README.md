@@ -32,3 +32,25 @@ getIndexBeforeSecondSentence("The only sentence.");
 // 15
 getIndexBeforeSecondSentence("First sentence. Second sentence.");
 ```
+
+### `isSentenceContinuedOnNextLine`
+
+Determines whether a line's last sentence is unfinished, and so continues onto the next line.
+Lines that start a different Markdown block, such as headings and table rows, are never considered continued.
+
+```ts
+import { isSentenceContinuedOnNextLine } from "sentences-per-line";
+
+// false
+isSentenceContinuedOnNextLine("The only sentence.", "Another sentence.");
+
+// true
+isSentenceContinuedOnNextLine("A sentence that spans", "multiple lines.");
+```
+
+It optionally takes in an array of additional words to treat as abbreviations instead of sentence endings.
+
+```ts
+// true
+isSentenceContinuedOnNextLine("Bonjour Mme.", "Dupont.", ["Mme."]);
+```

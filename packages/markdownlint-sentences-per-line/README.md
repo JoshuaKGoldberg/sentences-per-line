@@ -41,6 +41,41 @@ Then provide it to [markdownlint-cli's `--rules`](https://github.com/igorshubovy
 markdownlint --rules markdownlint-sentences-per-line
 ```
 
+### Options
+
+#### `singleLineSentences`
+
+Whether to also report sentences that are split across multiple lines.
+
+By default, only lines that contain more than one sentence are reported.
+Enabling this option additionally requires each sentence to take up exactly one line: no more, no less.
+
+```json
+{
+	"markdownlint-sentences-per-line": {
+		"singleLineSentences": true
+	}
+}
+```
+
+That configuration reports the following Markdown:
+
+```md
+This is a single sentence that spans
+multiple lines.
+```
+
+Providing a number instead of `true` allows sentences longer than that many characters to be split across lines.
+This is useful for wrapping only the occasional long sentence.
+
+```json
+{
+	"markdownlint-sentences-per-line": {
+		"singleLineSentences": 80
+	}
+}
+```
+
 ## Alternatives
 
 This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line) family of packages.
