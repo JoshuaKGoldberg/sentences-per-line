@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 
 import { getIndexBeforeSecondSentence } from "./index.ts";
 
@@ -89,6 +89,40 @@ Abc. Def.
 		const actual = getIndexBeforeSecondSentence("Bonjour Mme. Dupont.", [
 			"Mme.",
 		]);
+
+		expect(actual).toBe(undefined);
+	});
+
+	test("returns an index when given a sentence ending in a closing quotation mark", () => {
+		const actual = getIndexBeforeSecondSentence(`He said "Hello." Then left.`);
+
+		expect(actual).toBe(16);
+	});
+
+	test("returns an index when given a locale that treats the character as a terminator", () => {
+		const actual = getIndexBeforeSecondSentence("Foo; Bar baz", [], "el");
+
+		expect(actual).toBe(4);
+	});
+
+	test("returns undefined when given a terminator not used by the default locale", () => {
+		const actual = getIndexBeforeSecondSentence("Foo; Bar baz");
+
+		expect(actual).toBe(undefined);
+	});
+
+	test("returns an index when Intl.Segmenter is unavailable and a second sentence follows", () => {
+		vi.stubGlobal("Intl", {});
+
+		const actual = getIndexBeforeSecondSentence("Abc. Def.");
+
+		expect(actual).toBe(4);
+	});
+
+	test("returns undefined when Intl.Segmenter is unavailable and the terminator is followed by a quotation mark", () => {
+		vi.stubGlobal("Intl", {});
+
+		const actual = getIndexBeforeSecondSentence(`He said "Hello." Then left.`);
 
 		expect(actual).toBe(undefined);
 	});
