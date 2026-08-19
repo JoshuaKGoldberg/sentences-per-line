@@ -242,4 +242,49 @@ Abc. Def.
 
 		expect(actual).toEqual({ input: [] });
 	});
+
+	test("reports an error when given a locale that treats the character as a terminator", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": { locale: "el" },
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "Foo; Bar baz" },
+		});
+
+		expect(actual).toEqual({
+			input: [
+				{
+					errorContext: "Foo; Bar baz",
+					errorDetail: null,
+					errorRange: null,
+					fixInfo: {
+						deleteCount: 1,
+						editColumn: 5,
+						insertText: "\n",
+						lineNumber: 1,
+					},
+					lineNumber: 1,
+					ruleDescription: "Each sentence should be on its own line",
+					ruleInformation: null,
+					ruleNames: ["markdownlint-sentences-per-line"],
+					severity: "error",
+				},
+			],
+		});
+	});
+
+	test("reports no errors when locale is not a string", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": { locale: 123 },
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "Foo; Bar baz" },
+		});
+
+		expect(actual).toEqual({ input: [] });
+	});
 });

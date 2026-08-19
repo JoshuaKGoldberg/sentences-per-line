@@ -1,12 +1,17 @@
 import { doesEndWithIgnoredWord } from "./doesEndWithIgnoredWord.ts";
+import {
+	defaultLocale,
+	getSentenceStartIndices,
+} from "./getSentenceStartIndices.ts";
 
 /**
- * @returns The first index after the period, question mark, or exclamation mark of the line's first sentence,
+ * @returns The first index after the end of the line's first sentence,
  * if a second sentence follows it.
  */
 export function getIndexBeforeSecondSentence(
 	line: string,
 	customIgnoredWords: string[] = [],
+	locale: string = defaultLocale,
 ) {
 	let i: number | undefined = 0;
 
@@ -20,6 +25,8 @@ export function getIndexBeforeSecondSentence(
 		i = line.indexOf(".") + 1;
 	}
 
+	const sentenceStartIndices = getSentenceStartIndices(line, locale);
+
 	for (; i < line.length - 2; i += 1) {
 		i = getNextIndexNotInCode(line, i);
 		if (i === undefined || i >= line.length - 2) {
@@ -27,7 +34,7 @@ export function getIndexBeforeSecondSentence(
 		}
 
 		if (
-			(line[i] === "." || line[i] === "!" || line[i] === "?") &&
+			isSentenceEnd(line, i, sentenceStartIndices) &&
 			line[i + 1] === " " &&
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
 			!doesEndWithIgnoredWord(line.substring(0, i + 1), customIgnoredWords)
@@ -83,4 +90,14 @@ function isCapitalizedAlphabetCharacter(char: string) {
 	const charCode = char.charCodeAt(0);
 
 	return charCode >= "A".charCodeAt(0) && charCode <= "Z".charCodeAt(0);
+}
+
+function isSentenceEnd(
+	line: string,
+	i: number,
+	sentenceStartIndices: Set<number> | undefined,
+) {
+	return sentenceStartIndices
+		? sentenceStartIndices.has(i + 2)
+		: line[i] === "." || line[i] === "!" || line[i] === "?";
 }
