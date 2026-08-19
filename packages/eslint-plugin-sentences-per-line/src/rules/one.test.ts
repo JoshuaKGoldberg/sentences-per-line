@@ -134,6 +134,32 @@ Def.
 			options: [{ additionalAbbreviations: ["Mlle."] }],
 			output: "Bonjour Mme. \nDupont.",
 		},
+		{
+			code: `
+| A | B |
+| - | - |
+| Abc. Def. | Ghi. Jkl. |
+
+Abc. Def.
+`,
+			errors: [
+				{
+					column: 5,
+					endColumn: 6,
+					endLine: 6,
+					line: 6,
+					messageId: "multiple",
+				},
+			],
+			output: `
+| A | B |
+| - | - |
+| Abc. Def. | Ghi. Jkl. |
+
+Abc. 
+Def.
+`,
+		},
 	],
 	valid: [
 		"",
@@ -163,6 +189,16 @@ Def.
 		"`Hello?` World.",
 		"Hello!",
 		"Hello?",
+		`
+| A | B |
+| - | - |
+| Abc. Def. | Ghi |
+`,
+		`
+| A | B |
+| - | - |
+| Abc. Def. | Ghi. Jkl. |
+`,
 		{
 			code: "Bonjour Mme. Dupont.",
 			options: [{ additionalAbbreviations: ["Mme."] }],
