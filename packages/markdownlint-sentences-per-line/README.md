@@ -61,6 +61,20 @@ Provide them under the rule's name in your [markdownlint configuration](https://
 }
 ```
 
+#### `locale`
+
+The [BCP 47 locale tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) describing the language your Markdown is written in.
+
+Defaults to `"en-US"`.
+
+```json
+{
+	"markdownlint-sentences-per-line": {
+		"locale": "el"
+	}
+}
+```
+
 ## Alternatives
 
 This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line) family of packages.

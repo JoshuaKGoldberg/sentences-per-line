@@ -39,3 +39,14 @@ It optionally takes in an array of additional words to treat as abbreviations in
 // undefined
 getIndexBeforeSecondSentence("Bonjour Mme. Dupont.", ["Mme."]);
 ```
+
+It also optionally takes in a [BCP 47 locale tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) describing the language the Markdown is written in.
+It defaults to `"en-US"`.
+
+```ts
+// 4
+getIndexBeforeSecondSentence("Foo; Bar baz", [], "el");
+```
+
+Sentence boundaries are found with [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) in runtimes that provide it.
+Runtimes without `Intl.Segmenter` fall back to looking for a period, question mark, or exclamation mark.

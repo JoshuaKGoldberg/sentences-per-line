@@ -22,13 +22,28 @@ const getAdditionalAbbreviations = (config: unknown): string[] => {
 		: [];
 };
 
+const getLocale = (config: unknown): string | undefined => {
+	if (typeof config !== "object" || config === null || !("locale" in config)) {
+		return undefined;
+	}
+
+	const { locale } = config;
+
+	return typeof locale === "string" ? locale : undefined;
+};
+
 const visitLine = (
 	line: string,
 	lineNumber: number,
 	onError: markdownlint.RuleOnError,
 	additionalAbbreviations: string[],
+	locale: string | undefined,
 ) => {
-	const start = getIndexBeforeSecondSentence(line, additionalAbbreviations);
+	const start = getIndexBeforeSecondSentence(
+		line,
+		additionalAbbreviations,
+		locale,
+	);
 	if (start) {
 		helpers.addError(
 			onError,
@@ -53,6 +68,7 @@ export const markdownlintSentencesPerLine = {
 		onError: markdownlint.RuleOnError,
 	) => {
 		const additionalAbbreviations = getAdditionalAbbreviations(params.config);
+		const locale = getLocale(params.config);
 		let inFenceLine = false;
 
 		for (let i = 0; i < params.lines.length; i += 1) {
@@ -67,7 +83,7 @@ export const markdownlintSentencesPerLine = {
 				continue;
 			}
 
-			visitLine(line, i + 1, onError, additionalAbbreviations);
+			visitLine(line, i + 1, onError, additionalAbbreviations, locale);
 		}
 	},
 	names: ["markdownlint-sentences-per-line"],
