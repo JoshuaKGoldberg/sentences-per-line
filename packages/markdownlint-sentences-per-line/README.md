@@ -41,6 +41,8 @@ Then provide it to [markdownlint-cli's `--rules`](https://github.com/igorshubovy
 markdownlint --rules markdownlint-sentences-per-line
 ```
 
+Sentences within Markdown table rows are left alone, as splitting a row across lines would break the table.
+
 ### Options
 
 #### `additional_abbreviations`

@@ -119,6 +119,41 @@ Abc. Def.
 				lineNumber: 6,
 			},
 		],
+		[
+			`
+| A | B |
+| - | - |
+| Abc. Def. | Ghi |
+`,
+			undefined,
+		],
+		[
+			`
+| A | B |
+| - | - |
+| Abc. Def. | Ghi. Jkl. |
+`,
+			undefined,
+		],
+		[
+			`
+| A | B |
+| - | - |
+| Abc. Def. | Ghi. Jkl. |
+
+Abc. Def.
+`,
+			"Abc. Def.",
+			{
+				fixInfo: {
+					deleteCount: 1,
+					editColumn: 5,
+					insertText: "\n",
+					lineNumber: 6,
+				},
+				lineNumber: 6,
+			},
+		],
 	] as const)("%s", (input, errorContext, report?) => {
 		const actual = markdownlint.lint({
 			config: {
