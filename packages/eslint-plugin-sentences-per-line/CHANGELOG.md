@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/eslint-plugin-sentences-per-line@v0.1.3...eslint-plugin-sentences-per-line@v0.1.4) (2026-09-05)
+
+
+### Features
+
+* add options for additional abbreviations ([#1278](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1278)) ([28f5a56](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/28f5a567b92d951ad398102bf0f17db31fe069fa))
+
 ## [0.1.3](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/eslint-plugin-sentences-per-line@v0.1.2...eslint-plugin-sentences-per-line@v0.1.3) (2026-06-27)
 
 
