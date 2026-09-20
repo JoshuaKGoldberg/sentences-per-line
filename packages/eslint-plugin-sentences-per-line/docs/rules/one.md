@@ -53,13 +53,13 @@ export default [
 ];
 ```
 
-#### `locale`
+### `locale`
 
 The [BCP 47 locale tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) describing the language your Markdown is written in.
 
 Defaults to `"en-US"`.
 
-```ts
+```js
 export default [
 	{
 		rules: {

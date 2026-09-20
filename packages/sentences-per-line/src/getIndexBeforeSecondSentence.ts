@@ -37,7 +37,11 @@ export function getIndexBeforeSecondSentence(
 			isSentenceEnd(line, i, sentenceStartIndices) &&
 			line[i + 1] === " " &&
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
-			!doesEndWithIgnoredWord(line.substring(0, i + 1), customIgnoredWords)
+			!doesEndWithIgnoredWord(
+				// A sentence may end in closing punctuation after the abbreviation, e.g. 'Use "etc."'
+				line.substring(0, i + 1).replace(/[\])}"'”’*_]+$/, ""),
+				customIgnoredWords,
+			)
 		) {
 			return i + 1;
 		}
@@ -97,7 +101,11 @@ function isSentenceEnd(
 	i: number,
 	sentenceStartIndices: Set<number> | undefined,
 ) {
-	return sentenceStartIndices
-		? sentenceStartIndices.has(i + 2)
-		: line[i] === "." || line[i] === "!" || line[i] === "?";
+	if (!sentenceStartIndices) {
+		return line[i] === "." || line[i] === "!" || line[i] === "?";
+	}
+
+	// The segmenter starts the next sentence after any amount of whitespace,
+	// so make sure this index is the last character of the sentence itself.
+	return sentenceStartIndices.has(i + 2) && !/\s/.test(line[i]);
 }

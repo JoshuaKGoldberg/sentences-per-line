@@ -275,6 +275,19 @@ Abc. Def.
 		});
 	});
 
+	test("reports no errors when given a list item with two spaces after its marker", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": true,
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "1.  Foo" },
+		});
+
+		expect(actual).toEqual({ input: [] });
+	});
+
 	test("reports no errors when locale is not a string", () => {
 		const actual = markdownlint.lint({
 			config: {

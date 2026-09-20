@@ -73,6 +73,10 @@ Abc. Def.
 		["1. First sentence. Second one.", 18],
 		["``abc", undefined],
 		["Hello world! Another sentence!", 12],
+		["1.  Foo", undefined],
+		["Hello.  World", undefined],
+		['Use "etc." Then more.', undefined],
+		["Use (e.g.) Then more.", undefined],
 	] as const)("%s", (input, expected) => {
 		const actual = getIndexBeforeSecondSentence(input);
 
@@ -109,6 +113,12 @@ Abc. Def.
 		const actual = getIndexBeforeSecondSentence("Foo; Bar baz");
 
 		expect(actual).toBe(undefined);
+	});
+
+	test("throws when given an invalid locale", () => {
+		expect(() =>
+			getIndexBeforeSecondSentence("Abc. Def.", [], "not a locale"),
+		).toThrow('Invalid locale "not a locale"');
 	});
 
 	test("returns an index when Intl.Segmenter is unavailable and a second sentence follows", () => {

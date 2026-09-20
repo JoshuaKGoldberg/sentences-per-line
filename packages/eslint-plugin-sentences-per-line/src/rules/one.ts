@@ -81,6 +81,7 @@ export const one: MarkdownRuleDefinition<{
 					locale: {
 						description:
 							"BCP 47 locale tag to use when detecting sentence boundaries.",
+						minLength: 1,
 						type: "string",
 					},
 				},
