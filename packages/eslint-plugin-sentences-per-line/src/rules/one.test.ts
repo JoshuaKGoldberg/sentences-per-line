@@ -142,6 +142,46 @@ Def.
 			],
 			output: "&amp; Abc.\nDef.",
 		},
+		{
+			code: "Bonjour Mme. Dupont.",
+			errors: [
+				{
+					column: 13,
+					endColumn: 14,
+					endLine: 1,
+					line: 1,
+					messageId: "multiple",
+				},
+			],
+			output: "Bonjour Mme.\nDupont.",
+		},
+		{
+			code: "Bonjour Mme. Dupont.",
+			errors: [
+				{
+					column: 13,
+					endColumn: 14,
+					endLine: 1,
+					line: 1,
+					messageId: "multiple",
+				},
+			],
+			options: [{ additionalAbbreviations: ["Mlle."] }],
+			output: "Bonjour Mme.\nDupont.",
+		},
+		{
+			code: "- Abc.\n  Def. Ghi.",
+			errors: [
+				{
+					column: 7,
+					endColumn: 8,
+					endLine: 2,
+					line: 2,
+					messageId: "multiple",
+				},
+			],
+			output: "- Abc.\n  Def.\nGhi.",
+		},
 	],
 	valid: [
 		"",
@@ -171,10 +211,14 @@ Def.
 		"`Hello?` World.",
 		"Hello!",
 		"Hello?",
+		{
+			code: "Bonjour Mme. Dupont.",
+			options: [{ additionalAbbreviations: ["Mme."] }],
+		},
 	],
 });
 
-describe("one", () => {
+describe("one fixer", () => {
 	it("splits every sentence onto its own line when fixing repeatedly", () => {
 		const actual = fixRepeatedly("Foo. Bar. Baz. Foo2. Bar2.\n");
 

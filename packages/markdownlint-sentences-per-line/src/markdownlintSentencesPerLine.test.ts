@@ -146,4 +146,100 @@ Abc. Def.
 				: [],
 		});
 	});
+
+	test("reports an error when given a French abbreviation that is not configured", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": true,
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "Bonjour Mme. Dupont." },
+		});
+
+		expect(actual).toEqual({
+			input: [
+				{
+					errorContext: "our Mme. D",
+					errorDetail: null,
+					errorRange: null,
+					fixInfo: {
+						deleteCount: 1,
+						editColumn: 13,
+						insertText: "\n",
+						lineNumber: 1,
+					},
+					lineNumber: 1,
+					ruleDescription: "Each sentence should be on its own line",
+					ruleInformation: null,
+					ruleNames: ["markdownlint-sentences-per-line"],
+					severity: "error",
+				},
+			],
+		});
+	});
+
+	test("reports no errors when given a French abbreviation in additional_abbreviations", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": {
+					additional_abbreviations: ["Mme."],
+				},
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "Bonjour Mme. Dupont." },
+		});
+
+		expect(actual).toEqual({ input: [] });
+	});
+
+	test("reports an error when additional_abbreviations is not an array", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": {
+					additional_abbreviations: "Mme.",
+				},
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "Bonjour Mme. Dupont." },
+		});
+
+		expect(actual).toEqual({
+			input: [
+				{
+					errorContext: "our Mme. D",
+					errorDetail: null,
+					errorRange: null,
+					fixInfo: {
+						deleteCount: 1,
+						editColumn: 13,
+						insertText: "\n",
+						lineNumber: 1,
+					},
+					lineNumber: 1,
+					ruleDescription: "Each sentence should be on its own line",
+					ruleInformation: null,
+					ruleNames: ["markdownlint-sentences-per-line"],
+					severity: "error",
+				},
+			],
+		});
+	});
+
+	test("reports no errors when additional_abbreviations also contains a non-string entry", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": {
+					additional_abbreviations: [123, "Mme."],
+				},
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "Bonjour Mme. Dupont." },
+		});
+
+		expect(actual).toEqual({ input: [] });
+	});
 });

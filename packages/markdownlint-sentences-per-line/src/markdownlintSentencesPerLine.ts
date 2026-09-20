@@ -3,12 +3,32 @@ import type * as markdownlint from "markdownlint";
 import helpers from "markdownlint-rule-helpers";
 import { getIndexBeforeSecondSentence } from "sentences-per-line";
 
+const getAdditionalAbbreviations = (config: unknown): string[] => {
+	if (
+		typeof config !== "object" ||
+		config === null ||
+		!("additional_abbreviations" in config)
+	) {
+		return [];
+	}
+
+	const { additional_abbreviations: additionalAbbreviations } = config;
+
+	return Array.isArray(additionalAbbreviations)
+		? additionalAbbreviations.filter(
+				(abbreviation): abbreviation is string =>
+					typeof abbreviation === "string",
+			)
+		: [];
+};
+
 const visitLine = (
 	line: string,
 	lineNumber: number,
 	onError: markdownlint.RuleOnError,
+	additionalAbbreviations: string[],
 ) => {
-	const start = getIndexBeforeSecondSentence(line);
+	const start = getIndexBeforeSecondSentence(line, additionalAbbreviations);
 	if (start) {
 		helpers.addError(
 			onError,
@@ -32,6 +52,7 @@ export const markdownlintSentencesPerLine = {
 		params: markdownlint.RuleParams,
 		onError: markdownlint.RuleOnError,
 	) => {
+		const additionalAbbreviations = getAdditionalAbbreviations(params.config);
 		let inFenceLine = false;
 
 		for (let i = 0; i < params.lines.length; i += 1) {
@@ -46,7 +67,7 @@ export const markdownlintSentencesPerLine = {
 				continue;
 			}
 
-			visitLine(line, i + 1, onError);
+			visitLine(line, i + 1, onError, additionalAbbreviations);
 		}
 	},
 	names: ["markdownlint-sentences-per-line"],
