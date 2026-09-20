@@ -26,12 +26,32 @@ const getSingleLineSentencesLimit = (config: unknown) => {
 		: undefined;
 };
 
+const getAdditionalAbbreviations = (config: unknown): string[] => {
+	if (
+		typeof config !== "object" ||
+		config === null ||
+		!("additional_abbreviations" in config)
+	) {
+		return [];
+	}
+
+	const { additional_abbreviations: additionalAbbreviations } = config;
+
+	return Array.isArray(additionalAbbreviations)
+		? additionalAbbreviations.filter(
+				(abbreviation): abbreviation is string =>
+					typeof abbreviation === "string",
+			)
+		: [];
+};
+
 const visitLine = (
 	line: string,
 	lineNumber: number,
 	onError: markdownlint.RuleOnError,
+	additionalAbbreviations: string[],
 ) => {
-	const start = getIndexBeforeSecondSentence(line);
+	const start = getIndexBeforeSecondSentence(line, additionalAbbreviations);
 	if (start) {
 		helpers.addError(
 			onError,
@@ -54,9 +74,14 @@ const visitLineStartingSentence = (
 	index: number,
 	onError: markdownlint.RuleOnError,
 	limit: number,
+	additionalAbbreviations: string[],
 ) => {
 	const isContinued = (candidate: number) =>
-		isSentenceContinuedOnNextLine(lines[candidate], lines[candidate + 1]);
+		isSentenceContinuedOnNextLine(
+			lines[candidate],
+			lines[candidate + 1],
+			additionalAbbreviations,
+		);
 
 	if (!isContinued(index) || (index > 0 && isContinued(index - 1))) {
 		return;
@@ -89,6 +114,7 @@ export const markdownlintSentencesPerLine = {
 		params: markdownlint.RuleParams,
 		onError: markdownlint.RuleOnError,
 	) => {
+		const additionalAbbreviations = getAdditionalAbbreviations(params.config);
 		const singleLineSentencesLimit = getSingleLineSentencesLimit(params.config);
 		let inFenceLine = false;
 
@@ -104,7 +130,7 @@ export const markdownlintSentencesPerLine = {
 				continue;
 			}
 
-			visitLine(line, i + 1, onError);
+			visitLine(line, i + 1, onError, additionalAbbreviations);
 
 			if (singleLineSentencesLimit !== undefined) {
 				visitLineStartingSentence(
@@ -112,6 +138,7 @@ export const markdownlintSentencesPerLine = {
 					i,
 					onError,
 					singleLineSentencesLimit,
+					additionalAbbreviations,
 				);
 			}
 		}

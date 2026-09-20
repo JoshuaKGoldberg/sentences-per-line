@@ -3,10 +3,23 @@ import type { Paragraph, Text } from "mdast";
 import { MarkdownRuleDefinition } from "@eslint/markdown";
 import { getIndexBeforeSecondSentence } from "sentences-per-line";
 
-export const one: MarkdownRuleDefinition = {
+export interface OneOptions {
+	additionalAbbreviations?: string[];
+}
+
+export const one: MarkdownRuleDefinition<{
+	MessageIds: "multiple";
+	RuleOptions: [OneOptions?];
+}> = {
 	create(context) {
+		const additionalAbbreviations =
+			context.options[0]?.additionalAbbreviations ?? [];
+
 		function checkTextNode(node: Text) {
-			const index = getIndexBeforeSecondSentence(node.value);
+			const index = getIndexBeforeSecondSentence(
+				node.value,
+				additionalAbbreviations,
+			);
 			if (!index) {
 				return;
 			}
@@ -52,7 +65,20 @@ export const one: MarkdownRuleDefinition = {
 		messages: {
 			multiple: "Each sentence should be on its own line.",
 		},
-		schema: [],
+		schema: [
+			{
+				additionalProperties: false,
+				properties: {
+					additionalAbbreviations: {
+						description:
+							"Additional abbreviations to ignore when determining sentence boundaries.",
+						items: { type: "string" },
+						type: "array",
+					},
+				},
+				type: "object",
+			},
+		],
 		type: "problem",
 	},
 };

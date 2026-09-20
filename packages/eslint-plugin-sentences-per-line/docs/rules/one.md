@@ -29,3 +29,26 @@ Example of **correct** code for this rule:
 First sentence.
 Second sentence
 ```
+
+## Options
+
+### `additionalAbbreviations`
+
+An array of custom abbreviations to ignore when determining sentence boundaries.
+
+These will be added to the standard list of abbreviations below.
+
+`["eg.", "e.g.", "etc.", "ex.", "ie.", "i.e.", "vs."]`
+
+```js
+export default [
+	{
+		rules: {
+			"sentences-per-line/one": [
+				"error",
+				{ additionalAbbreviations: ["Mme."] },
+			],
+		},
+	},
+];
+```

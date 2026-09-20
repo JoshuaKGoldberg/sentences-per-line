@@ -107,6 +107,33 @@ Def.
 			],
 			output: "1. Hello! \nWorld.",
 		},
+		{
+			code: "Bonjour Mme. Dupont.",
+			errors: [
+				{
+					column: 13,
+					endColumn: 14,
+					endLine: 1,
+					line: 1,
+					messageId: "multiple",
+				},
+			],
+			output: "Bonjour Mme. \nDupont.",
+		},
+		{
+			code: "Bonjour Mme. Dupont.",
+			errors: [
+				{
+					column: 13,
+					endColumn: 14,
+					endLine: 1,
+					line: 1,
+					messageId: "multiple",
+				},
+			],
+			options: [{ additionalAbbreviations: ["Mlle."] }],
+			output: "Bonjour Mme. \nDupont.",
+		},
 	],
 	valid: [
 		"",
@@ -136,5 +163,9 @@ Def.
 		"`Hello?` World.",
 		"Hello!",
 		"Hello?",
+		{
+			code: "Bonjour Mme. Dupont.",
+			options: [{ additionalAbbreviations: ["Mme."] }],
+		},
 	],
 });

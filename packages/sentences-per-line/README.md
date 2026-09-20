@@ -33,6 +33,13 @@ getIndexBeforeSecondSentence("The only sentence.");
 getIndexBeforeSecondSentence("First sentence. Second sentence.");
 ```
 
+It optionally takes in an array of additional words to treat as abbreviations instead of sentence endings.
+
+```ts
+// undefined
+getIndexBeforeSecondSentence("Bonjour Mme. Dupont.", ["Mme."]);
+```
+
 ### `isSentenceContinuedOnNextLine`
 
 Determines whether a line's last sentence is unfinished, and so continues onto the next line.
