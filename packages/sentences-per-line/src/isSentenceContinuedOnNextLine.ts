@@ -14,9 +14,11 @@ const nonParagraphLines = {
 	unorderedList: /^\s*[-*+]\s/,
 };
 
-const hardLineBreak = /(?: {2}|\\)\s*$/;
+const hardLineBreak = /(?: {2}|\\|<br\s*\/?>)\s*$/;
 
-const sentenceEnding = /[.!?]["')\]*_`]*$/;
+const sentenceEnding = /[.!?…][”’»"')\]*_`~]*(?:\[\^[^\]]+\])?$/;
+
+const linkOrImage = /!?\[[^[\]]*\](?:\([^()]*\)|\[[^[\]]*\])?/g;
 
 /**
  * @returns Whether the line's last sentence is not finished by the end of the
@@ -31,7 +33,8 @@ export function isSentenceContinuedOnNextLine(
 		nextLine === undefined ||
 		!isParagraphLine(line) ||
 		!isParagraphLine(nextLine) ||
-		hardLineBreak.test(line)
+		hardLineBreak.test(line) ||
+		isOnlyLinksOrImages(line)
 	) {
 		return false;
 	}
@@ -42,6 +45,22 @@ export function isSentenceContinuedOnNextLine(
 		!sentenceEnding.test(trimmed) ||
 		doesEndWithIgnoredWord(trimmed, customIgnoredWords)
 	);
+}
+
+/**
+ * Lines made up only of links and images, such as rows of badges, aren't prose.
+ */
+function isOnlyLinksOrImages(line: string) {
+	let previous: string;
+	let remaining = line;
+
+	// Links may wrap images, so strip from the inside out until nothing changes
+	do {
+		previous = remaining;
+		remaining = remaining.replace(linkOrImage, "");
+	} while (remaining !== previous);
+
+	return remaining !== line && /^[\s|]*$/.test(remaining);
 }
 
 function isParagraphLine(line: string) {

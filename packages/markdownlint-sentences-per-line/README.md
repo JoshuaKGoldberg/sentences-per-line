@@ -61,7 +61,7 @@ Provide them under the rule's name in your [markdownlint configuration](https://
 }
 ```
 
-#### `singleLineSentences`
+#### `single_line_sentences`
 
 Whether to also report sentences that are split across multiple lines.
 
@@ -71,7 +71,7 @@ Enabling this option additionally requires each sentence to take up exactly one 
 ```json
 {
 	"markdownlint-sentences-per-line": {
-		"singleLineSentences": true
+		"single_line_sentences": true
 	}
 }
 ```
@@ -85,14 +85,18 @@ multiple lines.
 
 Providing a number instead of `true` allows sentences longer than that many characters to be split across lines.
 This is useful for wrapping only the occasional long sentence.
+A sentence's length is measured from its Markdown source, with lines trimmed and joined by a single space.
 
 ```json
 {
 	"markdownlint-sentences-per-line": {
-		"singleLineSentences": 80
+		"single_line_sentences": 80
 	}
 }
 ```
+
+Only plain paragraph lines are checked.
+Sentences inside list items or block quotes, and lines ending in a hard line break, are not reported.
 
 ## Alternatives
 
