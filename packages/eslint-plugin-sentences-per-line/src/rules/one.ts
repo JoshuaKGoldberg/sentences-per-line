@@ -16,10 +16,6 @@ export const one: MarkdownRuleDefinition<{
 			context.options[0]?.additionalAbbreviations ?? [];
 
 		function checkTextNode(node: Text) {
-			// Text node values can differ from their source text, such as when a
-			// trailing space is dropped before a soft line break or with escapes and
-			// entities, so indices are computed from the source to keep them aligned
-			// with the offsets used to report and fix.
 			const index = getIndexBeforeSecondSentence(
 				context.sourceCode.getText(node),
 				additionalAbbreviations,
