@@ -29,6 +29,21 @@ describe(doesEndWithIgnoredWord, () => {
 		},
 	);
 
+	it.each([
+		["Look at the index.", "ex."],
+		["I baked a pie.", "ie."],
+		["Say hi to Greg.", "eg."],
+	])(
+		"should return false when an ignored word is the end of a longer word (%s)",
+		(input) => {
+			expect(doesEndWithIgnoredWord(input)).toBe(false);
+		},
+	);
+
+	it("should return true for an ignored word after an opening parenthesis", () => {
+		expect(doesEndWithIgnoredWord("Sweet fruits (e.g.")).toBe(true);
+	});
+
 	it("should return true for custom ignored words", () => {
 		const customWords = ["custom.", "test."];
 		expect(doesEndWithIgnoredWord("This is a custom.", customWords)).toBe(true);

@@ -73,6 +73,7 @@ Abc. Def.
 		["1. First sentence. Second one.", 18],
 		["``abc", undefined],
 		["Hello world! Another sentence!", 12],
+		["Look at the index. Next one.", 18],
 	] as const)("%s", (input, expected) => {
 		const actual = getIndexBeforeSecondSentence(input);
 
