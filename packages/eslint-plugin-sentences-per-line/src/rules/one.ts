@@ -6,9 +6,6 @@ import { getIndexBeforeSecondSentence } from "sentences-per-line";
 export const one: MarkdownRuleDefinition = {
 	create(context) {
 		function checkTextNode(node: Text) {
-			// Text node values can differ in length from their source text, such as
-			// with escapes and entities, so indices are computed from the source to
-			// keep them aligned with the offsets used to report and fix.
 			const index = getIndexBeforeSecondSentence(
 				context.sourceCode.getText(node),
 			);
