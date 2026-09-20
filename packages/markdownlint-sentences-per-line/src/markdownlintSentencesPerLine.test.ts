@@ -137,6 +137,14 @@ Abc. Def.
 		],
 		[
 			`
+> | A | B |
+> | - | - |
+> | Abc. Def. | Ghi. Jkl. |
+`,
+			undefined,
+		],
+		[
+			`
 | A | B |
 | - | - |
 | Abc. Def. | Ghi. Jkl. |
