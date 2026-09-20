@@ -5,6 +5,7 @@ import { getIndexBeforeSecondSentence } from "sentences-per-line";
 
 export interface OneOptions {
 	additionalAbbreviations?: string[];
+	locale?: string;
 }
 
 export const one: MarkdownRuleDefinition<{
@@ -14,11 +15,13 @@ export const one: MarkdownRuleDefinition<{
 	create(context) {
 		const additionalAbbreviations =
 			context.options[0]?.additionalAbbreviations ?? [];
+		const locale = context.options[0]?.locale;
 
 		function checkTextNode(node: Text) {
 			const index = getIndexBeforeSecondSentence(
 				context.sourceCode.getText(node),
 				additionalAbbreviations,
+				locale,
 			);
 			if (!index) {
 				return;
@@ -66,6 +69,12 @@ export const one: MarkdownRuleDefinition<{
 							"Additional abbreviations to ignore when determining sentence boundaries.",
 						items: { type: "string" },
 						type: "array",
+					},
+					locale: {
+						description:
+							"BCP 47 locale tag to use when detecting sentence boundaries.",
+						minLength: 1,
+						type: "string",
 					},
 				},
 				type: "object",

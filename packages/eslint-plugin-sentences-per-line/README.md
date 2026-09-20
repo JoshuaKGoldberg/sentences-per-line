@@ -73,6 +73,22 @@ export default [
 ];
 ```
 
+#### `locale`
+
+The [BCP 47 locale tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) describing the language your Markdown is written in.
+
+Defaults to `"en-US"`.
+
+```ts
+export default [
+	{
+		rules: {
+			"sentences-per-line/one": ["error", { locale: "el" }],
+		},
+	},
+];
+```
+
 ## Rules
 
 <!-- prettier-ignore-start -->

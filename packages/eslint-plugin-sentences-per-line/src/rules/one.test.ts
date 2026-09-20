@@ -182,6 +182,33 @@ Def.
 			],
 			output: "- Abc.\n  Def.\nGhi.",
 		},
+		{
+			code: 'He said "Hello." Then left.',
+			errors: [
+				{
+					column: 17,
+					endColumn: 18,
+					endLine: 1,
+					line: 1,
+					messageId: "multiple",
+				},
+			],
+			output: 'He said "Hello."\nThen left.',
+		},
+		{
+			code: "Foo; Bar baz",
+			errors: [
+				{
+					column: 5,
+					endColumn: 6,
+					endLine: 1,
+					line: 1,
+					messageId: "multiple",
+				},
+			],
+			options: [{ locale: "el" }],
+			output: "Foo;\nBar baz",
+		},
 	],
 	valid: [
 		"",
@@ -215,6 +242,7 @@ Def.
 			code: "Bonjour Mme. Dupont.",
 			options: [{ additionalAbbreviations: ["Mme."] }],
 		},
+		"Foo; Bar baz",
 	],
 });
 

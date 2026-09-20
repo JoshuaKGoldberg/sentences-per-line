@@ -74,6 +74,10 @@ Abc. Def.
 		["``abc", undefined],
 		["Hello world! Another sentence!", 12],
 		["Look at the index. Next one.", 18],
+		["1.  Foo", undefined],
+		["Hello.  World", undefined],
+		['Use "etc." Then more.', undefined],
+		["Use (e.g.) Then more.", undefined],
 	] as const)("%s", (input, expected) => {
 		const actual = getIndexBeforeSecondSentence(input);
 
@@ -92,5 +96,29 @@ Abc. Def.
 		]);
 
 		expect(actual).toBe(undefined);
+	});
+
+	test("returns an index when given a sentence ending in a closing quotation mark", () => {
+		const actual = getIndexBeforeSecondSentence(`He said "Hello." Then left.`);
+
+		expect(actual).toBe(16);
+	});
+
+	test("returns an index when given a locale that treats the character as a terminator", () => {
+		const actual = getIndexBeforeSecondSentence("Foo; Bar baz", [], "el");
+
+		expect(actual).toBe(4);
+	});
+
+	test("returns undefined when given a terminator not used by the default locale", () => {
+		const actual = getIndexBeforeSecondSentence("Foo; Bar baz");
+
+		expect(actual).toBe(undefined);
+	});
+
+	test("throws when given an invalid locale", () => {
+		expect(() =>
+			getIndexBeforeSecondSentence("Abc. Def.", [], "not a locale"),
+		).toThrow('Invalid locale "not a locale"');
 	});
 });

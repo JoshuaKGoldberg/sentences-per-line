@@ -71,13 +71,28 @@ const getAdditionalAbbreviations = (config: unknown): string[] => {
 		: [];
 };
 
+const getLocale = (config: unknown): string | undefined => {
+	if (typeof config !== "object" || config === null || !("locale" in config)) {
+		return undefined;
+	}
+
+	const { locale } = config;
+
+	return typeof locale === "string" ? locale : undefined;
+};
+
 const visitLine = (
 	line: string,
 	lineNumber: number,
 	onError: markdownlint.RuleOnError,
 	additionalAbbreviations: string[],
+	locale: string | undefined,
 ) => {
-	const start = getIndexBeforeSecondSentence(line, additionalAbbreviations);
+	const start = getIndexBeforeSecondSentence(
+		line,
+		additionalAbbreviations,
+		locale,
+	);
 	if (start) {
 		helpers.addError(
 			onError,
@@ -144,6 +159,7 @@ export const markdownlintSentencesPerLine = {
 		onError: markdownlint.RuleOnError,
 	) => {
 		const additionalAbbreviations = getAdditionalAbbreviations(params.config);
+		const locale = getLocale(params.config);
 		const singleLineSentencesLimit = getSingleLineSentencesLimit(params.config);
 		const skippedLineNumbers = getSkippedLineNumbers(
 			params.parsers.micromark.tokens,
@@ -154,7 +170,13 @@ export const markdownlintSentencesPerLine = {
 				continue;
 			}
 
-			visitLine(params.lines[i], i + 1, onError, additionalAbbreviations);
+			visitLine(
+				params.lines[i],
+				i + 1,
+				onError,
+				additionalAbbreviations,
+				locale,
+			);
 
 			if (singleLineSentencesLimit !== undefined) {
 				visitLineStartingSentence(
