@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.5...markdownlint-sentences-per-line@v0.1.6) (2026-09-20)
+
+
+### Features
+
+* add opt-in singleLineSentences option for sentences spanning multiple lines ([#1279](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1279)) ([407372c](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/407372c3b2e4385a7bf4ac953f52fc51017df606))
+
 ## [0.1.5](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.4...markdownlint-sentences-per-line@v0.1.5) (2026-09-20)
 
 
