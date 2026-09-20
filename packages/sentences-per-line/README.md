@@ -48,5 +48,4 @@ It defaults to `"en-US"`.
 getIndexBeforeSecondSentence("Foo; Bar baz", [], "el");
 ```
 
-Sentence boundaries are found with [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter) in runtimes that provide it.
-Runtimes without `Intl.Segmenter` fall back to looking for a period, question mark, or exclamation mark.
+Sentence boundaries are found with [`Intl.Segmenter`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter).

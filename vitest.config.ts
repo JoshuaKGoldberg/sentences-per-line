@@ -14,7 +14,6 @@ export default defineConfig({
 				name,
 				root: `./packages/${name}`,
 				setupFiles: ["console-fail-test/setup"],
-				unstubGlobals: true,
 			},
 		})),
 	},

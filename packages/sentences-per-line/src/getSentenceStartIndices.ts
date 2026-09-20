@@ -2,14 +2,7 @@ export const defaultLocale = "en-US";
 
 const segmenterCache = new Map<string, Intl.Segmenter>();
 
-export function getSentenceStartIndices(
-	line: string,
-	locale: string,
-): Set<number> | undefined {
-	if (typeof Intl === "undefined" || typeof Intl.Segmenter === "undefined") {
-		return undefined;
-	}
-
+export function getSentenceStartIndices(line: string, locale: string) {
 	let segmenter = segmenterCache.get(locale);
 
 	if (!segmenter) {

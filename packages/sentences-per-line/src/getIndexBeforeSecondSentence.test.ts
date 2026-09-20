@@ -1,4 +1,4 @@
-import { describe, expect, test, vi } from "vitest";
+import { describe, expect, test } from "vitest";
 
 import { getIndexBeforeSecondSentence } from "./index.ts";
 
@@ -119,21 +119,5 @@ Abc. Def.
 		expect(() =>
 			getIndexBeforeSecondSentence("Abc. Def.", [], "not a locale"),
 		).toThrow('Invalid locale "not a locale"');
-	});
-
-	test("returns an index when Intl.Segmenter is unavailable and a second sentence follows", () => {
-		vi.stubGlobal("Intl", {});
-
-		const actual = getIndexBeforeSecondSentence("Abc. Def.");
-
-		expect(actual).toBe(4);
-	});
-
-	test("returns undefined when Intl.Segmenter is unavailable and the terminator is followed by a quotation mark", () => {
-		vi.stubGlobal("Intl", {});
-
-		const actual = getIndexBeforeSecondSentence(`He said "Hello." Then left.`);
-
-		expect(actual).toBe(undefined);
 	});
 });

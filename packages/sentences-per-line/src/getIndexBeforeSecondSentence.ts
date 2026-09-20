@@ -99,12 +99,8 @@ function isCapitalizedAlphabetCharacter(char: string) {
 function isSentenceEnd(
 	line: string,
 	i: number,
-	sentenceStartIndices: Set<number> | undefined,
+	sentenceStartIndices: Set<number>,
 ) {
-	if (!sentenceStartIndices) {
-		return line[i] === "." || line[i] === "!" || line[i] === "?";
-	}
-
 	// The segmenter starts the next sentence after any amount of whitespace,
 	// so make sure this index is the last character of the sentence itself.
 	return sentenceStartIndices.has(i + 2) && !/\s/.test(line[i]);
