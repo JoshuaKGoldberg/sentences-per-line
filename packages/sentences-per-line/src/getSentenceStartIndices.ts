@@ -21,8 +21,6 @@ export function getSentenceStartIndices(line: string, locale: string) {
 
 function createSegmenter(locale: string) {
 	try {
-		// Falling back to the default locale keeps results consistent across machines
-		// when the runtime doesn't have data for the requested locale.
 		return new Intl.Segmenter([locale, defaultLocale], {
 			granularity: "sentence",
 		});
