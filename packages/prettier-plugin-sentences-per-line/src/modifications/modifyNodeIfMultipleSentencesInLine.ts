@@ -64,7 +64,6 @@ function walk(
 	node: Root | RootContent | SentenceNodeChild,
 	{ customAbbreviations }: Required<ModifyNodeOptions>,
 ) {
-	// Table cells must stay on their row's line, so they can't take a break
 	if (node.type === "table") {
 		return;
 	}

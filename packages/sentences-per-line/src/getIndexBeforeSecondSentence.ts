@@ -15,8 +15,6 @@ export function getIndexBeforeSecondSentence(
 		return undefined;
 	}
 
-	// Ignore table rows, as a line break inside one would split the table apart.
-	// Rows may be nested inside block quotes, e.g. "> | A | B |".
 	if (/^\s*(?:>\s*)*\|/.test(line)) {
 		return undefined;
 	}
