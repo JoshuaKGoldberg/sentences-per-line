@@ -17,31 +17,23 @@ export const one: MarkdownRuleDefinition<{
 
 		function checkTextNode(node: Text) {
 			const index = getIndexBeforeSecondSentence(
-				node.value,
+				context.sourceCode.getText(node),
 				additionalAbbreviations,
 			);
 			if (!index) {
 				return;
 			}
 
-			/* eslint-disable @typescript-eslint/no-non-null-assertion */
-			const start = node.position!.start;
-			const insertion = start.offset! + index + 1;
-			/* eslint-enable @typescript-eslint/no-non-null-assertion */
+			// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+			const spaceStart = node.position!.start.offset! + index;
 
 			context.report({
 				fix(fixer) {
-					return fixer.insertTextAfterRange([insertion, insertion], "\n");
+					return fixer.replaceTextRange([spaceStart, spaceStart + 1], "\n");
 				},
 				loc: {
-					end: {
-						column: start.column + index + 1,
-						line: start.line,
-					},
-					start: {
-						column: start.column + index,
-						line: start.line,
-					},
+					end: context.sourceCode.getLocFromIndex(spaceStart + 1),
+					start: context.sourceCode.getLocFromIndex(spaceStart),
 				},
 				messageId: "multiple",
 			});
