@@ -7,7 +7,7 @@ import {
 } from "sentences-per-line";
 
 /** Block-level tokens whose lines can't contain prose sentences */
-const skippedTokenTypes = new Set<markdownlint.MicromarkToken["type"]>([
+const skippedTokenTypes = new Set<string>([
 	"codeFenced",
 	"codeIndented",
 	"htmlFlow",
