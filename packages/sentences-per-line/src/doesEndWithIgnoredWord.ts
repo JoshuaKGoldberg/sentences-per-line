@@ -17,7 +17,19 @@ export const doesEndWithIgnoredWord = (
 	customIgnoredWords: string[] = [],
 ): boolean => {
 	const allIgnoredWords = [...ignoredWords, ...customIgnoredWords];
-	return allIgnoredWords.some((word) =>
-		input.toLowerCase().endsWith(word.toLowerCase()),
-	);
+	const lowerCaseInput = input.toLowerCase();
+
+	return allIgnoredWords.some((word) => {
+		if (!lowerCaseInput.endsWith(word.toLowerCase())) {
+			return false;
+		}
+
+		// The word must not be the tail end of a longer word, e.g. "index." is not "ex."
+		const previousCharacter = input.at(-word.length - 1);
+
+		return (
+			previousCharacter === undefined ||
+			!/[\p{L}\p{N}]/u.test(previousCharacter)
+		);
+	});
 };

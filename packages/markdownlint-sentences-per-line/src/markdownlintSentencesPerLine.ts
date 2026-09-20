@@ -1,7 +1,56 @@
 import type * as markdownlint from "markdownlint";
 
 import helpers from "markdownlint-rule-helpers";
-import { getIndexBeforeSecondSentence } from "sentences-per-line";
+import {
+	getIndexBeforeSecondSentence,
+	isSentenceContinuedOnNextLine,
+} from "sentences-per-line";
+
+/** Block-level tokens whose lines can't contain prose sentences */
+const skippedTokenTypes = new Set<string>([
+	"codeFenced",
+	"codeIndented",
+	"htmlFlow",
+	"mathFlow",
+	"table",
+]);
+
+const getSkippedLineNumbers = (
+	tokens: markdownlint.MicromarkToken[],
+	skipped = new Set<number>(),
+) => {
+	for (const token of tokens) {
+		if (skippedTokenTypes.has(token.type)) {
+			for (let line = token.startLine; line <= token.endLine; line += 1) {
+				skipped.add(line);
+			}
+		} else {
+			getSkippedLineNumbers(token.children, skipped);
+		}
+	}
+
+	return skipped;
+};
+
+const getSingleLineSentencesLimit = (config: unknown) => {
+	if (
+		typeof config !== "object" ||
+		config === null ||
+		!("single_line_sentences" in config)
+	) {
+		return undefined;
+	}
+
+	const { single_line_sentences: singleLineSentences } = config;
+
+	if (singleLineSentences === true) {
+		return Infinity;
+	}
+
+	return typeof singleLineSentences === "number"
+		? singleLineSentences
+		: undefined;
+};
 
 const getAdditionalAbbreviations = (config: unknown): string[] => {
 	if (
@@ -61,6 +110,48 @@ const visitLine = (
 	}
 };
 
+const visitLineStartingSentence = (
+	lines: readonly string[],
+	index: number,
+	onError: markdownlint.RuleOnError,
+	limit: number,
+	additionalAbbreviations: string[],
+	skippedLineNumbers: Set<number>,
+) => {
+	const isContinued = (candidate: number) =>
+		!skippedLineNumbers.has(candidate + 1) &&
+		!skippedLineNumbers.has(candidate + 2) &&
+		isSentenceContinuedOnNextLine(
+			lines[candidate],
+			lines[candidate + 1],
+			additionalAbbreviations,
+		);
+
+	if (!isContinued(index) || (index > 0 && isContinued(index - 1))) {
+		return;
+	}
+
+	let end = index;
+
+	while (isContinued(end)) {
+		end += 1;
+	}
+
+	const sentence = lines
+		.slice(index, end + 1)
+		.map((line) => line.trim())
+		.join(" ");
+
+	if (sentence.length <= limit) {
+		helpers.addError(
+			onError,
+			index + 1,
+			"Sentence continues on the next line",
+			lines[index].trim().slice(-10),
+		);
+	}
+};
+
 export const markdownlintSentencesPerLine = {
 	description: "Each sentence should be on its own line",
 	function: (
@@ -69,24 +160,37 @@ export const markdownlintSentencesPerLine = {
 	) => {
 		const additionalAbbreviations = getAdditionalAbbreviations(params.config);
 		const locale = getLocale(params.config);
-		let inFenceLine = false;
+		const singleLineSentencesLimit = getSingleLineSentencesLimit(params.config);
+		const skippedLineNumbers = getSkippedLineNumbers(
+			params.parsers.micromark.tokens,
+		);
 
 		for (let i = 0; i < params.lines.length; i += 1) {
-			const line = params.lines[i];
-
-			if (line.startsWith("```")) {
-				inFenceLine = !inFenceLine;
+			if (skippedLineNumbers.has(i + 1)) {
 				continue;
 			}
 
-			if (inFenceLine) {
-				continue;
-			}
+			visitLine(
+				params.lines[i],
+				i + 1,
+				onError,
+				additionalAbbreviations,
+				locale,
+			);
 
-			visitLine(line, i + 1, onError, additionalAbbreviations, locale);
+			if (singleLineSentencesLimit !== undefined) {
+				visitLineStartingSentence(
+					params.lines,
+					i,
+					onError,
+					singleLineSentencesLimit,
+					additionalAbbreviations,
+					skippedLineNumbers,
+				);
+			}
 		}
 	},
 	names: ["markdownlint-sentences-per-line"],
-	parser: "none",
+	parser: "micromark",
 	tags: ["sentences"],
 } satisfies markdownlint.Rule;

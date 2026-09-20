@@ -73,6 +73,7 @@ Abc. Def.
 		["1. First sentence. Second one.", 18],
 		["``abc", undefined],
 		["Hello world! Another sentence!", 12],
+		["Look at the index. Next one.", 18],
 		["1.  Foo", undefined],
 		["Hello.  World", undefined],
 		['Use "etc." Then more.', undefined],

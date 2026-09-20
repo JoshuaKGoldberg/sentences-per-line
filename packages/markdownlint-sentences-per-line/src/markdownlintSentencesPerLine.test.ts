@@ -243,6 +243,199 @@ Abc. Def.
 		expect(actual).toEqual({ input: [] });
 	});
 
+	test("reports no errors when a sentence spans multiple lines and single_line_sentences is not enabled", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": true,
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: {
+				input: "This is a single sentence that spans\nmultiple lines.",
+			},
+		});
+
+		expect(actual).toEqual({ input: [] });
+	});
+
+	test("reports an error when a sentence spans two lines and single_line_sentences is true", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": { single_line_sentences: true },
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: {
+				input: "This is a single sentence that spans\nmultiple lines.",
+			},
+		});
+
+		expect(actual).toEqual({
+			input: [
+				{
+					errorContext: "that spans",
+					errorDetail: "Sentence continues on the next line",
+					errorRange: null,
+					fixInfo: null,
+					lineNumber: 1,
+					ruleDescription: "Each sentence should be on its own line",
+					ruleInformation: null,
+					ruleNames: ["markdownlint-sentences-per-line"],
+					severity: "error",
+				},
+			],
+		});
+	});
+
+	test("reports one error when a sentence spans three lines and single_line_sentences is true", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": { single_line_sentences: true },
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "One\ntwo\nthree." },
+		});
+
+		expect(actual).toEqual({
+			input: [
+				{
+					errorContext: "One",
+					errorDetail: "Sentence continues on the next line",
+					errorRange: null,
+					fixInfo: null,
+					lineNumber: 1,
+					ruleDescription: "Each sentence should be on its own line",
+					ruleInformation: null,
+					ruleNames: ["markdownlint-sentences-per-line"],
+					severity: "error",
+				},
+			],
+		});
+	});
+
+	test("reports no errors when a spanning sentence is longer than single_line_sentences", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": { single_line_sentences: 40 },
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: {
+				input: "This is a single sentence that spans\nmultiple lines.",
+			},
+		});
+
+		expect(actual).toEqual({ input: [] });
+	});
+
+	test("reports an error when a spanning sentence is no longer than single_line_sentences", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": { single_line_sentences: 80 },
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: {
+				input: "This is a single sentence that spans\nmultiple lines.",
+			},
+		});
+
+		expect(actual).toEqual({
+			input: [
+				{
+					errorContext: "that spans",
+					errorDetail: "Sentence continues on the next line",
+					errorRange: null,
+					fixInfo: null,
+					lineNumber: 1,
+					ruleDescription: "Each sentence should be on its own line",
+					ruleInformation: null,
+					ruleNames: ["markdownlint-sentences-per-line"],
+					severity: "error",
+				},
+			],
+		});
+	});
+
+	test.each([
+		["a tilde fence", "~~~js\nconst x = 1\nconst y = 2\n~~~"],
+		[
+			"a fence inside a list item",
+			"- Item:\n\n  ```js\n  const x = 1\n  const y = 2\n  ```",
+		],
+		["a fence inside a fence", "````md\n```\nfoo\nbar\n```\n````"],
+		["indented code", "Para.\n\n    const x = 1\n    const y = 2"],
+		[
+			"an HTML block",
+			'<p align="center">\n  Some centered text\n  more text\n</p>',
+		],
+		["a table without leading pipes", "Foo | Bar\n--- | ---\na | b\nc | d"],
+		["a math block", "$$\nx = 1\ny = 2\n$$"],
+	])(
+		"reports no errors when given %s and single_line_sentences is true",
+		(_, input) => {
+			const actual = markdownlint.lint({
+				config: {
+					default: false,
+					"markdownlint-sentences-per-line": { single_line_sentences: true },
+				},
+				customRules: [markdownlintSentencesPerLine],
+				strings: { input },
+			});
+
+			expect(actual).toEqual({ input: [] });
+		},
+	);
+
+	test("reports an error for each of two consecutive spanning sentences", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": { single_line_sentences: true },
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "One\ntwo.\nThree\nfour." },
+		});
+
+		expect(actual.input.map((error) => error.lineNumber)).toEqual([1, 3]);
+	});
+
+	test.each([
+		[6, 1],
+		[5, 0],
+	])(
+		"reports errors for a spanning sentence of length 6 when single_line_sentences is %i",
+		(limit, count) => {
+			const actual = markdownlint.lint({
+				config: {
+					default: false,
+					"markdownlint-sentences-per-line": { single_line_sentences: limit },
+				},
+				customRules: [markdownlintSentencesPerLine],
+				strings: { input: "ab\ncd." },
+			});
+
+			expect(actual.input).toHaveLength(count);
+		},
+	);
+
+	test("reports an error when a sentence spans lines after an abbreviation in additional_abbreviations", () => {
+		const actual = markdownlint.lint({
+			config: {
+				default: false,
+				"markdownlint-sentences-per-line": {
+					additional_abbreviations: ["Mme."],
+					single_line_sentences: true,
+				},
+			},
+			customRules: [markdownlintSentencesPerLine],
+			strings: { input: "Bonjour Mme.\nDupont." },
+		});
+
+		expect(actual.input.map((error) => error.lineNumber)).toEqual([1]);
+	});
+
 	test("reports an error when given a locale that treats the character as a terminator", () => {
 		const actual = markdownlint.lint({
 			config: {

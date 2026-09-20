@@ -1,5 +1,27 @@
+import markdown from "@eslint/markdown";
+import { Linter } from "eslint";
+import { describe, expect, it } from "vitest";
+
 import { one } from "./one.ts";
 import { ruleTester } from "./ruleTester.ts";
+
+function fixRepeatedly(code: string) {
+	return new Linter().verifyAndFix(
+		code,
+		[
+			{
+				files: ["**/*.md"],
+				language: "markdown/commonmark",
+				plugins: {
+					markdown,
+					"sentences-per-line": { rules: { one } },
+				},
+				rules: { "sentences-per-line/one": "error" },
+			},
+		],
+		"file.md",
+	).output;
+}
 
 ruleTester.run("one", one, {
 	invalid: [
@@ -14,7 +36,7 @@ ruleTester.run("one", one, {
 					messageId: "multiple",
 				},
 			],
-			output: "Abc. \nDef.",
+			output: "Abc.\nDef.",
 		},
 		{
 			code: `
@@ -38,7 +60,7 @@ Abc. Def.
 Abc. Def.
 \`\`\`
 
-Abc. 
+Abc.
 Def.
 `,
 		},
@@ -53,7 +75,7 @@ Def.
 					messageId: "multiple",
 				},
 			],
-			output: "Hello! \nWorld.",
+			output: "Hello!\nWorld.",
 		},
 		{
 			code: "Hello? World.",
@@ -66,7 +88,7 @@ Def.
 					messageId: "multiple",
 				},
 			],
-			output: "Hello? \nWorld.",
+			output: "Hello?\nWorld.",
 		},
 		{
 			code: "Really?! Wow.",
@@ -79,7 +101,7 @@ Def.
 					messageId: "multiple",
 				},
 			],
-			output: "Really?! \nWow.",
+			output: "Really?!\nWow.",
 		},
 		{
 			code: "Hello! World! Again.",
@@ -92,7 +114,7 @@ Def.
 					messageId: "multiple",
 				},
 			],
-			output: "Hello! \nWorld! Again.",
+			output: "Hello!\nWorld! Again.",
 		},
 		{
 			code: "1. Hello! World.",
@@ -105,7 +127,20 @@ Def.
 					messageId: "multiple",
 				},
 			],
-			output: "1. Hello! \nWorld.",
+			output: "1. Hello!\nWorld.",
+		},
+		{
+			code: "&amp; Abc. Def.",
+			errors: [
+				{
+					column: 11,
+					endColumn: 12,
+					endLine: 1,
+					line: 1,
+					messageId: "multiple",
+				},
+			],
+			output: "&amp; Abc.\nDef.",
 		},
 		{
 			code: "Bonjour Mme. Dupont.",
@@ -118,7 +153,7 @@ Def.
 					messageId: "multiple",
 				},
 			],
-			output: "Bonjour Mme. \nDupont.",
+			output: "Bonjour Mme.\nDupont.",
 		},
 		{
 			code: "Bonjour Mme. Dupont.",
@@ -132,7 +167,20 @@ Def.
 				},
 			],
 			options: [{ additionalAbbreviations: ["Mlle."] }],
-			output: "Bonjour Mme. \nDupont.",
+			output: "Bonjour Mme.\nDupont.",
+		},
+		{
+			code: "- Abc.\n  Def. Ghi.",
+			errors: [
+				{
+					column: 7,
+					endColumn: 8,
+					endLine: 2,
+					line: 2,
+					messageId: "multiple",
+				},
+			],
+			output: "- Abc.\n  Def.\nGhi.",
 		},
 		{
 			code: 'He said "Hello." Then left.',
@@ -145,7 +193,7 @@ Def.
 					messageId: "multiple",
 				},
 			],
-			output: 'He said "Hello." \nThen left.',
+			output: 'He said "Hello."\nThen left.',
 		},
 		{
 			code: "Foo; Bar baz",
@@ -159,7 +207,7 @@ Def.
 				},
 			],
 			options: [{ locale: "el" }],
-			output: "Foo; \nBar baz",
+			output: "Foo;\nBar baz",
 		},
 	],
 	valid: [
@@ -196,4 +244,18 @@ Def.
 		},
 		"Foo; Bar baz",
 	],
+});
+
+describe("one fixer", () => {
+	it("splits every sentence onto its own line when fixing repeatedly", () => {
+		const actual = fixRepeatedly("Foo. Bar. Baz. Foo2. Bar2.\n");
+
+		expect(actual).toBe("Foo.\nBar.\nBaz.\nFoo2.\nBar2.\n");
+	});
+
+	it("splits every sentence onto its own line when the source already has a line ending in a space", () => {
+		const actual = fixRepeatedly("Foo. \nBar. Baz. Foo2. Bar2.\n");
+
+		expect(actual).toBe("Foo. \nBar.\nBaz.\nFoo2.\nBar2.\n");
+	});
 });

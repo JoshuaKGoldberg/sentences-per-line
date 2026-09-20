@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/eslint-plugin-sentences-per-line@v0.1.4...eslint-plugin-sentences-per-line@v0.1.5) (2026-09-20)
+
+
+### Bug Fixes
+
+* remove the space between sentences when fixing ([#1280](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1280)) ([43b8b7d](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/43b8b7d7f43edd2a645d793d48a4b5c70dfb7349))
+
 ## [0.1.4](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/eslint-plugin-sentences-per-line@v0.1.3...eslint-plugin-sentences-per-line@v0.1.4) (2026-09-20)
 
 
