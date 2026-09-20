@@ -3,6 +3,7 @@ export {
 	ignoredWords,
 } from "./doesEndWithIgnoredWord.ts";
 export { getIndexBeforeSecondSentence } from "./getIndexBeforeSecondSentence.ts";
+export { isSentenceContinuedOnNextLine } from "./isSentenceContinuedOnNextLine.ts";
 
 export default (): never => {
 	throw new Error(

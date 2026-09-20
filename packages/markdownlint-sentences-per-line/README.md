@@ -63,6 +63,57 @@ Provide them under the rule's name in your [markdownlint configuration](https://
 }
 ```
 
+#### `locale`
+
+The [BCP 47 locale tag](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument) describing the language your Markdown is written in.
+
+Defaults to `"en-US"`.
+
+```json
+{
+	"markdownlint-sentences-per-line": {
+		"locale": "el"
+	}
+}
+```
+
+#### `single_line_sentences`
+
+Whether to also report sentences that are split across multiple lines.
+
+By default, only lines that contain more than one sentence are reported.
+Enabling this option additionally requires each sentence to take up exactly one line: no more, no less.
+
+```json
+{
+	"markdownlint-sentences-per-line": {
+		"single_line_sentences": true
+	}
+}
+```
+
+That configuration reports the following Markdown:
+
+```md
+This is a single sentence that spans
+multiple lines.
+```
+
+Providing a number instead of `true` allows sentences longer than that many characters to be split across lines.
+This is useful for wrapping only the occasional long sentence.
+A sentence's length is measured from its Markdown source, with lines trimmed and joined by a single space.
+
+```json
+{
+	"markdownlint-sentences-per-line": {
+		"single_line_sentences": 80
+	}
+}
+```
+
+Only plain paragraph lines are checked.
+Sentences inside list items or block quotes, and lines ending in a hard line break, are not reported.
+
 ## Alternatives
 
 This package is part of the [sentences-per-line](https://github.com/JoshuaKGoldberg/sentences-per-line) family of packages.
