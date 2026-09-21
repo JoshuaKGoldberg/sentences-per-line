@@ -4,6 +4,8 @@ import {
 	getSentenceStartIndices,
 } from "./getSentenceStartIndices.ts";
 
+const trailingClosingPunctuation = /[\])}"'”’*_]+$/;
+
 /**
  * @returns The first index after the end of the line's first sentence,
  * if a second sentence follows it.
@@ -43,7 +45,7 @@ export function getIndexBeforeSecondSentence(
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
 			!doesEndWithIgnoredWord(
 				// A sentence may end in closing punctuation after the abbreviation, e.g. 'Use "etc."'
-				line.substring(0, i + 1).replace(/[\])}"'”’*_]+$/, ""),
+				line.substring(0, i + 1).replace(trailingClosingPunctuation, ""),
 				customIgnoredWords,
 			)
 		) {
