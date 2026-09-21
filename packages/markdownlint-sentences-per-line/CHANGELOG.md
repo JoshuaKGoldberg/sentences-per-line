@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.1.7](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.6...markdownlint-sentences-per-line@v0.1.7) (2026-09-21)
+
+
+### Features
+
+* use Intl.Segmenter to find sentence boundaries ([#1282](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1282)) ([327c318](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/327c318c5aed3b528477f1c3ec83725ccef390e0))
+
+
+### Bug Fixes
+
+* don't split sentences inside Markdown table rows ([#1283](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1283)) ([5561ccf](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/5561ccfb15487641ae902068d5f303a872bddcca))
+* hoist trailing closing punctuation RegExp out of the loop ([#1345](https://github.com/JoshuaKGoldberg/sentences-per-line/issues/1345)) ([6518f05](https://github.com/JoshuaKGoldberg/sentences-per-line/commit/6518f05f19c3f9bccfe81cace2f524d6d50a121f))
+
 ## [0.1.6](https://github.com/JoshuaKGoldberg/sentences-per-line/compare/markdownlint-sentences-per-line@v0.1.5...markdownlint-sentences-per-line@v0.1.6) (2026-09-20)
 
 

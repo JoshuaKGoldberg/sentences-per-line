@@ -1,6 +1,6 @@
 {
 	"name": "eslint-plugin-sentences-per-line",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "ESLint plugin for limiting sentences per line in Markdown code. 📐",
 	"repository": {
 		"type": "git",
