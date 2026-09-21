@@ -4,7 +4,6 @@ import {
 	getSentenceStartIndices,
 } from "./getSentenceStartIndices.ts";
 
-// A sentence may end in closing punctuation after the abbreviation, e.g. 'Use "etc."'
 const trailingClosingPunctuation = /[\])}"'”’*_]+$/;
 
 /**
@@ -45,6 +44,7 @@ export function getIndexBeforeSecondSentence(
 			line[i + 1] === " " &&
 			isCapitalizedAlphabetCharacter(line[i + 2]) &&
 			!doesEndWithIgnoredWord(
+				// A sentence may end in closing punctuation after the abbreviation, e.g. 'Use "etc."'
 				line.substring(0, i + 1).replace(trailingClosingPunctuation, ""),
 				customIgnoredWords,
 			)
