@@ -38,6 +38,8 @@ Then add it to your [Prettier config's `plugins`](https://prettier.io/docs/plugi
 }
 ```
 
+Sentences within Markdown table rows are left alone, as splitting a row across lines would break the table.
+
 ### Options
 
 #### `sentencesPerLineAdditionalAbbreviations`

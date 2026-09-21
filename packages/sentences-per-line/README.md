@@ -33,6 +33,13 @@ getIndexBeforeSecondSentence("The only sentence.");
 getIndexBeforeSecondSentence("First sentence. Second sentence.");
 ```
 
+Lines that can't contain a line break, such as headings and table rows, are never reported.
+
+```ts
+// undefined
+getIndexBeforeSecondSentence("| First sentence. Second sentence. | Third |");
+```
+
 It optionally takes in an array of additional words to treat as abbreviations instead of sentence endings.
 
 ```ts

@@ -30,6 +30,14 @@ First sentence.
 Second sentence
 ```
 
+Table rows are never split, as a line break inside one would break the table:
+
+```md
+| Column                          |
+| ------------------------------- |
+| First sentence. Second sentence |
+```
+
 ## Options
 
 ### `additionalAbbreviations`

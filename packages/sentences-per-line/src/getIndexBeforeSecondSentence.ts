@@ -20,6 +20,10 @@ export function getIndexBeforeSecondSentence(
 		return undefined;
 	}
 
+	if (/^\s*(?:>\s*)*\|/.test(line)) {
+		return undefined;
+	}
+
 	// Skip any starting list number, e.g. "1. " or " 1. "
 	if (/^\s*\d+\./.test(line)) {
 		i = line.indexOf(".") + 1;

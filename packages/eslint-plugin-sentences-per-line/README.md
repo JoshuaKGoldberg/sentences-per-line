@@ -50,6 +50,8 @@ export default [
 ];
 ```
 
+Sentences within Markdown table rows are left alone, as splitting a row across lines would break the table.
+
 ### Options
 
 #### `additionalAbbreviations`
