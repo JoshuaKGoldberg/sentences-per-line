@@ -52,7 +52,7 @@
 		"prettier-plugin-sh": "0.20.2",
 		"typescript": "5.9.3",
 		"typescript-eslint": "8.72.1",
-		"vitest": "4.1.12"
+		"vitest": "5.0.5"
 	},
 	"packageManager": "pnpm@10.34.9",
 	"engines": {
