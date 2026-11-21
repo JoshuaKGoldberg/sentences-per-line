@@ -19,7 +19,7 @@
 		"lint:docs": "eslint-doc-generator --check"
 	},
 	"dependencies": {
-		"@eslint/markdown": "^8.0.0",
+		"@eslint/markdown": "^9.0.0",
 		"eslint": ">=9",
 		"sentences-per-line": "workspace:^"
 	},
