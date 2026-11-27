@@ -69,8 +69,8 @@ importers:
         specifier: ^3.8.1
         version: 3.10.1
       prettier-plugin-curly:
-        specifier: 0.4.2
-        version: 0.4.2(prettier@3.10.1)
+        specifier: 0.4.3
+        version: 0.4.3(prettier@3.10.1)
       prettier-plugin-packagejson:
         specifier: 3.1.0
         version: 3.1.0(prettier@3.10.1)
@@ -2260,8 +2260,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-curly@0.4.2:
-    resolution: {integrity: sha512-haKq5uzJWhEW7hdwD1BzokoYAq7nf61lPrlrnqpWEStrL0d0FiOHi8paxzH1P2p0w+1eRkJErseBIIuvWBqJ1Q==}
+  prettier-plugin-curly@0.4.3:
+    resolution: {integrity: sha512-kflOXlnhm6gLDjq+8NY3J+ASXXwfOLLdGXEv1tMUMHDBBAMHDGR1etcIhPybVfiBRzOVzOXd3YqwKgiblT0kFw==}
     engines: {node: '>=18'}
     peerDependencies:
       '@prettier/plugin-oxc': ^0.2.2
@@ -4926,7 +4926,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-curly@0.4.2(prettier@3.10.1):
+  prettier-plugin-curly@0.4.3(prettier@3.10.1):
     dependencies:
       prettier: 3.10.1
 
